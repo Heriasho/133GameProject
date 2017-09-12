@@ -1,0 +1,28 @@
+[
+  {
+    "symbolicName": "CLDC11",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "8fe4491b1145bd68d3e06f22d363445c99a21df8",
+    "jarFileModificationDate": "2017-08-29T20:05:38.558-07:00",
+    "location": "C:\\Users\\Ryan\\workspace\\App133\\lib\\CLDC11.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "CodenameOne",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "edd12b0113df8566aa93710060ba8a36d0928888",
+    "jarFileModificationDate": "2017-08-29T20:05:38.552-07:00",
+    "location": "C:\\Users\\Ryan\\workspace\\App133\\lib\\CodenameOne.jar",
+    "javaRuntime": false
+  }
+]
