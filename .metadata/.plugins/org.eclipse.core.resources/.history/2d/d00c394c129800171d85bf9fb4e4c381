@@ -16,8 +16,7 @@ import java.io.IOException;
  * of building native mobile applications using Java.
  */
 public class Starter {
-	
-	private Game game;
+
     private Form current;
     private Resources theme;
 
@@ -37,10 +36,9 @@ public class Starter {
             current.show();
             return;
         }
-        new Game();
-//        Form hi = new Form("Hi World");
-//        hi.addComponent(new Label("Hi World"));
-//        hi.show();
+        Form hi = new Form("Hi World");
+        hi.addComponent(new Label("Hi World"));
+        hi.show();
     }
 
     public void stop() {
