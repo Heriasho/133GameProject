@@ -7,7 +7,7 @@ public abstract class Opponents extends GameObject {
 	private int speed;
 	private int direction;
 	
-	private void guided() {
+	private void guide() {
 		//Mute since Opponents do not use this.
 	}
 }

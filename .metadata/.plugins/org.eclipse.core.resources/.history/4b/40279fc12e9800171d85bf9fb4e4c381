@@ -38,16 +38,16 @@ public abstract class GameObject extends GameWorld {
 	private void guided() {
 		
 	}
-	protected void moveLeft(){
+	private void moveLeft(){
 		
 	}
-	protected void moveRight(){
+	private void moveRight(){
 		
 	}
-	protected void moveUp(){
+	void moveUp(){
 		
 	}
-	protected void moveDown(){
+	private void moveDown(){
 		
 	}
 	private void jumpToLocation(){

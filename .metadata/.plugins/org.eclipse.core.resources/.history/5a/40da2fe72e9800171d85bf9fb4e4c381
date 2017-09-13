@@ -41,7 +41,7 @@ public abstract class GameObject extends GameWorld {
 	protected void moveLeft(){
 		
 	}
-	protected void moveRight(){
+	private void moveRight(){
 		
 	}
 	protected void moveUp(){

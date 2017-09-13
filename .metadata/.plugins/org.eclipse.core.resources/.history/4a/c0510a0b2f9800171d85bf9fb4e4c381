@@ -33,18 +33,18 @@ public class GameWorld {
 	private void destroy() {
 		
 	}
-	void upMovement() {
+	private void UpMovement() {
 		//Move spaceship up
 		spaceship.moveUp();
 	}
-	void downMovement() {
+	private void DownMovement() {
 		//Move spaceship down
 		spaceship.moveDown();
 	}
-	void leftMovement() {
+	private void leftMovement() {
 		spaceship.moveLeft();
 	}
-	void rightMovement() {
+	private void rightMovement() {
 		spaceship.moveRight();
 	}
 
