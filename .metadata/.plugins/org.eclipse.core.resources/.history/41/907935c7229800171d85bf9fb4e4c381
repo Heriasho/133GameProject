@@ -12,8 +12,6 @@ import java.io.IOException;
 
 public class GameWorld {
 	
-	private GameObject gameObject;
-	
 	public GameWorld() {
 		
 	}

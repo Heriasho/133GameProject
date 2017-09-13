@@ -8,9 +8,6 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
 import com.codename1.ui.Toolbar;
-import com.codename1.ui.TextField;
-import com.codename1.ui.events.ActionEvent;
-import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
 
 public class Game extends Form {
@@ -27,27 +24,8 @@ public class Game extends Form {
 	}
 	/* Accepts keyboard commands from the player & invokes GameWorld methods*/
 	private void play() {
-		Label myLabel = new Label("Enter a Command");
-		this.addComponent(myLabel);
-		final TextField myTextField=new TextField();
-		this.show();
 		
-		myTextField.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent evt) {
-				
-				String sCommand = myTextField.getText().toString();
-				myTextField.clear();
-				switch (sCommand.charAt(0)) {
-				case 'e':
-					//gw.expand();
-					break;
-					//List commands here
-				}
-			}	//actionPerformed
-		}//newActionListner()
-		); //addActionListener
-	}//play
+	}
 	
 	private void init() {
 		

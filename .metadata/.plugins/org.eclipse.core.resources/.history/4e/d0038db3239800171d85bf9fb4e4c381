@@ -44,10 +44,9 @@ public class Game extends Form {
 					break;
 					//List commands here
 				}
-			}	//actionPerformed
-		}//newActionListner()
-		); //addActionListener
-	}//play
+			}
+		});
+	}
 	
 	private void init() {
 		

@@ -42,12 +42,11 @@ public class Game extends Form {
 				case 'e':
 					//gw.expand();
 					break;
-					//List commands here
+					
 				}
-			}	//actionPerformed
-		}//newActionListner()
-		); //addActionListener
-	}//play
+			}
+		});
+	}
 	
 	private void init() {
 		
