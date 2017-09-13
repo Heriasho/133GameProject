@@ -81,25 +81,11 @@ public class Game extends Form {
 					 * Chooses random astronaut & decrements its health value, updates speed, change color.
 					 * ELSE, if there are no aliens, print an error message instead.*/
 					break;
-				case 'p':
-					/*Print the points of game state values:
-					 * current score
-					 * number of astronauts rescued
-					 * number of aliens sneaked in to the spaceship
-					 * number of astronauts left in the world
-					 * Output should be appropriately labeled in easily readable format*/
-					break;
-				case 'm':
-					/*Print a 'map' showing the current world state.*/
-					break;
-				case 'x':
-					/*Exit, by calling the method 'System.exit(0)' to terminate the program.
-					 * Your program should confirm the user's intent to quit before actually exiting.*/
-					break;
-				case 'y':
-					/*User has confirmed the exit the exit by saying yes.*/
-				case 'n':
-					/*User has not confirmed the exit by saying no.*/
+				
+					
+				
+				
+					
 				}
 			}	//actionPerformed
 		}//newActionListner()
