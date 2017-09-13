@@ -1,0 +1,13 @@
+package com.mycompany.a1;
+
+public abstract class Rescuers extends GameObject {
+	
+	private int size;
+	
+	private int size(){
+		this.size = size*2;
+	}
+	private void setColor() {
+		
+	}
+}
