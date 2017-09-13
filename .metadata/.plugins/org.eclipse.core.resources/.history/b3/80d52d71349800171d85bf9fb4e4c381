@@ -58,10 +58,8 @@ public class Game extends Form {
 					break;
 				case 'c':
 					//Decrease the size of the spaceship door.
-					gw.compress();
 				case 'e':
 					//Increase the size of the spaceship door.
-					gw.expand();
 					break;
 				case 't':
 					/*Tell the Gw that the game clock has ticked.

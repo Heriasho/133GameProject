@@ -47,11 +47,5 @@ public class GameWorld {
 	void rightMovement() {
 		spaceship.moveRight();
 	}
-	void compress() {
-		
-	}
-	void expand() {
-		
-	}
 
 }
