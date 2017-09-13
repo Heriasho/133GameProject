@@ -12,7 +12,6 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
-import java.lang.String;
 
 public class Game extends Form {
 	private GameWorld gw;
@@ -119,12 +118,8 @@ public class Game extends Form {
 					break;
 				case 'y':
 					/*User has confirmed the exit the exit by saying yes.*/
-					System.out.println("I said yes");
-					break;
 				case 'n':
 					/*User has not confirmed the exit by saying no.*/
-					System.out.println("I said no");
-					break;
 				}
 			}	//actionPerformed
 		}//newActionListner()

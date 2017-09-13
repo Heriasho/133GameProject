@@ -44,7 +44,7 @@ public class Game extends Form {
 				case 'r':
 					//Move the spaceship to the right;
 					gw.rightMovement();
-					System.out.println("The spaceship moves right.");
+					Label rLabel = new Label("The spaceship moves right.")
 					break;
 				case 'l':
 					//Move the spaceship to the left;
