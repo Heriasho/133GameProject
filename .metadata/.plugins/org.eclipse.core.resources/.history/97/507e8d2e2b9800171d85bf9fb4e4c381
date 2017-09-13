@@ -1,12 +1,10 @@
 package com.mycompany.a1;
 
-import com.codename1.ui.geom.Point2D;
-
 public abstract class Spaceship extends Rescuers {
-	private Point2D size;
+	private int size;
 	
 	private void size(){
-		this.size = size;
+		this.size = size*2;
 	}
 	private void setColor() {
 		

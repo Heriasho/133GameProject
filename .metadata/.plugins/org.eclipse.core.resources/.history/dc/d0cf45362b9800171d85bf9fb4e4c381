@@ -6,7 +6,7 @@ public abstract class Spaceship extends Rescuers {
 	private Point2D size;
 	
 	private void size(){
-		this.size = size;
+		this.size = size*2;
 	}
 	private void setColor() {
 		
