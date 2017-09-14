@@ -30,6 +30,14 @@ public abstract class GameObject extends GameWorld {
 	private void setColor(int color){
 		this.color = color;
 	}
+	/* Controls the movement of the Opponents */
+	private void move() {
+		
+	}
+	/* Controls the movement of the Rescuers */
+	private void guided() {
+		
+	}
 	protected void moveLeft(){
 		
 	}
