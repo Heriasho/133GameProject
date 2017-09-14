@@ -29,26 +29,23 @@ public class GameWorld {
 	private void stop() {
 		
 	}
-	private void tick() {
-		//Calls move on the opponents
-	}
 	
 	private void destroy() {
 		
 	}
 	void upMovement() {
 		//Move spaceship up
-		//spaceship.moveUp();
+		spaceship.moveUp();
 	}
 	void downMovement() {
 		//Move spaceship down
-		//spaceship.moveDown();
+		spaceship.moveDown();
 	}
 	void leftMovement() {
-		//spaceship.moveLeft();
+		spaceship.moveLeft();
 	}
 	void rightMovement() {
-		//spaceship.moveRight();
+		spaceship.moveRight();
 	}
 	void compress() {
 		

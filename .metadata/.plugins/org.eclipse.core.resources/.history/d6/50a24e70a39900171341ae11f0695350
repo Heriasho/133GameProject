@@ -29,9 +29,6 @@ public class GameWorld {
 	private void stop() {
 		
 	}
-	private void tick() {
-		//Calls move on the opponents
-	}
 	
 	private void destroy() {
 		

@@ -30,4 +30,20 @@ public abstract class GameObject extends GameWorld {
 	private void setColor(int color){
 		this.color = color;
 	}
+	protected void moveLeft(){
+		
+	}
+	protected void moveRight(){
+		
+	}
+	protected void moveUp(){
+		
+	}
+	protected void moveDown(){
+		
+	}
+	private void jumpToLocation(){
+		
+	}
+	
 }

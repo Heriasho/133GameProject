@@ -10,7 +10,4 @@ public abstract class Opponents extends GameObject implements Imove {
 	private void guided() {
 		//Mute since Opponents do not use this.
 	}
-	private void move() {
-		//moves the aliens and the astronauts
-	}
 }
