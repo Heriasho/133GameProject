@@ -27,10 +27,11 @@ public class Game extends Form {
 		
 	}
 	/* Accepts keyboard commands from the player & invokes GameWorld methods*/
-	private void play() {
+	public void play() {
 		Label myLabel = new Label("Enter a Command");
 		this.addComponent(myLabel);
 		final TextField myTextField=new TextField();
+		this.addComponent(myTextField);
 		this.show();
 		
 		myTextField.addActionListener(new ActionListener(){
