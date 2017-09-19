@@ -19,11 +19,11 @@ public class GameWorld {
 	private int rescuedAstronauts;
 	private int rescuedAliens;
 	private int score;
-	private Hashtable theGameCollection;
+	private GameCollection theGameCollection;
 
 	public GameWorld() {
-		theGameCollection = new Hashtable();
-		
+		theGameCollection = new GameCollection();
+//		theGameCollection.add(new GameObject("Alien"));
 //		Aliens[] aliens = new Aliens[2];
 //		Astronauts[] astronauts = new Astronauts[2];
 //		

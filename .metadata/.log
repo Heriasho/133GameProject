@@ -10303,3 +10303,1814 @@ It is currently set to "C:\Program Files\Java\jre1.8.0_121"
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:27:04.875
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor259.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:27:04.875
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor259.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:27:39.421
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor263.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:27:39.421
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor263.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:27:49.681
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor267.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:27:49.682
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor267.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:28:09.386
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor271.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:28:09.386
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor271.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:28:25.792
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor275.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:28:25.792
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor275.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:29:07.986
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor279.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:29:07.987
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor279.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:29:14.885
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor283.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:29:14.885
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor283.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:29:19.513
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor287.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:29:19.513
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor287.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:30:03.679
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor291.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:30:03.679
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor291.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 15:32:12.384
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor295.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 15:32:12.384
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor295.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ui 4 4 2017-09-19 15:52:02.365
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@39bbd9e0)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@73a2499a)}
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 16:21:24.219
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor312.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 16:21:24.221
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor312.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 16:22:31.665
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor324.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 16:22:31.666
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor324.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 16:22:43.788
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor328.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 16:22:43.789
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor328.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 16:27:27.083
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor332.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 16:27:27.084
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor332.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 16:28:08.524
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor336.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 16:28:08.524
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor336.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.ant.launching 4 0 2017-09-19 16:29:49.953
+!MESSAGE Ant Build Failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.eclipse.ant.core.AntRunner.handleInvocationTargetException(AntRunner.java:452)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:384)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor340.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	... 20 more
+!SUBENTRY 1 org.eclipse.ant.core 4 1 2017-09-19 16:29:49.954
+!MESSAGE C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+!STACK 0
+C:\Users\Ryan\workspace\A1Prj\build.xml:147: Unable to find a javac compiler;
+com.sun.tools.javac.Main is not on the classpath.
+Perhaps JAVA_HOME does not point to the JDK.
+It is currently set to "C:\Program Files\Java\jre1.8.0_121"
+	at org.apache.tools.ant.taskdefs.compilers.CompilerAdapterFactory.getCompiler(CompilerAdapterFactory.java:128)
+	at org.apache.tools.ant.taskdefs.Javac.findSupportedFileExtensions(Javac.java:979)
+	at org.apache.tools.ant.taskdefs.Javac.scanDir(Javac.java:956)
+	at org.apache.tools.ant.taskdefs.Javac.execute(Javac.java:927)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+	at sun.reflect.GeneratedMethodAccessor340.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+	at org.apache.tools.ant.Task.perform(Task.java:348)
+	at org.apache.tools.ant.Target.execute(Target.java:392)
+	at org.apache.tools.ant.Target.performTasks(Target.java:413)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+	at org.eclipse.ant.internal.core.ant.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:32)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:672)
+	at org.eclipse.ant.internal.core.ant.InternalAntRunner.run(InternalAntRunner.java:498)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.ant.core.AntRunner.run(AntRunner.java:378)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.runInSameVM(AntLaunchDelegate.java:307)
+	at org.eclipse.ant.internal.launching.launchConfigurations.AntLaunchDelegate.launch(AntLaunchDelegate.java:260)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:700)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.launchBuild(ExternalToolBuilder.java:181)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.doBuildBasedOnScope(ExternalToolBuilder.java:169)
+	at org.eclipse.core.externaltools.internal.model.ExternalToolBuilder.build(ExternalToolBuilder.java:88)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
