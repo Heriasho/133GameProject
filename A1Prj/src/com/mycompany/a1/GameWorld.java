@@ -12,14 +12,18 @@ import java.io.IOException;
 
 public class GameWorld {
 	
-	private int numOfAliens;
+	private int roamingAliens;
 	private int roamingAstronauts;
 	private int rescuedAstronauts;
 	private int rescuedAliens;
 	private int score;
 
 	public GameWorld() {
-		
+//		Aliens[] aliens = new Aliens[2];
+//		Astronauts[] astronauts = new Astronauts[2];
+//		
+//		roamingAliens = aliens.length;
+//		roamingAstronauts = astronauts.length;
 	}
 	
 	/*Set the initial state of the game*/
@@ -28,11 +32,15 @@ public class GameWorld {
 	}
 	
 	public void bred() {
-		
+//		if(alien instanceof alien) {
+//			new Alien;
+//		}
 	}
 	
 	public void fight() {
-		
+//		if(alien instanceof astronaut){
+//			this.astronaut.health --;
+//		}
 	}
 	
 	public void tick() {
