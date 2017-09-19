@@ -15,7 +15,7 @@ public abstract class GameObject extends GameWorld {
 	private Point2D getLocation(Point2D location){
 		return location;
 	}
-	private void setLocation(Point2D location){
+	private void setLocationX(Point2D location){
 		//DO SOMETHING WITH THE LOCATION
 	}
 	private int getColor(int color){
@@ -24,8 +24,4 @@ public abstract class GameObject extends GameWorld {
 	private void setColor(int color){
 		this.color = color;
 	}
-	private void random() {
-		
-	}
-	
 }

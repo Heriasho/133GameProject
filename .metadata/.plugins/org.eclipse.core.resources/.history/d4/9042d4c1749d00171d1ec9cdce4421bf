@@ -24,8 +24,4 @@ public abstract class GameObject extends GameWorld {
 	private void setColor(int color){
 		this.color = color;
 	}
-	private void random() {
-		
-	}
-	
 }

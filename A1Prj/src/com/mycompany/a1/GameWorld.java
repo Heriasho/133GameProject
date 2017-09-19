@@ -12,6 +12,11 @@ import java.io.IOException;
 
 public class GameWorld {
 	
+	private int numOfAliens;
+	private int roamingAstronauts;
+	private int rescuedAstronauts;
+	private int rescuedAliens;
+	private int score;
 
 	public GameWorld() {
 		
@@ -19,9 +24,55 @@ public class GameWorld {
 	
 	/*Set the initial state of the game*/
 	public void init() {
-//      Form hi = new Form("Hi Game World");
-//      hi.addComponent(new Label("Hi World"));
-//      hi.show();
+
+	}
+	
+	public void bred() {
+		
+	}
+	
+	public void fight() {
+		
+	}
+	
+	public void tick() {
+		
+	}
+	
+	public void stats() {
+		
+	}
+	
+	public void map() {
+		
+	}
+	
+	public void score() {
+		
+	}
+	
+	public void expand() {
+		
+	}
+	
+	public void compress() {
+		
+	}
+	
+	public void spaceShipMove() {
+		
+	}
+	
+	public void teleportToAlien() {
+		
+	}
+	
+	public void teleportToAstronaut() {
+		
+	}
+	
+	public void exit() {
+		
 	}
 	
 
