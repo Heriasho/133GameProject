@@ -8,7 +8,9 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
 import com.codename1.ui.Toolbar;
+
 import java.io.IOException;
+import java.util.Hashtable;
 
 public class GameWorld {
 	
@@ -17,8 +19,11 @@ public class GameWorld {
 	private int rescuedAstronauts;
 	private int rescuedAliens;
 	private int score;
+	private Hashtable theGameCollection;
 
 	public GameWorld() {
+		theGameCollection = new Hashtable();
+		
 //		Aliens[] aliens = new Aliens[2];
 //		Astronauts[] astronauts = new Astronauts[2];
 //		

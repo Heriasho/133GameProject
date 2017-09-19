@@ -1,6 +1,8 @@
 package com.mycompany.a1;
 
 import com.codename1.ui.geom.Point2D;
+
+import java.util.Hashtable;
 import java.util.Random;
 
 public abstract class Opponents extends GameObject implements Imove {
@@ -8,6 +10,8 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speed;
 	private int direction;
 	
+	public Opponents() {
+	}
 	public void move(int direction) {
 		//moves the aliens and the astronauts
 		double deltax = Math.cos(90-direction)* speed;
