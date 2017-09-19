@@ -8,8 +8,9 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speed;
 	private int direction;
 	
-	public void move(int speed, int direction) {
+	public void move(int direction) {
 		//moves the aliens and the astronauts
+		
 		
 	}
 }

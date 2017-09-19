@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="com.codename1.ui.Button"/>
 <fullyQualifiedTypeName name="com.codename1.ui.geom.Point2D"/>
 <fullyQualifiedTypeName name="com.mycompany.a1.Spaceship"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

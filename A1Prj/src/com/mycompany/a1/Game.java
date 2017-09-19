@@ -44,32 +44,32 @@ public class Game extends Form {
 					//List commands here
 				case 'r':
 					//Move the spaceship to the right;
-					gw.rightMovement();
+					//gw.rightMovement();
 					System.out.println("The spaceship moves right.");
 					break;
 				case 'l':
 					//Move the spaceship to the left;
-					gw.leftMovement();
+					//gw.leftMovement();
 					System.out.println("The spaceship moves left.");
 					break;
 				case 'u':
 					//Move the spaceship up;
-					gw.upMovement();
+					//gw.upMovement();
 					System.out.println("The spaceship moves down.");
 					break;
 				case 'd':
 					//Move the spaceship down;
-					gw.downMovement();
+					//gw.downMovement();
 					System.out.println("The spaceship moves down.");
 					break;
 				case 'c':
 					//Decrease the size of the spaceship door.
-					gw.compress();
+					//gw.compress();
 					System.out.println("COMPRESS");
 					break;
 				case 'e':
 					//Increase the size of the spaceship door.
-					gw.expand();
+					//gw.expand();
 					System.out.println("EXPAND");
 					break;
 				case 't':

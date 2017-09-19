@@ -1,0 +1,27 @@
+package com.mycompany.a1;
+
+import com.codename1.ui.geom.Point2D;
+
+
+public abstract class GameObject extends GameWorld {
+	private Point2D location;
+	private int size;
+	private int color;
+
+	
+	private void size() {
+		
+	}
+	private Point2D getLocation(Point2D location){
+		return location;
+	}
+	private int getColor(int color){
+		return color;
+	}
+	private void setLocationX(Point2D location){
+		//DO SOMETHING WITH THE LOCATION
+	}
+	private void setColor(int color){
+		this.color = color;
+	}
+}

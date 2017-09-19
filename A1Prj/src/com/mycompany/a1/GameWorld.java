@@ -12,9 +12,7 @@ import java.io.IOException;
 
 public class GameWorld {
 	
-	private GameObject gameObject;
-	private Spaceship spaceship;
-	
+
 	public GameWorld() {
 		
 	}
@@ -26,35 +24,5 @@ public class GameWorld {
 //      hi.show();
 	}
 	
-	private void stop() {
-		
-	}
-	private void tick() {
-		//Calls move on the opponents
-	}
-	
-	private void destroy() {
-		
-	}
-	void upMovement() {
-		//Move spaceship up
-		//spaceship.moveUp();
-	}
-	void downMovement() {
-		//Move spaceship down
-		//spaceship.moveDown();
-	}
-	void leftMovement() {
-		//spaceship.moveLeft();
-	}
-	void rightMovement() {
-		//spaceship.moveRight();
-	}
-	void compress() {
-		
-	}
-	void expand() {
-		
-	}
 
 }
