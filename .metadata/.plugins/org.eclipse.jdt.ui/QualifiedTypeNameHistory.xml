@@ -4,4 +4,8 @@
 <fullyQualifiedTypeName name="com.codename1.ui.geom.Point2D"/>
 <fullyQualifiedTypeName name="com.mycompany.a1.Spaceship"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.codename1.charts.util.ColorUtil"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="java.util.Hashtable"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
 </qualifiedTypeNameHistroy>

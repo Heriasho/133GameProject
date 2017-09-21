@@ -10,6 +10,7 @@ import com.codename1.io.Log;
 import com.codename1.ui.Toolbar;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class GameWorld {
@@ -20,9 +21,13 @@ public class GameWorld {
 	private int rescuedAliens;
 	private int score;
 	private GameCollection theGameCollection;
+	private ArrayList<GameObject> gameObject;
 
 	public GameWorld() {
-		theGameCollection = new GameCollection();
+		/* Aggrigators: DON'T MAKE THE THINGS YOU WANT TO CALL ABSTRACT.	
+		 * GameObjects are set up to have: String, int size, int color, and Point2D location*/
+		gameObject.add(new Alien(null, rescuedAliens, rescuedAliens, null));
+//		theGameCollection = new GameCollection();
 //		theGameCollection.add(new GameObject("Alien"));
 //		Aliens[] aliens = new Aliens[2];
 //		Astronauts[] astronauts = new Astronauts[2];

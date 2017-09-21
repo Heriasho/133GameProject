@@ -6,14 +6,17 @@ import com.codename1.ui.geom.Point2D;
 
 public abstract class GameObject extends GameWorld {
 	
-	private Point2D location;
+	private String name;
 	private int size;
 	private int color;
-	private String name;
+	private Point2D location;
 	
 	/*Going to store my gameobjects on a hashtable and identify them by their toString*/
-	public GameObject() {
-
+	public GameObject(String name, int size, int color, Point2D location) {
+		this.name = name;
+		this.size = size;
+		this.color = color;
+		this.location = location;
 	}
 	public String getName(){
 		return name;

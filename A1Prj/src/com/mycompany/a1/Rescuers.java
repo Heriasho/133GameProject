@@ -1,9 +1,11 @@
 package com.mycompany.a1;
 
+import com.codename1.ui.geom.Point2D;
+
 public abstract class Rescuers extends GameObject implements Iguided {
 	
-	public Rescuers() {
-
+	public Rescuers(String name, int size, int color, Point2D location) {
+		super(name, size, color, location);
 	}
 	private void move(){
 		//Mute since Rescurers do not use this.

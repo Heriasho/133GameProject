@@ -1,8 +1,17 @@
 package com.mycompany.a1;
 
-public abstract class Alien extends Opponents {
+import com.codename1.ui.geom.Point2D;
+
+public class Alien extends Opponents {
 	
 	private String name = "alien";
+	private int size;
+	private int color;
+	private Point2D location;
+	
+	public Alien(String name, int size, int color, Point2D location) {
+		super(name, size, color, location);
+	}
 
 	private void move(){
 		//Aliens move like dorks.
