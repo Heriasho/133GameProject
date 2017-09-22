@@ -4,8 +4,8 @@ import com.codename1.ui.geom.Point2D;
 
 public abstract class Rescuers extends GameObject implements Iguided {
 	
-	public Rescuers(String name, int size, int color, Point2D location) {
-		super(name, size, color, location);
+	public Rescuers(String name, int screenHeight, int screenWidth, int color, Point2D location) {
+		super(name, screenHeight, screenWidth, color, location);
 	}
 	private void move(){
 		//Mute since Rescurers do not use this.

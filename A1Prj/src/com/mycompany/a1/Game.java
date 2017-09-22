@@ -91,6 +91,7 @@ public class Game extends Form {
 					/*PRETEND that a collision occurred between two aliens. 
 					 * This type of collision means that a new alien is generated.
 					 * ELSE, if there is less than two aliens, print an error message instead.*/
+					gw.bred();
 					System.out.println("Two aliens bred.");
 					break;
 				case 'f':
@@ -98,6 +99,7 @@ public class Game extends Form {
 					 * This type of collision means that a fight occurred between the two.
 					 * Chooses random astronaut & decrements its health value, updates speed, change color.
 					 * ELSE, if there are no aliens, print an error message instead.*/
+					gw.fight();
 					System.out.println("The alien & the astronaut fought & the alien won.");
 					break;
 				case 'p':
@@ -107,6 +109,7 @@ public class Game extends Form {
 					 * number of aliens sneaked in to the spaceship
 					 * number of astronauts left in the world
 					 * Output should be appropriately labeled in easily readable format*/
+					gw.stats();
 					System.out.println("Infoooooooo");
 					break;
 				case 'm':

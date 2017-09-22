@@ -11,8 +11,8 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speed;
 	private int direction;
 	
-	public Opponents(String name, int size, int color, Point2D location) {
-		super(name, size, color, location);
+	public Opponents(String name, int screenHeight, int screenWidth, int color, Point2D location) {
+		super(name, screenHeight, screenWidth, color, location);
 	}
 	
 	public void move(int direction) {

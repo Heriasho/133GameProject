@@ -9,8 +9,8 @@ public class Astronaut extends Opponents {
 	private Point2D location;
 	private int health;
 	
-	public Astronaut(String name, int size, int color, Point2D location) {
-		super(name, size, color, location);
+	public Astronaut(String name, int screenHeight, int screenWidth, int color, Point2D location) {
+		super(name, screenHeight, screenWidth, color, location);
 	}
 
 	private void setcolor() {

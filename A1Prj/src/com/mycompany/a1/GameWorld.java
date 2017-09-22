@@ -25,12 +25,13 @@ public class GameWorld {
 
 	public GameWorld() {
 		/* Aggrigators: DON'T MAKE THE THINGS YOU WANT TO CALL ABSTRACT.	
-		 * GameObjects are set up to have: String, int size, int color, and Point2D location*/
-		gameObject.add(new Alien(null, rescuedAliens, rescuedAliens, null));
+		 * GameObjects are set up to have: String, int screenHeight, int screenWidth, int color, and Point2D location*/
+		gameObject.add(new Alien("First Alien", 300,400, 5, null));
+		gameObject.add(new Alien("Second Alien", 400,500,5, null));
+		gameObject.add(new Astronaut("Astronaut",400,400,5, null));
+		gameObject.add(new Spaceship("Spaceship", 350, 250,5, null));
 //		theGameCollection = new GameCollection();
 //		theGameCollection.add(new GameObject("Alien"));
-//		Aliens[] aliens = new Aliens[2];
-//		Astronauts[] astronauts = new Astronauts[2];
 //		
 //		roamingAliens = aliens.length;
 //		roamingAstronauts = astronauts.length;
@@ -42,12 +43,16 @@ public class GameWorld {
 	}
 	
 	public void bred() {
-//		if(alien instanceof alien) {
-//			new Alien;
-//		}
+		if(Alien.class.isInstance(Alien.class)) {
+			gameObject.add(new Alien("Born Alien", 400,500,5, null));
+			roamingAliens ++;
+		}
 	}
 	
 	public void fight() {
+		if(Alien.class.isInstance(Astronaut.class)){
+//			Astronaut.class.
+		}
 //		if(alien instanceof astronaut){
 //			this.astronaut.health --;
 //		}
@@ -57,16 +62,28 @@ public class GameWorld {
 		
 	}
 	
+	/*Print the points of game state values:
+	 * current score
+	 * number of astronauts rescued
+	 * number of aliens sneaked in to the spaceship
+	 * number of astronauts left in the world
+	 * Output should be appropriately labeled in easily readable format*/
 	public void stats() {
-		
+		System.out.println("The score is: " + score 
+				+ "\nNumber of Astronauts rescused: " + rescuedAstronauts 
+				+ "\nNumber of Aliens rescued: " + rescuedAliens
+				+ "\nNumber of Aliens roaming: " + roamingAliens);
 	}
 	
+	/*Print a 'map' showing the current world state.*/
 	public void map() {
-		
+		for(int i = 0; i<gameObject.size(); i++){
+			//System.out.println(gameObject.all the gameobjects in the game. \n));
+		}
 	}
 	
 	public void score() {
-		
+		System.out.println("The score is: " + score);
 	}
 	
 	public void expand() {

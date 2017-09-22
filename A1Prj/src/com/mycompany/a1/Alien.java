@@ -9,8 +9,8 @@ public class Alien extends Opponents {
 	private int color;
 	private Point2D location;
 	
-	public Alien(String name, int size, int color, Point2D location) {
-		super(name, size, color, location);
+	public Alien(String name, int screenHeight, int screenWidth, int color, Point2D location) {
+		super(name, screenHeight, screenWidth, color, location);
 	}
 
 	private void move(){
