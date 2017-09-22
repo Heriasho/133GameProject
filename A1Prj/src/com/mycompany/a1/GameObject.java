@@ -18,42 +18,42 @@ public abstract class GameObject extends GameWorld {
 	}
 	
 	
-	private int getScreenHeight() {
+	public int getScreenHeight() {
 		return screenHeight;
 	}
-	private void setScreenHeight(int screenHeight){
+	public void setScreenHeight(int screenHeight){
 		this.screenHeight = screenHeight;
 	}
 	
 	
-	private int getScreenWidth() {
+	public int getScreenWidth() {
 		return screenWidth;
 	}
-	private void setScreenWidth(int screenWidth){
+	public void setScreenWidth(int screenWidth){
 		this.screenWidth = screenWidth;
 	}
 	
 	
-	private Point2D getLocation(){
+	public Point2D getLocation(){
 		return location;
 	}
-	private void setLocation(Point2D location){
+	public void setLocation(Point2D location){
 		this.location = location;
 	}
 	
 	
-	private int getColor(){
+	public int getColor(){
 		return color;
 	}
-	private void setColor(int color){
+	public void setColor(int color){
 		this.color = color;
 	}
 	
 	
-	private int getSize() {
+	public int getSize() {
 		return size;
 	}
-	private void setSize(int size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 	

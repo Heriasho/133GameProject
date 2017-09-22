@@ -39,15 +39,15 @@ public class GameWorld {
 	/*Set the initial state of the game*/
 	public void init() {
 		for(int i = 0; i < roamingAliens; ++i) {
-			Alien alien = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed, speedMultiplier);
-			go.add((GameObject) alien);
+			Alien alien = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed, speedMulti);
+			gameObject.add((GameObject) alien);
 		}
 		for(int i = 0; i < roamingAstronauts; ++i) {
-			Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMultiplier);
+			Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti);
 			gameObject.add((GameObject) astronaut);
 		}
 		Spaceship spaceship = new Spaceship(ColorUtil.GRAY, screenHeight, screenWidth);
-		go.add((GameObject) spaceship);
+		gameObject.add((GameObject) spaceship);
 	}
 	
 	public void bred() {
@@ -56,7 +56,7 @@ public class GameWorld {
 			return;
 		}
 		Alien a = getRandomAlien();
-		//Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed ))
+		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed, speedMulti );
 		gameObject.add((GameObject) b);
 		b.setLocation(a.getLocation());
 		b.move((int) ((a.getSize() + 5.0) /5.0) * 1000);
@@ -159,6 +159,12 @@ public class GameWorld {
 			if(gameObject.get(i)instanceof Alien)
 				return (Alien) gameObject.get(i);
 		}
+		return null;
+	}
+	private Spaceship getSpaceShip() {
+		for(GameObject object : gameObject)
+			if(object instanceof Spaceship)
+				return (Spaceship) object;
 		return null;
 	}
 	

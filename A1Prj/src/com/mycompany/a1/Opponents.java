@@ -32,6 +32,10 @@ public abstract class Opponents extends GameObject implements Imove {
 		return speedMultiplier;
 	}
 	
+	public void setSpeedMultiplier(int speed) {
+		this.speed = speed * speedMultiplier; 
+	}
+	
 	public void move(int elapsedTime) {
 		setDirection(getDirection() + 5);		
 		double time = elapsedTime/1000;

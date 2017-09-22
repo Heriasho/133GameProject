@@ -10,7 +10,7 @@ public class Spaceship extends Rescuers implements Iguided {
 	private int color;
 	private Point2D location;
 	
-	public SpaceShip(int color, int screenHeight, int screenWidth) {
+	public Spaceship(int color, int screenHeight, int screenWidth) {
 		Random r = new Random();
 		super.setColor(color);
 		setLocation(new Point2D(r.nextDouble() * screenWidth, r.nextDouble() * screenHeight));
