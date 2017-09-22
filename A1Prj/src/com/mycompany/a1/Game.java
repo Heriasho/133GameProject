@@ -17,9 +17,6 @@ import java.lang.String;
 public class Game extends Form {
 	private GameWorld gw;
 	
-	/*Instantiates a GameWorld.
-	 * Calls GameWorld's init() to set the initial state of the game.
-	 * Calls play()*/
 	public Game() {
 		gw = new GameWorld();
 		gw.init();
@@ -33,11 +30,8 @@ public class Game extends Form {
 		final TextField myTextField=new TextField();
 		this.addComponent(myTextField);
 		this.show();
-		
 		myTextField.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent evt) {
-				
 				String sCommand = myTextField.getText().toString();
 				myTextField.clear();
 				switch (sCommand.charAt(0)) {
@@ -129,6 +123,8 @@ public class Game extends Form {
 					/*User has not confirmed the exit by saying no.*/
 					System.out.println("I said no");
 					break;
+				default: 
+					System.out.println("Error: Not a valid command");
 				}
 			}	//actionPerformed
 		}//newActionListner()
