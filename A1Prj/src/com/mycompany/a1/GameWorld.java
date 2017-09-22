@@ -6,47 +6,61 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.Label;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.io.Log;
 import com.codename1.ui.Toolbar;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Random;
 
 public class GameWorld {
 	
-	private int roamingAliens;
-	private int roamingAstronauts;
-	private int rescuedAstronauts;
-	private int rescuedAliens;
-	private int score;
+	private int roamingAliens = 3;
+	private int roamingAstronauts = 3;
+	private int rescuedAstronauts = 0;
+	private int rescuedAliens = 0;
+	private int score = 0;
+	private int tickTime = 1000;
+	private Random random = new Random();
+	private int screenHeight = 768;
+	private int screenWidth = 1024;
+	private int screenRotation = 90;
+	private int speed = 5;
+	private int speedMulti = 1;
 	private GameCollection theGameCollection;
 	private ArrayList<GameObject> gameObject;
 
 	public GameWorld() {
-		/* Aggrigators: DON'T MAKE THE THINGS YOU WANT TO CALL ABSTRACT.	
-		 * GameObjects are set up to have: String, int screenHeight, int screenWidth, int color, and Point2D location*/
-		gameObject.add(new Alien("First Alien", 300,400, 5, null));
-		gameObject.add(new Alien("Second Alien", 400,500,5, null));
-		gameObject.add(new Astronaut("Astronaut",400,400,5, null));
-		gameObject.add(new Spaceship("Spaceship", 350, 250,5, null));
-//		theGameCollection = new GameCollection();
-//		theGameCollection.add(new GameObject("Alien"));
-//		
-//		roamingAliens = aliens.length;
-//		roamingAstronauts = astronauts.length;
+
 	}
 	
 	/*Set the initial state of the game*/
 	public void init() {
-
+		for(int i = 0; i < roamingAliens; ++i) {
+			Alien alien = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed, speedMultiplier);
+			go.add((GameObject) alien);
+		}
+		for(int i = 0; i < roamingAstronauts; ++i) {
+			Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMultiplier);
+			gameObject.add((GameObject) astronaut);
+		}
+		Spaceship spaceship = new Spaceship(ColorUtil.GRAY, screenHeight, screenWidth);
+		go.add((GameObject) spaceship);
 	}
 	
 	public void bred() {
-		if(Alien.class.isInstance(Alien.class)) {
-			gameObject.add(new Alien("Born Alien", 400,500,5, null));
-			roamingAliens ++;
+		if(roamingAliens < 2){
+			System.out.println("Error: Requires two aliens!");
+			return;
 		}
+		Alien a = getRandomAlien();
+		//Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed ))
+		gameObject.add((GameObject) b);
+		b.setLocation(a.getLocation());
+		b.move((int) ((a.getSize() + 5.0) /5.0) * 1000);
+		
 	}
 	
 	public void fight() {
@@ -59,7 +73,12 @@ public class GameWorld {
 	}
 	
 	public void tick() {
-		
+		for(GameObject object : gameObject) {
+			if(object instanceof Opponents) {
+				((Opponents) object).move(tickTime);
+			}
+		}
+		System.out.println("Game has advanced by " + tickTime + " ms = " + tickTime/1000 + " ticks.");
 	}
 	
 	/*Print the points of game state values:
@@ -94,8 +113,33 @@ public class GameWorld {
 		
 	}
 	
-	public void spaceShipMove() {
-		
+	/**
+	 * Move space ship down.
+	 */
+	public void moveSpaceShipDown() {
+		Spaceship sp = getSpaceShip();
+		sp.moveDown();
+	}
+	/**
+	 * Move space ship left.
+	 */
+	public void moveSpaceShipLeft() {
+		Spaceship sp = getSpaceShip();
+		sp.moveLeft();
+	}
+	/**
+	 * Move space ship right.
+	 */
+	public void moveSpaceShipRight() {
+		Spaceship sp = getSpaceShip();
+		sp.moveRight();
+	}
+	/**
+	 * Move space ship up.
+	 */
+	public void moveSpaceShipUp() {
+		Spaceship sp = getSpaceShip();
+		sp.moveUp();
 	}
 	
 	public void teleportToAlien() {
@@ -108,6 +152,14 @@ public class GameWorld {
 	
 	public void exit() {
 		
+	}
+	private Alien getRandomAlien() {
+		while(roamingAliens >= 0){
+			int i = random.nextInt(gameObject.size());
+			if(gameObject.get(i)instanceof Alien)
+				return (Alien) gameObject.get(i);
+		}
+		return null;
 	}
 	
 
