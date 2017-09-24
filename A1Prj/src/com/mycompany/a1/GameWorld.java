@@ -26,10 +26,9 @@ public class GameWorld {
 	private Random random = new Random();
 	private int screenHeight = 768;
 	private int screenWidth = 1024;
-	private int screenRotation = 90;
 	private int speed = 5;
 	private int speedMulti = 1;
-	private GameCollection theGameCollection;
+	//private GameCollection theGameCollection;
 	private ArrayList<GameObject> gameObject = new ArrayList<GameObject>();
 	
 
@@ -40,7 +39,7 @@ public class GameWorld {
 	/*Set the initial state of the game*/
 	public void init() {
 		for(int i = 0; i < roamingAliens; ++i) {
-			Alien alien = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed, speedMulti);
+			Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti);
 			gameObject.add((GameObject) alien); 
 		}
 		for(int i = 0; i < roamingAstronauts; ++i) {

@@ -11,7 +11,6 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int direction;
 	private int speedMultiplier;
 	
-	
 	public int getDirection() {
 		return direction;
 	}
@@ -42,33 +41,40 @@ public abstract class Opponents extends GameObject implements Imove {
 		double distance = getSpeed() * time;
 		double deltaX = Math.cos(getDirection() * Math.PI / 180.0) * distance;
 		double deltaY = Math.sin(getDirection() * Math.PI / 180.0) * distance;
-		Point2D nLoc = new Point2D(getLocation().getX() + deltaX, getLocation().getY() + deltaY);
+		Point2D newLoc = new Point2D(getLocation().getX() + deltaX, getLocation().getY() + deltaY);
 		
-		while(nLoc.getX() < 0 || nLoc.getX() > getScreenWidth() || nLoc.getY() < 0 || nLoc.getY() > getScreenHeight()) {						
+		while(newLoc.getX() < 0 || newLoc.getX() > getScreenWidth() || newLoc.getY() < 0 || newLoc.getY() > getScreenHeight()) {						
 			setDirection(getDirection() + 15);
 			
 			if(deltaX > getScreenWidth()) {
 				deltaX -= getScreenWidth();
-				nLoc.setX(getScreenWidth());
-			} else if (nLoc.getX() < 0) {
+				newLoc.setX(getScreenWidth());
+			} else if (newLoc.getX() < 0) {
 				deltaX *= -1;
-				nLoc.setX(0);
+				newLoc.setX(0);
 			} else
 				deltaX = 0;
 			
 			if(deltaY > getScreenHeight()) { 
 				deltaY -= getScreenHeight();
-				nLoc.setY(getScreenHeight());
+				newLoc.setY(getScreenHeight());
 			} else if (deltaY < 0) {
 				deltaY *= -1;
-				nLoc.setY(0);
+				newLoc.setY(0);
 			} else
 				deltaY = 0;
 			
 			deltaX = Math.cos(getDirection() * Math.PI / 180.0) * deltaX;
 			deltaY = Math.sin(getDirection() * Math.PI / 180.0) * deltaY;
-			nLoc = new Point2D(nLoc.getX() + deltaX, nLoc.getY() + deltaY);
+			newLoc = new Point2D(newLoc.getX() + deltaX, newLoc.getY() + deltaY);
 		}	
-		setLocation(nLoc);
+		setLocation(newLoc);
+	}
+	public String toString() {
+		String direct = "" + direction;
+		while(direct.length() < 3){
+			direct = "0" + direct;
+		}
+		return super.toString() + "\tspeed=\t" + speed + "\tdir=\t" + direct;
 	}
 }

@@ -6,9 +6,9 @@ import com.codename1.ui.geom.Point2D;
 /*Probabaly want to make a singleton later on.*/
 public class Spaceship extends Rescuers implements Iguided {
 	private String name = "Spaceship";
-	private int size;
-	private int color;
-	private Point2D location;
+//	private int size;
+//	private int color;
+//	private Point2D location;
 	
 	public Spaceship(int color, int screenHeight, int screenWidth) {
 		Random r = new Random();
@@ -19,10 +19,7 @@ public class Spaceship extends Rescuers implements Iguided {
 		setScreenWidth(screenWidth);
 	}
 	
-	private void size(){
-		this.size = size;
-	}
-	private void setColor() {
+	public void setColor(int color) {
 		
 	}
 	public void contractDoor() {
