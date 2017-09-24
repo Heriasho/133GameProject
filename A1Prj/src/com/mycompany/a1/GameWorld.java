@@ -65,12 +65,12 @@ public class GameWorld {
 	}
 	
 	public void fight() {
-		if(Alien.class.isInstance(Astronaut.class)){
-//			Astronaut.class.
+		if(roamingAstronauts <= 0 || roamingAliens <= 0){
+			System.out.println("Error: Need at least 1 astronaut & alien to fight.");
+			return;
 		}
-//		if(alien instanceof astronaut){
-//			this.astronaut.health --;
-//		}
+		Astronaut a = getRandomAstronaut();
+		a.damage();
 	}
 	
 	public void tick() {
@@ -97,9 +97,8 @@ public class GameWorld {
 	
 	/*Print a 'map' showing the current world state.*/
 	public void map() {
-		for(int i = 0; i<gameObject.size(); i++){
-			System.out.println(gameObject);
-		}
+		for(GameObject object : gameObject)
+			System.out.println(object);
 	}
 	
 	public void score() {
@@ -115,6 +114,38 @@ public class GameWorld {
 		Spaceship sp = getSpaceship();
 		sp.contractDoor();
 	}
+	public void openDoor() {
+		Spaceship sp = getSpaceship();
+		ArrayList<GameObject> remove = new ArrayList<GameObject>();
+		for(GameObject object : gameObject) {
+			if(object instanceof Opponents) {
+				Opponents o = (Opponents) object;
+				double x = Math.abs(sp.getLocation().getX() - o.getLocation().getX());
+				double y = Math.abs(sp.getLocation().getY() - o.getLocation().getY());
+				if(x >= 0 && x <= sp.getSize() && y >= 0 && y <= sp.getSize()) {
+					rescueAnObject(object);
+					remove.add(object);
+				}
+			}
+	}
+		/* Concurrency issue with for each loop, created delete ArrayList<GameObject>
+		 * and remove after.
+		 */
+		for(GameObject object : remove)
+			gameObject.remove(object);
+	}
+	private void rescueAnObject(GameObject object) {
+		if(object instanceof Alien) {
+			score -= 10;
+			roamingAliens -= 1;
+			rescuedAliens += 1;
+		} else if (object instanceof Astronaut) {
+			score += (5 + ((Astronaut) object).getSpeed());
+			roamingAstronauts -= 1;
+			rescuedAstronauts += 1;
+		}
+	}
+	
 	
 	/**
 	 * Move space ship down.
@@ -152,10 +183,10 @@ public class GameWorld {
 			sp = getSpaceship();
 			a = getRandomAlien();
 			sp.setLocation(a.getLocation());
+			System.out.println("You've teleported to an alien");
 		}
-		else {
+		else
 			System.out.println("Error: There were no aliens to jump to.");
-		}
 	}
 	
 	public void teleportToAstronaut() {
@@ -165,10 +196,10 @@ public class GameWorld {
 			sp = getSpaceship();
 			a = getRandomAstronaut();
 			sp.setLocation(a.getLocation());
+			System.out.println("You've teleported to an astronaut. \n Hope you didn't hit them.");
 		}
-		else {
+		else 
 			System.out.println("Error: Ther were no astronauts to jump to.");
-		}
 	}
 	
 	public void exit() {

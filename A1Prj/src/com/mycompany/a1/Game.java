@@ -37,6 +37,12 @@ public class Game extends Form {
 				myTextField.clear();
 				switch (sCommand.charAt(0)) {
 					//List commands here
+				case 'a':
+					gw.teleportToAlien();
+					break;
+				case 'o':
+					gw.teleportToAstronaut();
+					break;
 				case 'r':
 					//Move the spaceship to the right;
 					//gw.rightMovement();
@@ -84,6 +90,7 @@ public class Game extends Form {
 					 * This causes all of the opponents whose centers are within 
 					 * the boundaries of the bounding square of the door to be removed
 					 * from the game world.*/
+					gw.openDoor();
 					System.out.println("The spaceship door has opened.");
 					break;
 				case 'w':
