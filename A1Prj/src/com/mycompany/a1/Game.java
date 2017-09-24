@@ -16,6 +16,7 @@ import java.lang.String;
 
 public class Game extends Form {
 	private GameWorld gw;
+	private boolean confirm = false;
 	
 	public Game() {
 		gw = new GameWorld();
@@ -39,38 +40,42 @@ public class Game extends Form {
 				case 'r':
 					//Move the spaceship to the right;
 					//gw.rightMovement();
+					gw.moveSpaceShipRight();
 					System.out.println("The spaceship moves right.");
 					break;
 				case 'l':
 					//Move the spaceship to the left;
 					//gw.leftMovement();
+					gw.moveSpaceShipLeft();
 					System.out.println("The spaceship moves left.");
 					break;
 				case 'u':
 					//Move the spaceship up;
 					//gw.upMovement();
-					System.out.println("The spaceship moves down.");
+					gw.moveSpaceShipUp();
+					System.out.println("The spaceship moves up.");
 					break;
 				case 'd':
 					//Move the spaceship down;
 					//gw.downMovement();
+					gw.moveSpaceShipDown();
 					System.out.println("The spaceship moves down.");
 					break;
 				case 'c':
 					//Decrease the size of the spaceship door.
-					//gw.compress();
+					gw.compress();
 					System.out.println("COMPRESS");
 					break;
 				case 'e':
 					//Increase the size of the spaceship door.
-					//gw.expand();
+					gw.expand();
 					System.out.println("EXPAND");
 					break;
 				case 't':
 					/*Tell the Gw that the game clock has ticked.
 					 * All moving objects are told to update their positions
 					 * according to their current direction and speed.*/
-					System.out.println("The game clock has ticked.");
+					gw.tick();
 					break;
 				case 's':
 					/*Open the door & update the score according to the types
@@ -94,7 +99,7 @@ public class Game extends Form {
 					 * Chooses random astronaut & decrements its health value, updates speed, change color.
 					 * ELSE, if there are no aliens, print an error message instead.*/
 					gw.fight();
-					System.out.println("The alien & the astronaut fought & the alien won.");
+					System.out.println("The astronaut fought the alien & the alien won.");
 					break;
 				case 'p':
 					/*Print the points of game state values:
@@ -104,24 +109,29 @@ public class Game extends Form {
 					 * number of astronauts left in the world
 					 * Output should be appropriately labeled in easily readable format*/
 					gw.stats();
-					System.out.println("Infoooooooo");
 					break;
 				case 'm':
 					/*Print a 'map' showing the current world state.*/
-					System.out.println("map map map");
+					gw.map();
 					break;
 				case 'x':
 					/*Exit, by calling the method 'System.exit(0)' to terminate the program.
 					 * Your program should confirm the user's intent to quit before actually exiting.*/
-					System.out.println("Exit. The game should end.");
+					if(confirm)
+						System.exit(0);
+					else{
+						System.out.println("You attempted to exit the game without confirming. \nIf you wish to quit, please press 'y' then press 'x'.");
+					}
 					break;
 				case 'y':
 					/*User has confirmed the exit the exit by saying yes.*/
-					System.out.println("I said yes");
+					System.out.println("You are confirming you wish to exit the game.");
+					confirm = true;
 					break;
 				case 'n':
 					/*User has not confirmed the exit by saying no.*/
-					System.out.println("I said no");
+					System.out.println("You are confirming you do not wish to exit the game.");
+					confirm = false;
 					break;
 				default: 
 					System.out.println("Error: Not a valid command");

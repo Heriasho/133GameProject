@@ -30,7 +30,8 @@ public class GameWorld {
 	private int speed = 5;
 	private int speedMulti = 1;
 	private GameCollection theGameCollection;
-	private ArrayList<GameObject> gameObject;
+	private ArrayList<GameObject> gameObject = new ArrayList<GameObject>();
+	
 
 	public GameWorld() {
 
@@ -40,7 +41,7 @@ public class GameWorld {
 	public void init() {
 		for(int i = 0; i < roamingAliens; ++i) {
 			Alien alien = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed, speedMulti);
-			gameObject.add((GameObject) alien);
+			gameObject.add((GameObject) alien); 
 		}
 		for(int i = 0; i < roamingAstronauts; ++i) {
 			Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti);
@@ -97,7 +98,7 @@ public class GameWorld {
 	/*Print a 'map' showing the current world state.*/
 	public void map() {
 		for(int i = 0; i<gameObject.size(); i++){
-			//System.out.println(gameObject.all the gameobjects in the game. \n));
+			System.out.println(gameObject);
 		}
 	}
 	
@@ -106,48 +107,68 @@ public class GameWorld {
 	}
 	
 	public void expand() {
-		
+		Spaceship sp  = getSpaceship();
+		sp.expandDoor();
 	}
 	
 	public void compress() {
-		
+		Spaceship sp = getSpaceship();
+		sp.contractDoor();
 	}
 	
 	/**
 	 * Move space ship down.
 	 */
 	public void moveSpaceShipDown() {
-		Spaceship sp = getSpaceShip();
+		Spaceship sp = getSpaceship();
 		sp.moveDown();
 	}
 	/**
 	 * Move space ship left.
 	 */
 	public void moveSpaceShipLeft() {
-		Spaceship sp = getSpaceShip();
+		Spaceship sp = getSpaceship();
 		sp.moveLeft();
 	}
 	/**
 	 * Move space ship right.
 	 */
 	public void moveSpaceShipRight() {
-		Spaceship sp = getSpaceShip();
+		Spaceship sp = getSpaceship();
 		sp.moveRight();
 	}
 	/**
 	 * Move space ship up.
 	 */
 	public void moveSpaceShipUp() {
-		Spaceship sp = getSpaceShip();
+		Spaceship sp = getSpaceship();
 		sp.moveUp();
 	}
 	
 	public void teleportToAlien() {
-		
+		Alien a;
+		Spaceship sp;
+		if(roamingAliens > 0){
+			sp = getSpaceship();
+			a = getRandomAlien();
+			sp.setLocation(a.getLocation());
+		}
+		else {
+			System.out.println("Error: There were no aliens to jump to.");
+		}
 	}
 	
 	public void teleportToAstronaut() {
-		
+		Astronaut a;
+		Spaceship sp;
+		if(roamingAstronauts > 0) {
+			sp = getSpaceship();
+			a = getRandomAstronaut();
+			sp.setLocation(a.getLocation());
+		}
+		else {
+			System.out.println("Error: Ther were no astronauts to jump to.");
+		}
 	}
 	
 	public void exit() {
@@ -161,10 +182,19 @@ public class GameWorld {
 		}
 		return null;
 	}
-	private Spaceship getSpaceShip() {
+	private Spaceship getSpaceship() {
 		for(GameObject object : gameObject)
 			if(object instanceof Spaceship)
 				return (Spaceship) object;
+		return null;
+	}
+	
+	private Astronaut getRandomAstronaut() {
+		while(roamingAstronauts > 0) {
+			int i = random.nextInt(gameObject.size());
+			if (gameObject.get(i) instanceof Astronaut)
+				return (Astronaut) gameObject.get(i);
+		}
 		return null;
 	}
 	
