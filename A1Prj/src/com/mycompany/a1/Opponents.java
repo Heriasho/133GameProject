@@ -1,12 +1,12 @@
 package com.mycompany.a1;
 
 import com.codename1.ui.geom.Point2D;
-import java.util.Hashtable;
-import java.util.Random;
+//import java.util.Hashtable;
+//import java.util.Random;
 
 public abstract class Opponents extends GameObject implements Imove {
 	
-	private int size;
+	//private int size;
 	private int speed;
 	private int direction;
 	private int speedMultiplier;

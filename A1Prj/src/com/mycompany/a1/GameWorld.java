@@ -1,19 +1,10 @@
 package com.mycompany.a1;
 
-import com.codename1.ui.Display;
-import com.codename1.ui.Form;
-import com.codename1.ui.Dialog;
-import com.codename1.ui.Label;
-import com.codename1.ui.plaf.UIManager;
-import com.codename1.ui.util.Resources;
 import com.codename1.charts.util.ColorUtil;
-import com.codename1.io.Log;
-import com.codename1.ui.Toolbar;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Random;
+//import java.util.Hashtable;
 
 public class GameWorld {
 	
@@ -30,11 +21,6 @@ public class GameWorld {
 	private int speedMulti = 1;
 	//private GameCollection theGameCollection;
 	private ArrayList<GameObject> gameObject = new ArrayList<GameObject>();
-	
-
-	public GameWorld() {
-
-	}
 	
 	/*Set the initial state of the game*/
 	public void init() {
@@ -60,7 +46,7 @@ public class GameWorld {
 		gameObject.add((GameObject) b);
 		b.setLocation(a.getLocation());
 		b.move((int) ((a.getSize() + 5.0) /5.0) * 1000);
-		
+		System.out.println("Two aliens bred.");
 	}
 	
 	public void fight() {
@@ -70,6 +56,7 @@ public class GameWorld {
 		}
 		Astronaut a = getRandomAstronaut();
 		a.damage();
+		System.out.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
 	}
 	
 	public void tick() {
@@ -99,21 +86,24 @@ public class GameWorld {
 		for(GameObject object : gameObject)
 			System.out.println(object);
 	}
-	
+	/*Returns the score.*/
 	public void score() {
 		System.out.println("The score is: " + score);
 	}
-	
+	/*Gets a spaceship & increases it's size through its expandDoor().*/
 	public void expand() {
 		Spaceship sp  = getSpaceship();
 		sp.expandDoor();
 	}
-	
+	/*Gets a spaceship & decreases it's size through its contractDoor().*/
 	public void compress() {
 		Spaceship sp = getSpaceship();
 		sp.contractDoor();
 	}
+	/*Gets a spaceship & checks to see if Opponents are instanceof it.
+	 * If so, the opponents are 'rescued' & removed from the gameworld.*/
 	public void openDoor() {
+		System.out.println("The spaceship door has opened.");
 		Spaceship sp = getSpaceship();
 		ArrayList<GameObject> remove = new ArrayList<GameObject>();
 		for(GameObject object : gameObject) {
@@ -124,15 +114,19 @@ public class GameWorld {
 				if(x >= 0 && x <= sp.getSize() && y >= 0 && y <= sp.getSize()) {
 					rescueAnObject(object);
 					remove.add(object);
+					System.out.println("You've rescued a " + object);
 				}
 			}
 	}
-		/* Concurrency issue with for each loop, created delete ArrayList<GameObject>
+		/* Concurrency issue with for each loop, created delete ArrayList<GameObject>.
 		 * and remove after.
 		 */
 		for(GameObject object : remove)
 			gameObject.remove(object);
 	}
+	/*Checks to see if a given gameobject is instanceof an alien or an astroanut.
+	 * Depending on which one the object is instanceof, score is modified & so is corresponding
+	 * trackers of aliens/astronauts in the gameworld.*/
 	private void rescueAnObject(GameObject object) {
 		if(object instanceof Alien) {
 			score -= 10;
@@ -144,37 +138,27 @@ public class GameWorld {
 			rescuedAstronauts += 1;
 		}
 	}
-	
-	
-	/**
-	 * Move space ship down.
-	 */
+	/*Moves the spaceship down*/
 	public void moveSpaceShipDown() {
 		Spaceship sp = getSpaceship();
 		sp.moveDown();
 	}
-	/**
-	 * Move space ship left.
-	 */
+	/*Moves the spaceship left*/
 	public void moveSpaceShipLeft() {
 		Spaceship sp = getSpaceship();
 		sp.moveLeft();
 	}
-	/**
-	 * Move space ship right.
-	 */
+	/*Moves the spaceship right*/
 	public void moveSpaceShipRight() {
 		Spaceship sp = getSpaceship();
 		sp.moveRight();
 	}
-	/**
-	 * Move space ship up.
-	 */
+	/*Moves the spaceship up*/
 	public void moveSpaceShipUp() {
 		Spaceship sp = getSpaceship();
 		sp.moveUp();
 	}
-	
+	/*Teleports the spaceship to a random alien*/
 	public void teleportToAlien() {
 		Alien a;
 		Spaceship sp;
@@ -187,7 +171,7 @@ public class GameWorld {
 		else
 			System.out.println("Error: There were no aliens to jump to.");
 	}
-	
+	/*Teleports the spaceship to a random astronaut*/
 	public void teleportToAstronaut() {
 		Astronaut a;
 		Spaceship sp;
@@ -200,10 +184,7 @@ public class GameWorld {
 		else 
 			System.out.println("Error: Ther were no astronauts to jump to.");
 	}
-	
-	public void exit() {
-		
-	}
+	/*While there is at least 1 alien remaining, returns a random alien.*/
 	private Alien getRandomAlien() {
 		while(roamingAliens >= 0){
 			int i = random.nextInt(gameObject.size());
@@ -212,13 +193,14 @@ public class GameWorld {
 		}
 		return null;
 	}
+	/*While there is a spaceship in the gameworld, returns the spaceship.*/
 	private Spaceship getSpaceship() {
 		for(GameObject object : gameObject)
 			if(object instanceof Spaceship)
 				return (Spaceship) object;
 		return null;
 	}
-	
+	/*While there is at least 1 astronaut remaining, returns a random astronaut.*/
 	private Astronaut getRandomAstronaut() {
 		while(roamingAstronauts > 0) {
 			int i = random.nextInt(gameObject.size());
@@ -227,6 +209,4 @@ public class GameWorld {
 		}
 		return null;
 	}
-	
-
 }

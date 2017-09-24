@@ -1,17 +1,18 @@
 package com.mycompany.a1;
 
-import com.codename1.ui.Display;
+//import com.codename1.ui.Display;
 import com.codename1.ui.Form;
-import com.codename1.ui.Dialog;
+//import com.codename1.ui.Dialog;
 import com.codename1.ui.Label;
-import com.codename1.ui.plaf.UIManager;
-import com.codename1.ui.util.Resources;
-import com.codename1.io.Log;
-import com.codename1.ui.Toolbar;
+//import com.codename1.ui.plaf.UIManager;
+//import com.codename1.ui.util.Resources;
+//import com.codename1.io.Log;
+//import com.codename1.ui.Toolbar;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import java.io.IOException;
+
+//import java.io.IOException;
 import java.lang.String;
 
 public class Game extends Form {
@@ -25,6 +26,7 @@ public class Game extends Form {
 		
 	}
 	/* Accepts keyboard commands from the player & invokes GameWorld methods*/
+	@SuppressWarnings("rawtypes")
 	public void play() {
 		Label myLabel = new Label("Enter a Command");
 		this.addComponent(myLabel);
@@ -70,12 +72,12 @@ public class Game extends Form {
 				case 'c':
 					//Decrease the size of the spaceship door.
 					gw.compress();
-					System.out.println("COMPRESS");
+					System.out.println("You compressed the spaceship size by 10.");
 					break;
 				case 'e':
 					//Increase the size of the spaceship door.
 					gw.expand();
-					System.out.println("EXPAND");
+					System.out.println("You expanded the spaceship size by 10,");
 					break;
 				case 't':
 					/*Tell the Gw that the game clock has ticked.
@@ -91,14 +93,12 @@ public class Game extends Form {
 					 * the boundaries of the bounding square of the door to be removed
 					 * from the game world.*/
 					gw.openDoor();
-					System.out.println("The spaceship door has opened.");
 					break;
 				case 'w':
 					/*PRETEND that a collision occurred between two aliens. 
 					 * This type of collision means that a new alien is generated.
 					 * ELSE, if there is less than two aliens, print an error message instead.*/
 					gw.bred();
-					System.out.println("Two aliens bred.");
 					break;
 				case 'f':
 					/*PRETEND that a collision occurred between an alien and an astronaut.
@@ -106,7 +106,6 @@ public class Game extends Form {
 					 * Chooses random astronaut & decrements its health value, updates speed, change color.
 					 * ELSE, if there are no aliens, print an error message instead.*/
 					gw.fight();
-					System.out.println("The astronaut fought the alien & the alien won.");
 					break;
 				case 'p':
 					/*Print the points of game state values:

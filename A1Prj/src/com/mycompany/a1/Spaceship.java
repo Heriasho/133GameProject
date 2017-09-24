@@ -5,10 +5,6 @@ import com.codename1.ui.geom.Point2D;
 
 /*Probabaly want to make a singleton later on.*/
 public class Spaceship extends Rescuers implements Iguided {
-	private String name = "Spaceship";
-//	private int size;
-//	private int color;
-//	private Point2D location;
 	
 	public Spaceship(int color, int screenHeight, int screenWidth) {
 		Random r = new Random();
@@ -26,9 +22,7 @@ public class Spaceship extends Rescuers implements Iguided {
 		setSize(getSize() - 10);
 	}
 
-	/**
-	 * Expand door.
-	 */
+	/*Expands the door (spaceship) size by 10*/
 	public void expandDoor() {
 		setSize(getSize() + 10);
 	}
