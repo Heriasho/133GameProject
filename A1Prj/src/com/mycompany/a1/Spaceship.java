@@ -1,6 +1,7 @@
 package com.mycompany.a1;
 
 import java.util.Random;
+
 import com.codename1.ui.geom.Point2D;
 
 /*Probabaly want to make a singleton later on.*/
@@ -20,11 +21,13 @@ public class Spaceship extends Rescuers implements Iguided {
 	}
 	public void contractDoor() {
 		setSize(getSize() - 10);
+		System.out.println("You compressed the spaceship size by " + getSize());
 	}
 
 	/*Expands the door (spaceship) size by 10*/
 	public void expandDoor() {
 		setSize(getSize() + 10);
+		System.out.println("You expanded the spaceship size by " + getSize());
 	}
 	@Override
 	public void setSize(int size) {

@@ -1,16 +1,16 @@
 package com.mycompany.a1;
 
-//import com.codename1.ui.Display;
 import com.codename1.ui.Form;
-//import com.codename1.ui.Dialog;
 import com.codename1.ui.Label;
+import com.codename1.ui.TextField;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
+//import com.codename1.ui.Dialog;
+//import com.codename1.ui.Display;
 //import com.codename1.ui.plaf.UIManager;
 //import com.codename1.ui.util.Resources;
 //import com.codename1.io.Log;
 //import com.codename1.ui.Toolbar;
-import com.codename1.ui.TextField;
-import com.codename1.ui.events.ActionEvent;
-import com.codename1.ui.events.ActionListener;
 
 //import java.io.IOException;
 import java.lang.String;
@@ -49,35 +49,29 @@ public class Game extends Form {
 					//Move the spaceship to the right;
 					//gw.rightMovement();
 					gw.moveSpaceShipRight();
-					System.out.println("The spaceship moves right.");
 					break;
 				case 'l':
 					//Move the spaceship to the left;
 					//gw.leftMovement();
 					gw.moveSpaceShipLeft();
-					System.out.println("The spaceship moves left.");
 					break;
 				case 'u':
 					//Move the spaceship up;
 					//gw.upMovement();
 					gw.moveSpaceShipUp();
-					System.out.println("The spaceship moves up.");
 					break;
 				case 'd':
 					//Move the spaceship down;
 					//gw.downMovement();
 					gw.moveSpaceShipDown();
-					System.out.println("The spaceship moves down.");
 					break;
 				case 'c':
 					//Decrease the size of the spaceship door.
 					gw.compress();
-					System.out.println("You compressed the spaceship size by 10.");
 					break;
 				case 'e':
 					//Increase the size of the spaceship door.
 					gw.expand();
-					System.out.println("You expanded the spaceship size by 10,");
 					break;
 				case 't':
 					/*Tell the Gw that the game clock has ticked.

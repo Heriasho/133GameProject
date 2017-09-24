@@ -10,18 +10,22 @@ public abstract class Rescuers extends GameObject implements Iguided {
 	
 	public void moveDown() {
 		setLocation(new Point2D(getLocation().getX(), getLocation().getY() + 10));
+		System.out.println("The spaceship moves down by 10");
 	}
 	
 	public void moveLeft() {
 		setLocation(new Point2D(getLocation().getX() - 10, getLocation().getY()));
+		System.out.println("The spaceship moves left by 10");
 	}
 	
 	public void moveRight() {
 		setLocation(new Point2D(getLocation().getX() + 10, getLocation().getY()));
+		System.out.println("The spaceship moves right by 10");
 	}
 	
 	public void moveUp() {
 		setLocation(new Point2D(getLocation().getX(), getLocation().getY() - 10));
+		System.out.println("The spaceship moves up by 10.");
 	}
 	
 	public String toString() {

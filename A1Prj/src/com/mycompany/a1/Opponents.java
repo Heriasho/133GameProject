@@ -45,7 +45,6 @@ public abstract class Opponents extends GameObject implements Imove {
 		
 		while(newLoc.getX() < 0 || newLoc.getX() > getScreenWidth() || newLoc.getY() < 0 || newLoc.getY() > getScreenHeight()) {						
 			setDirection(getDirection() + 15);
-			
 			if(deltaX > getScreenWidth()) {
 				deltaX -= getScreenWidth();
 				newLoc.setX(getScreenWidth());
