@@ -8,10 +8,10 @@ public class Alien extends Opponents implements Imove {
 	
 	public Alien(int color, int screenHeight, int screenWidth, int speed, int speedMultiplier) {
 		Random r = new Random();
+		setColor(color);
 		setScreenHeight(screenHeight);
 		setScreenWidth(screenWidth);
 		setSpeedMultiplier(speedMultiplier);
-		setColor(color);
 		setDirection(r.nextInt(360));
 		setLocation(new Point2D(r.nextDouble()*screenWidth, r.nextDouble()*screenHeight));
 		super.setSize(r.nextInt(31)+20);

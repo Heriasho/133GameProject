@@ -11,10 +11,10 @@ public class Astronaut extends Opponents implements Imove {
 	public Astronaut(int color, int screenHeight, int screenWidth, int speed, int speedMultiplier) {
 		Random r = new Random();
 		this.originalSpeed = speed;
+		setColor(color);
 		setScreenHeight(screenHeight);
 		setScreenWidth(screenWidth);
 		setSpeedMultiplier(speedMultiplier);
-		setColor(color);
 		setDirection(r.nextInt(360));
 		setLocation(new Point2D(r.nextDouble()*screenWidth, r.nextDouble()*screenHeight));
 		super.setSize(r.nextInt(31)+20);
@@ -39,6 +39,7 @@ public class Astronaut extends Opponents implements Imove {
 		super.setColor(getRGB());
 	}
 
+	/*Returns a string with default info plus the astronaut's health, which is tracked by its speed.*/
 	public String toString() {
 		return super.toString() + "\thealth:\t" + getSpeed();
 	}

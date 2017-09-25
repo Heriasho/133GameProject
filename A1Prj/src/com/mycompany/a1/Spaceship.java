@@ -19,6 +19,7 @@ public class Spaceship extends Rescuers implements Iguided {
 	public void setColor(int color) {
 		
 	}
+	/*Contracts the door (spaceship) size by 10*/
 	public void contractDoor() {
 		setSize(getSize() - 10);
 		System.out.println("You compressed the spaceship size by " + getSize());
@@ -29,6 +30,7 @@ public class Spaceship extends Rescuers implements Iguided {
 		setSize(getSize() + 10);
 		System.out.println("You expanded the spaceship size by " + getSize());
 	}
+	/*Override the default size method to allow the spaceship to be much bigger.*/
 	@Override
 	public void setSize(int size) {
 		if(getSize() < 50)
