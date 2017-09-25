@@ -34,10 +34,14 @@ public abstract class Opponents extends GameObject implements Imove {
 	public void setSpeedMultiplier(int speed) {
 		this.speed = speed * speedMultiplier; 
 	}
-	
-	public void move(int elapsedTime) {
+	/*This method handles the move logic for all opponenets. 
+	 * Initially sets the direction they are going in, the timer they move at,
+	 * distance (calculated by the speed * time they move at, & deltas for x & y.
+	 * When this method is called, a new Point2D location is created with current location x,y + deltax,y
+	 * As long as the location is within the screen & isn't a corner, they move there.*/
+	public void move(int tickTime) {
 		setDirection(getDirection() + 5);		
-		double time = elapsedTime/1000;
+		double time = tickTime/1000;
 		double distance = getSpeed() * time;
 		double deltaX = Math.cos(getDirection() * Math.PI / 180.0) * distance;
 		double deltaY = Math.sin(getDirection() * Math.PI / 180.0) * distance;

@@ -27,7 +27,7 @@ public abstract class Rescuers extends GameObject implements Iguided {
 		setLocation(new Point2D(getLocation().getX(), getLocation().getY() - 10));
 		System.out.println("The spaceship moves up by 10.");
 	}
-	
+	/*The Rescuers toString gets the x,y location of the rescuers, their color, and their size.*/
 	public String toString() {
 		String x = Math.round(getLocation().getX() * 1000.0)/1000.0 + "";
 		String y = Math.round(getLocation().getY() * 1000.0)/1000.0 + "";

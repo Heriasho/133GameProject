@@ -35,7 +35,7 @@ public class GameWorld {
 		Spaceship spaceship = new Spaceship(ColorUtil.GRAY, screenHeight, screenWidth);
 		gameObject.add((GameObject) spaceship);
 	}
-	
+	/*A method called when an alien is instanceof another alien. If so, they bred a new gameObject alien that spawns close to one of them.*/
 	public void bred() {
 		if(roamingAliens < 2){
 			System.out.println("Error: Requires two aliens!");
@@ -48,7 +48,7 @@ public class GameWorld {
 		b.move((int) ((a.getSize() + 5.0) /5.0) * 1000);
 		System.out.println("Two aliens bred.");
 	}
-	
+	/*A method called when an alien is instanceof an astronaut. If so, the astronaut takes damage, changes color shade, & reduces in speed.*/
 	public void fight() {
 		if(roamingAstronauts <= 0 || roamingAliens <= 0){
 			System.out.println("Error: Need at least 1 astronaut & alien to fight.");
@@ -58,7 +58,7 @@ public class GameWorld {
 		a.damage();
 		System.out.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
 	}
-	
+	/*A method that moves the opponents game objects at a set pace.*/
 	public void tick() {
 		for(GameObject object : gameObject) {
 			if(object instanceof Opponents) {

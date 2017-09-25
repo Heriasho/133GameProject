@@ -15,7 +15,7 @@ public class Spaceship extends Rescuers implements Iguided {
 		setScreenHeight(screenHeight);
 		setScreenWidth(screenWidth);
 	}
-	
+	/*Spaceship color doesn't change.*/
 	public void setColor(int color) {
 		
 	}

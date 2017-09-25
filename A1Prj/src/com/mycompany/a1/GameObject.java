@@ -33,7 +33,8 @@ public abstract class GameObject extends GameWorld {
 		this.screenWidth = screenWidth;
 	}
 	
-	
+	/*Instead of handling x & y coordinates seperately, I choose to use 
+	 * codenameone's Point2D to handle them both simultaneously*/
 	public Point2D getLocation(){
 		return location;
 	}
@@ -57,6 +58,7 @@ public abstract class GameObject extends GameWorld {
 		this.size = size;
 	}
 	
+	/*Each gameobject has a toString that will display their location (x,y), their color, and their size.*/
 	public String toString() {
 		String x = Math.round(getLocation().getX() * 1000.0)/1000.0 + "";
 		String y = Math.round(getLocation().getY() * 1000.0)/1000.0 + "";
