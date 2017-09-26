@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.codename1.ui.geom.Point2D;
 
-public class Alien extends Opponents implements Imove {
+public class Alien extends Opponents {
 	
 	public Alien(int color, int screenHeight, int screenWidth, int speed, int speedMultiplier) {
 		Random r = new Random();

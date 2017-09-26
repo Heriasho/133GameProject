@@ -40,29 +40,27 @@ public class Game extends Form {
 				switch (sCommand.charAt(0)) {
 					//List commands here
 				case 'a':
+					//Teleports the spaceship to a random alien
 					gw.teleportToAlien();
 					break;
 				case 'o':
+					//Teleports the spaceship to a random astronaut
 					gw.teleportToAstronaut();
 					break;
 				case 'r':
 					//Move the spaceship to the right;
-					//gw.rightMovement();
 					gw.moveSpaceShipRight();
 					break;
 				case 'l':
 					//Move the spaceship to the left;
-					//gw.leftMovement();
 					gw.moveSpaceShipLeft();
 					break;
 				case 'u':
 					//Move the spaceship up;
-					//gw.upMovement();
 					gw.moveSpaceShipUp();
 					break;
 				case 'd':
 					//Move the spaceship down;
-					//gw.downMovement();
 					gw.moveSpaceShipDown();
 					break;
 				case 'c':
@@ -136,10 +134,10 @@ public class Game extends Form {
 				default: 
 					System.out.println("Error: Not a valid command");
 				}
-			}	//actionPerformed
-		}//newActionListner()
-		); //addActionListener
-	}//play
+			}	
+		}
+		); 
+	}
 	
 	private void init() {
 		

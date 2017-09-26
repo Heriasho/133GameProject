@@ -5,7 +5,7 @@ import com.codename1.ui.geom.Point2D;
 
 import java.util.Random;
 
-public class Astronaut extends Opponents implements Imove {
+public class Astronaut extends Opponents {
 	private int originalSpeed;
 	
 	public Astronaut(int color, int screenHeight, int screenWidth, int speed, int speedMultiplier) {

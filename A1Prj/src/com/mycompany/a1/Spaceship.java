@@ -4,8 +4,8 @@ import java.util.Random;
 
 import com.codename1.ui.geom.Point2D;
 
-/*Probabaly want to make a singleton later on.*/
-public class Spaceship extends Rescuers implements Iguided {
+/*Probably want to make a singleton later on.*/
+public class Spaceship extends Rescuers {
 	
 	public Spaceship(int color, int screenHeight, int screenWidth) {
 		Random r = new Random();

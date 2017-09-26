@@ -264,3 +264,6 @@ org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.a
 2017-09-21 16:03:02,618 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
 2017-09-22 10:05:51,909 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
 2017-09-24 10:44:03,154 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2017-09-25 17:56:08,382 [Worker-3] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo.maven.apache.org/maven2
+2017-09-25 17:56:08,456 [Worker-3] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2017-09-25 18:02:42,062 [Worker-3] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo.maven.apache.org/maven2 in 393685 ms
