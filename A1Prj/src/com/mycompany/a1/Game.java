@@ -23,7 +23,6 @@ public class Game extends Form {
 		gw = new GameWorld();
 		gw.init();
 		play();
-		
 	}
 	/* Accepts keyboard commands from the player & invokes GameWorld methods*/
 	@SuppressWarnings("rawtypes")
