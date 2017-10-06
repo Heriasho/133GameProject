@@ -7,13 +7,24 @@ import com.codename1.ui.geom.Point2D;
 /*Probably want to make a singleton later on.*/
 public class Spaceship extends Rescuers {
 	
-	public Spaceship(int color, int screenHeight, int screenWidth) {
+	private static Spaceship spaceship;
+	private static int color;
+	private static int screenHeight;
+	private static int screenWidth;
+	
+	private Spaceship(int color, int screenHeight, int screenWidth) {
 		Random r = new Random();
 		super.setColor(color);
 		setLocation(new Point2D(r.nextDouble() * screenWidth, r.nextDouble() * screenHeight));
-		setSize(100);
+		setSize(100);	
 		setScreenHeight(screenHeight);
 		setScreenWidth(screenWidth);
+	}
+	public static Spaceship getSpaceship(){
+		if(spaceship == null){
+			spaceship = new Spaceship(color, screenHeight, screenWidth);
+		}
+		return spaceship;
 	}
 	/*Spaceship color doesn't change.*/
 	public void setColor(int color) {

@@ -7,7 +7,6 @@ import java.util.Random;
 //import java.util.Hashtable;
 
 public class GameWorld {
-	
 	private int roamingAliens = 3;
 	private int roamingAstronauts = 3;
 	private int rescuedAstronauts = 0;
@@ -32,8 +31,7 @@ public class GameWorld {
 			Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti);
 			gameObject.add((GameObject) astronaut);
 		}
-		Spaceship spaceship = new Spaceship(ColorUtil.GRAY, screenHeight, screenWidth);
-		gameObject.add((GameObject) spaceship);
+		gameObject.add((Spaceship.getSpaceship()));
 	}
 	/*A method called when an alien is instanceof another alien. If so, they bred a new gameObject alien that spawns close to one of them.*/
 	public void bred() {
@@ -92,19 +90,19 @@ public class GameWorld {
 	}
 	/*Gets a spaceship & increases it's size through its expandDoor().*/
 	public void expand() {
-		Spaceship sp  = getSpaceship();
+		Spaceship sp  = getTheSpaceship();
 		sp.expandDoor();
 	}
 	/*Gets a spaceship & decreases it's size through its contractDoor().*/
 	public void compress() {
-		Spaceship sp = getSpaceship();
+		Spaceship sp = getTheSpaceship();
 		sp.contractDoor();
 	}
 	/*Gets a spaceship & checks to see if Opponents are instanceof it.
 	 * If so, the opponents are 'rescued' & removed from the gameworld.*/
 	public void openDoor() {
 		System.out.println("The spaceship door has opened.");
-		Spaceship sp = getSpaceship();
+		Spaceship sp = getTheSpaceship();
 		ArrayList<GameObject> remove = new ArrayList<GameObject>();
 		for(GameObject object : gameObject) {
 			if(object instanceof Opponents) {
@@ -140,22 +138,22 @@ public class GameWorld {
 	}
 	/*Moves the spaceship down*/
 	public void moveSpaceShipDown() {
-		Spaceship sp = getSpaceship();
+		Spaceship sp = getTheSpaceship();
 		sp.moveDown();
 	}
 	/*Moves the spaceship left*/
 	public void moveSpaceShipLeft() {
-		Spaceship sp = getSpaceship();
+		Spaceship sp = getTheSpaceship();
 		sp.moveLeft();
 	}
 	/*Moves the spaceship right*/
 	public void moveSpaceShipRight() {
-		Spaceship sp = getSpaceship();
+		Spaceship sp = getTheSpaceship();
 		sp.moveRight();
 	}
 	/*Moves the spaceship up*/
 	public void moveSpaceShipUp() {
-		Spaceship sp = getSpaceship();
+		Spaceship sp = getTheSpaceship();
 		sp.moveUp();
 	}
 	/*Teleports the spaceship to a random alien*/
@@ -163,7 +161,7 @@ public class GameWorld {
 		Alien a;
 		Spaceship sp;
 		if(roamingAliens > 0){
-			sp = getSpaceship();
+			sp = getTheSpaceship();
 			a = getRandomAlien();
 			sp.setLocation(a.getLocation());
 			System.out.println("You've teleported to an alien");
@@ -176,7 +174,7 @@ public class GameWorld {
 		Astronaut a;
 		Spaceship sp;
 		if(roamingAstronauts > 0) {
-			sp = getSpaceship();
+			sp = getTheSpaceship();
 			a = getRandomAstronaut();
 			sp.setLocation(a.getLocation());
 			System.out.println("You've teleported to an astronaut. \n Hope you didn't hit them.");
@@ -194,7 +192,7 @@ public class GameWorld {
 		return null;
 	}
 	/*While there is a spaceship in the gameworld, returns the spaceship.*/
-	private Spaceship getSpaceship() {
+	private Spaceship getTheSpaceship() {
 		for(GameObject object : gameObject)
 			if(object instanceof Spaceship)
 				return (Spaceship) object;
