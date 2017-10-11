@@ -1,8 +1,11 @@
 package com.mycompany.a1;
 
+import com.codename1.ui.Button;
+import com.codename1.ui.Command;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 //import com.codename1.ui.Dialog;
@@ -11,6 +14,9 @@ import com.codename1.ui.events.ActionListener;
 //import com.codename1.ui.util.Resources;
 //import com.codename1.io.Log;
 //import com.codename1.ui.Toolbar;
+
+
+
 
 //import java.io.IOException;
 import java.lang.String;
@@ -22,7 +28,27 @@ public class Game extends Form {
 	public Game() {
 		gw = new GameWorld();
 		gw.init();
-		play();
+		//play();
+		
+		Toolbar myToolbar = new Toolbar();
+		setToolbar(myToolbar);
+		/*Adds two buttons to the form*/
+		Button buttonOne = new Button("Button one");
+		Button buttonTwo = new Button("Button two");
+		
+		CutCommand myCutCommand = new CutCommand();
+		DeleteCommand myDeleteCommand = new DeleteCommand();
+		buttonOne.setCommand(myCutCommand);
+		buttonTwo.setCommand(myDeleteCommand);
+		
+		myToolbar.addCommandToRightBar(myCutCommand);
+		myToolbar.addCommandToSideMenu(myDeleteCommand);
+		
+		addKeyListener('c',myCutCommand);
+		addKeyListener('d', myDeleteCommand);
+		show();
+		
+		
 	}
 	/* Accepts keyboard commands from the player & invokes GameWorld methods*/
 	@SuppressWarnings("rawtypes")
@@ -136,6 +162,26 @@ public class Game extends Form {
 			}	
 		}
 		); 
+	}
+	
+	
+	public class CutCommand extends Command {
+		public CutCommand() {
+			super("Cut");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			System.out.println("Cut command is invoked...");
+		}
+	}
+	public class DeleteCommand extends Command{
+		public DeleteCommand() {
+			super("Delete");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			System.out.println("Delete command is invoked...");
+		}
 	}
 	
 	private void init() {
