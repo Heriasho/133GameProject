@@ -62,7 +62,7 @@ public class Game extends Form {
 		
 		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
-		rightContainer.add(new Label("Text (2)"));
+		rightContainer.add(new Label("Text (2)"));	
 		rightContainer.add(new Button("Click this"));
 		rightContainer.add(new Button("Something"));
 		rightContainer.add(new Button("Another thing"));
