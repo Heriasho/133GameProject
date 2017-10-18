@@ -1,7 +1,10 @@
 package com.mycompany.a1;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
+import com.codename1.ui.Component;
+import com.codename1.ui.Container;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
@@ -18,6 +21,17 @@ import com.codename1.ui.events.ActionListener;
 
 
 
+import com.codename1.ui.layouts.BorderLayout;
+
+
+import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.GridLayout;
+
+
+import com.codename1.ui.plaf.Border;
+
+
+
 //import java.io.IOException;
 import java.lang.String;
 
@@ -29,23 +43,73 @@ public class Game extends Form {
 		gw = new GameWorld();
 		gw.init();
 		//play();
+		this.setLayout(new BorderLayout());
+		Container topContainer = new Container(new GridLayout(1,2));
+		topContainer.add(new Label("Read this"));
+		topContainer.add(new Button("Press this"));
+		topContainer.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
+		add(BorderLayout.NORTH,topContainer);
+		
+		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
+		leftContainer.add(new Label("Text (1)"));
+		leftContainer.add(new Button("Click this"));
+		leftContainer.add(new Button("Something"));
+		leftContainer.add(new Button("Another thing"));
+		leftContainer.add(new Button("Hopefully implemented"));
+		leftContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
+		add(BorderLayout.WEST, leftContainer);
+		
+		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
+		rightContainer.add(new Label("Text (2)"));
+		rightContainer.add(new Button("Click this"));
+		rightContainer.add(new Button("Something"));
+		rightContainer.add(new Button("Another thing"));
+		rightContainer.add(new Button("Hopefully implemented"));
+		rightContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
+		add(BorderLayout.WEST, rightContainer);
+		
+		this.add(BorderLayout.NORTH, topContainer);
+		this.add(BorderLayout.CENTER, new Label("Center"));
+		this.add(BorderLayout.WEST, leftContainer);
+		this.add(BorderLayout.EAST, rightContainer);
+		this.add(BorderLayout.SOUTH, new Label("South"));
 		
 		Toolbar myToolbar = new Toolbar();
 		setToolbar(myToolbar);
-		/*Adds two buttons to the form*/
+		
+		Label titleLabel = new Label("TITLE");
 		Button buttonOne = new Button("Button one");
 		Button buttonTwo = new Button("Button two");
+		Button buttonThree = new Button("Button three");
+		Button buttonFour = new Button("Button four");
 		
-		CutCommand myCutCommand = new CutCommand();
 		DeleteCommand myDeleteCommand = new DeleteCommand();
+		MapCommand myMapCommand = new MapCommand();
+		StatsCommand myStatsCommand = new StatsCommand();
+		CutCommand myCutCommand = new CutCommand();
+		
 		buttonOne.setCommand(myCutCommand);
 		buttonTwo.setCommand(myDeleteCommand);
+		buttonThree.setCommand(myMapCommand);
+		buttonFour.setCommand(myStatsCommand);
 		
-		myToolbar.addCommandToRightBar(myCutCommand);
-		myToolbar.addCommandToSideMenu(myDeleteCommand);
+		Command sideMenuItem1 = new Command("Side Menu Item 1");
+		myToolbar.setTitleComponent(titleLabel);
+		myToolbar.addCommandToSideMenu(sideMenuItem1);
+		myToolbar.addCommandToSideMenu(myMapCommand);
+		myToolbar.addCommandToSideMenu(myStatsCommand);
+		
+//		myToolbar.addCommandToRightBar(myDeleteCommand);
+//		myToolbar.addCommandToLeftBar(myMapCommand);
+//		myToolbar.addCommandToLeftBar(myStatsCommand);
 		
 		addKeyListener('c',myCutCommand);
 		addKeyListener('d', myDeleteCommand);
+		addKeyListener('m', myMapCommand);
+		addKeyListener('s', myStatsCommand);
+		
 		show();
 		
 		
@@ -181,6 +245,24 @@ public class Game extends Form {
 		@Override
 		public void actionPerformed(ActionEvent e){
 			System.out.println("Delete command is invoked...");
+		}
+	}
+	public class MapCommand extends Command{
+		public MapCommand() {
+			super("Map");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.map();
+		}
+	}
+	public class StatsCommand extends Command{
+		public StatsCommand() {
+			super("Stats");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.stats();
 		}
 	}
 	

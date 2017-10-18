@@ -26,6 +26,19 @@
     "javaRuntime": true
   },
   {
+    "symbolicName": "CodenameOne",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "edd12b0113df8566aa93710060ba8a36d0928888",
+    "jarFileModificationDate": "2017-10-10T21:36:42.414-07:00",
+    "location": "C:\\Users\\Ryan\\workspace\\dasj\\lib\\CodenameOne.jar",
+    "javaRuntime": false
+  },
+  {
     "symbolicName": "jre",
     "version": {
       "major": 1,
@@ -232,6 +245,19 @@
     "jarFileModificationDate": "2016-12-25T04:30:21.478-08:00",
     "location": "C:\\Program Files\\Java\\jdk1.8.0_111\\jre\\lib\\charsets.jar",
     "javaRuntime": true
+  },
+  {
+    "symbolicName": "CLDC11",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "8fe4491b1145bd68d3e06f22d363445c99a21df8",
+    "jarFileModificationDate": "2017-10-10T21:36:42.422-07:00",
+    "location": "C:\\Users\\Ryan\\workspace\\dasj\\lib\\CLDC11.jar",
+    "javaRuntime": false
   },
   {
     "symbolicName": "jre",
