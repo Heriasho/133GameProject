@@ -49,7 +49,6 @@ public class Game extends Form {
 		gw.addObserver(mv);
 		gw.addObserver(sv);
 		
-		
 		this.setLayout(new BorderLayout());
 		this.setTitle("Title");
 		this.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
@@ -60,26 +59,16 @@ public class Game extends Form {
 		northContainer.add(new Label("SCORE"));
 		northContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.NORTH, northContainer);
-		northContainer.add(new Label("SCOREss"));
 	
-//		
 		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
 		leftContainer.add(new Label("Text (1)"));
-		leftContainer.add(new Button("Click this"));
-		leftContainer.add(new Button("Something"));
-		leftContainer.add(new Button("Another thing"));
-		leftContainer.add(new Button("Hopefully implemented"));
 		leftContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.WEST, leftContainer);
-//		
+
 		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
 		rightContainer.add(new Label("Text (2)"));	
-		rightContainer.add(new Button("Click this"));
-		rightContainer.add(new Button("Something"));
-		rightContainer.add(new Button("Another thing"));
-		rightContainer.add(new Button("Hopefully implemented"));
 		rightContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.EAST, rightContainer);
 		
@@ -96,34 +85,65 @@ public class Game extends Form {
 		setToolbar(myToolbar);
 		
 		/*Button Creation & Command setup*/
-		Label titleLabel = new Label("TITLE");
-		Button buttonOne = new Button("Button one");
-		Button buttonTwo = new Button("Button two");
-		Button buttonThree = new Button("Button three");
-		Button buttonFour = new Button("Button four");
+		Button leftButton = new Button("Left");
+		Button rightButton = new Button("Left");
+		Button upButton = new Button("Left");
+		Button downButton = new Button("Left");
 		
-		DeleteCommand myDeleteCommand = new DeleteCommand();
+		Button mapButton = new Button("Map");
+		Button statsButton = new Button("Stats");
+		Button expandButton = new Button("Expand");
+		Button compressButton = new Button("Compress");
+		
+		
+		LeftCommand myLeftCommand = new LeftCommand();
+		RightCommand myRightCommand = new RightCommand();
+		UpCommand myUpCommand = new UpCommand();
+		DownCommand myDownCommand = new DownCommand();
+		
+		CompressCommand myCompressCommand = new CompressCommand();
+		ExpandCommand myExpandCommand = new ExpandCommand();
 		MapCommand myMapCommand = new MapCommand();
 		StatsCommand myStatsCommand = new StatsCommand();
-		CutCommand myCutCommand = new CutCommand();
 		QuitCommand myQuitCommand = new QuitCommand();
 		
-		buttonOne.setCommand(myCutCommand);
-		buttonTwo.setCommand(myDeleteCommand);
-		buttonThree.setCommand(myMapCommand);
-		buttonFour.setCommand(myStatsCommand);
+		leftButton.setCommand(myLeftCommand);
+		rightButton.setCommand(myRightCommand);
+		upButton.setCommand(myUpCommand);
+		downButton.setCommand(myDownCommand);
+		mapButton.setCommand(myMapCommand);
+		statsButton.setCommand(myStatsCommand);
+		expandButton.setCommand(myExpandCommand);
+		compressButton.setCommand(myCompressCommand);
 
-		addKeyListener('c', myCutCommand);
-		addKeyListener('d', myDeleteCommand);
+		addKeyListener('c', myCompressCommand);
 		addKeyListener('m', myMapCommand);
 		addKeyListener('s', myStatsCommand);
+		addKeyListener('e', myExpandCommand);
+		addKeyListener('u', myUpCommand);
+		addKeyListener('d', myDownCommand);
+		addKeyListener('l', myLeftCommand);
+		addKeyListener('r', myRightCommand);
 		/*Button Creation & Command setup*/
 		/*Northbar setup*/
-		northContainer.add(buttonOne);
-		northContainer.add(buttonTwo);
-		northContainer.add(buttonThree);
-		northContainer.add(buttonFour);
+
 		/*Northbar setup*/
+		
+		/*Westbar setup*/
+		leftContainer.add(expandButton);
+		leftContainer.add(upButton);
+		leftContainer.add(leftButton);
+		leftContainer.add(compressButton);
+		/*Westbar setup*/
+		
+		/*Eastbar setup*/
+		rightContainer.add(downButton);
+		rightContainer.add(rightButton);
+		rightContainer.add(statsButton);
+		rightContainer.add(mapButton);
+		/*Eastbar setup*/
+		
+		
 		/*Toolbar Setup*/
 		myToolbar.addCommandToSideMenu(myStatsCommand);
 		myToolbar.addCommandToSideMenu(myQuitCommand);
@@ -246,6 +266,45 @@ public class Game extends Form {
 	}
 	
 	
+	
+	public class LeftCommand extends Command{
+		public LeftCommand() {
+			super("Left");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.moveSpaceShipLeft();
+		}
+	}
+	public class RightCommand extends Command{
+		public RightCommand() {
+			super("Right");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.moveSpaceShipRight();
+		}
+	}
+	public class UpCommand extends Command{
+		public UpCommand() {
+			super("Up");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.moveSpaceShipUp();
+		}
+	}
+	public class DownCommand extends Command{
+		public DownCommand() {
+			super("Down");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.moveSpaceShipDown();
+		}
+	}
+	
+	
 	public class CutCommand extends Command {
 		public CutCommand() {
 			super("Cut");
@@ -255,6 +314,15 @@ public class Game extends Form {
 			System.out.println("Cut command is invoked...");
 		}
 	}
+	public class CompressCommand extends Command{
+		public CompressCommand() {
+			super("Compress");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.compress();
+		}
+	}
 	public class DeleteCommand extends Command{
 		public DeleteCommand() {
 			super("Delete");
@@ -262,6 +330,15 @@ public class Game extends Form {
 		@Override
 		public void actionPerformed(ActionEvent e){
 			System.out.println("Delete command is invoked...");
+		}
+	}
+	public class ExpandCommand extends Command{
+		public ExpandCommand() {
+			super("Expand");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.expand();
 		}
 	}
 	public class MapCommand extends Command{
