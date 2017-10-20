@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 //import java.util.Hashtable;
 
-public class GameWorld {
+public class GameWorld implements IObservable {
 	private int roamingAliens = 3;
 	private int roamingAstronauts = 3;
 	private int rescuedAstronauts = 0;
@@ -206,5 +206,13 @@ public class GameWorld {
 				return (Astronaut) gameObject.get(i);
 		}
 		return null;
+	}
+	public void addObserver(Observer obs) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void notifyObservers() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -8,12 +8,20 @@
 		<item value="747" key="dialogHeight"/>
 		<item value="1440" key="dialogWidth"/>
 		<list key="textEntries">
+			<item value="1"/>
+			<item value="1"/>
 		</list>
 		<list key="orderedElements">
+			<item value="org.eclipse.jdt.ui.CompilationUnitEditor"/>
+			<item value="org.eclipse.jdt.ui.CompilationUnitEditor"/>
 		</list>
 		<list key="orderedProviders">
+			<item value="org.eclipse.ui.editors"/>
+			<item value="org.eclipse.ui.editors"/>
 		</list>
 		<list key="textArray">
+			<item value="obser"/>
+			<item value="iob"/>
 		</list>
 	</section>
 	<section name="NewWizardAction">

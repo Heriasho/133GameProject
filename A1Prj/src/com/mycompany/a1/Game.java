@@ -38,18 +38,25 @@ import java.lang.String;
 public class Game extends Form {
 	private GameWorld gw;
 	private boolean confirm = false;
-	
 	public Game() {
 		gw = new GameWorld();
 		gw.init();
-		//play();
-		this.setLayout(new BorderLayout());
-		Container topContainer = new Container(new GridLayout(1,2));
-		topContainer.add(new Label("Read this"));
-		topContainer.add(new Button("Press this"));
-		topContainer.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
-		add(BorderLayout.NORTH,topContainer);
+		new MapView();
+		new ScoreView();
 		
+		this.setLayout(new BorderLayout());
+		this.setTitle("Title");
+		this.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
+		add(BorderLayout.NORTH, new Container (new BoxLayout(BoxLayout.X_AXIS)));
+		
+		Container northContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+		northContainer.getAllStyles().setPadding(Component.BOTTOM, 50);
+		northContainer.add(new Label("SCORE"));
+		northContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
+		add(BorderLayout.NORTH, northContainer);
+		northContainer.add(new Label("SCOREss"));
+	
+//		
 		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
 		leftContainer.add(new Label("Text (1)"));
@@ -59,7 +66,7 @@ public class Game extends Form {
 		leftContainer.add(new Button("Hopefully implemented"));
 		leftContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.WEST, leftContainer);
-		
+//		
 		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
 		rightContainer.add(new Label("Text (2)"));	
@@ -68,17 +75,21 @@ public class Game extends Form {
 		rightContainer.add(new Button("Another thing"));
 		rightContainer.add(new Button("Hopefully implemented"));
 		rightContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
-		add(BorderLayout.WEST, rightContainer);
+		add(BorderLayout.EAST, rightContainer);
 		
-		this.add(BorderLayout.NORTH, topContainer);
-		this.add(BorderLayout.CENTER, new Label("Center"));
-		this.add(BorderLayout.WEST, leftContainer);
-		this.add(BorderLayout.EAST, rightContainer);
-		this.add(BorderLayout.SOUTH, new Label("South"));
+		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
+		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
+		add(BorderLayout.SOUTH, bottomContainer);
 		
+		Container centerContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
+		add(BorderLayout.CENTER,centerContainer);
+	
 		Toolbar myToolbar = new Toolbar();
 		setToolbar(myToolbar);
 		
+		/*Button Creation & Command setup*/
 		Label titleLabel = new Label("TITLE");
 		Button buttonOne = new Button("Button one");
 		Button buttonTwo = new Button("Button two");
@@ -89,30 +100,30 @@ public class Game extends Form {
 		MapCommand myMapCommand = new MapCommand();
 		StatsCommand myStatsCommand = new StatsCommand();
 		CutCommand myCutCommand = new CutCommand();
+		QuitCommand myQuitCommand = new QuitCommand();
 		
 		buttonOne.setCommand(myCutCommand);
 		buttonTwo.setCommand(myDeleteCommand);
 		buttonThree.setCommand(myMapCommand);
 		buttonFour.setCommand(myStatsCommand);
-		
-		Command sideMenuItem1 = new Command("Side Menu Item 1");
-		myToolbar.setTitleComponent(titleLabel);
-		myToolbar.addCommandToSideMenu(sideMenuItem1);
-		myToolbar.addCommandToSideMenu(myMapCommand);
-		myToolbar.addCommandToSideMenu(myStatsCommand);
-		
-//		myToolbar.addCommandToRightBar(myDeleteCommand);
-//		myToolbar.addCommandToLeftBar(myMapCommand);
-//		myToolbar.addCommandToLeftBar(myStatsCommand);
-		
-		addKeyListener('c',myCutCommand);
+
+		addKeyListener('c', myCutCommand);
 		addKeyListener('d', myDeleteCommand);
 		addKeyListener('m', myMapCommand);
 		addKeyListener('s', myStatsCommand);
-		
+		/*Button Creation & Command setup*/
+		/*Northbar setup*/
+		northContainer.add(buttonOne);
+		northContainer.add(buttonTwo);
+		northContainer.add(buttonThree);
+		northContainer.add(buttonFour);
+		/*Northbar setup*/
+		/*Toolbar Setup*/
+		myToolbar.addCommandToSideMenu(myStatsCommand);
+		myToolbar.addCommandToSideMenu(myQuitCommand);
+		/*Toolbar Setup*/
+				
 		show();
-		
-		
 	}
 	/* Accepts keyboard commands from the player & invokes GameWorld methods*/
 	@SuppressWarnings("rawtypes")
@@ -263,6 +274,19 @@ public class Game extends Form {
 		@Override
 		public void actionPerformed(ActionEvent e){
 			gw.stats();
+		}
+	}
+	public class QuitCommand extends Command{
+		public QuitCommand() {
+			super("Quit");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			if(confirm)
+				System.exit(0);
+			else{
+				System.out.println("You attempted to exit the game without confirming. \nIf you wish to quit, please press 'y' then press 'x'.");
+			}
 		}
 	}
 	
