@@ -37,12 +37,18 @@ import java.lang.String;
 
 public class Game extends Form {
 	private GameWorld gw;
+	private MapView mv;
+	private ScoreView sv;
 	private boolean confirm = false;
+	
 	public Game() {
 		gw = new GameWorld();
-		gw.init();
-		new MapView();
-		new ScoreView();
+		gw.init();	
+		mv = new MapView(gw);
+		sv = new ScoreView(gw);
+		gw.addObserver(mv);
+		gw.addObserver(sv);
+		
 		
 		this.setLayout(new BorderLayout());
 		this.setTitle("Title");

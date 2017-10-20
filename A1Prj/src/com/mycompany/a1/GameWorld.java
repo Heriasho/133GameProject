@@ -4,9 +4,10 @@ import com.codename1.charts.util.ColorUtil;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Observable;
 //import java.util.Hashtable;
 
-public class GameWorld implements IObservable {
+public class GameWorld extends Observable {
 	private int roamingAliens = 3;
 	private int roamingAstronauts = 3;
 	private int rescuedAstronauts = 0;
@@ -206,13 +207,5 @@ public class GameWorld implements IObservable {
 				return (Astronaut) gameObject.get(i);
 		}
 		return null;
-	}
-	public void addObserver(Observer obs) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void notifyObservers() {
-		// TODO Auto-generated method stub
-		
 	}
 }
