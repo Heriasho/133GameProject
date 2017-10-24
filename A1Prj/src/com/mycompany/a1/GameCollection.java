@@ -5,16 +5,16 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class GameCollection implements ICollection {
-	private Hashtable theCollection;
+	private Hashtable<String, Object> theCollection;
 	
 	public GameCollection(){
-		theCollection = new Hashtable();
+		theCollection = new Hashtable<String, Object>();
 	}
 	public void add(Object newObject){
 		String hashKey = ((GameObject) newObject).getName();
 		theCollection.put(hashKey, newObject);
 	}
-	public Hashtable getObjects(){
+	public Hashtable<String, Object> getObjects(){
 		return theCollection;
 	}
 

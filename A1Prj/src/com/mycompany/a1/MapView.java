@@ -17,4 +17,12 @@ public class MapView extends Container implements Observer{
 		
 	}
 
+	public GameWorld getGw() {
+		return gw;
+	}
+
+	public void setGw(GameWorld gw) {
+		this.gw = gw;
+	}
+
 }

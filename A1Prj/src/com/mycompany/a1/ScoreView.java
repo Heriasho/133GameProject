@@ -16,4 +16,12 @@ public class ScoreView extends Container implements Observer {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public GameWorld getGw() {
+		return gw;
+	}
+
+	public void setGw(GameWorld gw) {
+		this.gw = gw;
+	}
 }
