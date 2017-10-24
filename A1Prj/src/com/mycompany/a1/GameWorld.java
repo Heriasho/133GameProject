@@ -19,7 +19,7 @@ public class GameWorld extends Observable {
 	private int screenWidth = 1024;
 	private int speed = 5;
 	private int speedMulti = 1;
-	//private GameCollection theGameCollection;
+	private GameCollection theGameCollection;
 	private ArrayList<GameObject> gameObject = new ArrayList<GameObject>();
 	
 	/*Set the initial state of the game*/
@@ -207,5 +207,11 @@ public class GameWorld extends Observable {
 				return (Astronaut) gameObject.get(i);
 		}
 		return null;
+	}
+	public GameCollection getTheGameCollection() {
+		return theGameCollection;
+	}
+	public void setTheGameCollection(GameCollection theGameCollection) {
+		this.theGameCollection = theGameCollection;
 	}
 }
