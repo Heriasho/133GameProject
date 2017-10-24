@@ -42,6 +42,9 @@ public class GameCollection implements ICollection {
 		public Object getNext() {
 			return theCollection.get(currHashIndex);
 		}
+		public void removeObject(){
+			theCollection.remove(currHashIndex);
+		}
 		
 	}
 }
