@@ -49,6 +49,8 @@ public class Game extends Form {
 		gw.addObserver(mv);
 		gw.addObserver(sv);
 		
+		Toolbar myToolbar = new Toolbar();
+		setToolbar(myToolbar);
 		this.setLayout(new BorderLayout());
 		this.setTitle("Title");
 		this.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
@@ -57,6 +59,7 @@ public class Game extends Form {
 		Container northContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
 		northContainer.getAllStyles().setPadding(Component.BOTTOM, 50);
 		northContainer.add(new Label("SCORE"));
+		///Add more of these.
 		northContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.NORTH, northContainer);
 	
@@ -73,27 +76,31 @@ public class Game extends Form {
 		add(BorderLayout.EAST, rightContainer);
 		
 		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+		bottomContainer.add(new Label("New Alien"));	
+		bottomContainer.add(new Label("Fight"));	
+		bottomContainer.add(new Label("Tick"));	
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
 		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
 		
 		Container centerContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
-		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
+		centerContainer.getAllStyles().setPadding(Component.TOP, 50);
 		add(BorderLayout.CENTER,centerContainer);
 	
-		Toolbar myToolbar = new Toolbar();
-		setToolbar(myToolbar);
 		
 		/*Button Creation & Command setup*/
 		Button leftButton = new Button("Left");
-		Button rightButton = new Button("Left");
-		Button upButton = new Button("Left");
-		Button downButton = new Button("Left");
+		Button rightButton = new Button("Right");
+		Button upButton = new Button("upButton");
+		Button downButton = new Button("downButton");
 		
 		Button mapButton = new Button("Map");
 		Button statsButton = new Button("Stats");
 		Button expandButton = new Button("Expand");
 		Button compressButton = new Button("Compress");
+		Button quitButton = new Button("Quit");
+		Button bredButton = new Button("Bred")
+		Button fightButton = new Button("Fight");
 		
 		
 		LeftCommand myLeftCommand = new LeftCommand();
@@ -107,14 +114,21 @@ public class Game extends Form {
 		StatsCommand myStatsCommand = new StatsCommand();
 		QuitCommand myQuitCommand = new QuitCommand();
 		
+		BredCommand myBredCommand = new BredCommand();
+		FightCommand myFightCommand = new FightCommand();
+		
 		leftButton.setCommand(myLeftCommand);
 		rightButton.setCommand(myRightCommand);
 		upButton.setCommand(myUpCommand);
 		downButton.setCommand(myDownCommand);
+		
+		compressButton.setCommand(myCompressCommand);
+		expandButton.setCommand(myExpandCommand);
 		mapButton.setCommand(myMapCommand);
 		statsButton.setCommand(myStatsCommand);
-		expandButton.setCommand(myExpandCommand);
-		compressButton.setCommand(myCompressCommand);
+		
+		bredButton.setCommand(myBredCommand);
+		fightButton.setCommand(myFightCommand);
 
 		addKeyListener('c', myCompressCommand);
 		addKeyListener('m', myMapCommand);
@@ -124,30 +138,33 @@ public class Game extends Form {
 		addKeyListener('d', myDownCommand);
 		addKeyListener('l', myLeftCommand);
 		addKeyListener('r', myRightCommand);
+		addKeyListener('q', myQuitCommand);
+		addKeyListener('f', myFightCommand);
+		addKeyListener('b', myBredCommand);
 		/*Button Creation & Command setup*/
-		/*Northbar setup*/
+		/*North bar setup*/
 
-		/*Northbar setup*/
+		/*North bar setup*/
 		
-		/*Westbar setup*/
+		/*West bar setup*/
 		leftContainer.add(expandButton);
 		leftContainer.add(upButton);
 		leftContainer.add(leftButton);
 		leftContainer.add(compressButton);
-		/*Westbar setup*/
+		/*West bar setup*/
 		
-		/*Eastbar setup*/
+		/*East bar setup*/
 		rightContainer.add(downButton);
 		rightContainer.add(rightButton);
 		rightContainer.add(statsButton);
 		rightContainer.add(mapButton);
-		/*Eastbar setup*/
+		/*East bar setup*/
 		
 		
-		/*Toolbar Setup*/
+		/*Tool bar Setup*/
 		myToolbar.addCommandToSideMenu(myStatsCommand);
 		myToolbar.addCommandToSideMenu(myQuitCommand);
-		/*Toolbar Setup*/
+		/*Tool bar Setup*/
 				
 		show();
 	}
@@ -303,15 +320,22 @@ public class Game extends Form {
 			gw.moveSpaceShipDown();
 		}
 	}
-	
-	
-	public class CutCommand extends Command {
-		public CutCommand() {
-			super("Cut");
+	public class FightCommand extends Command {
+		public FightCommand() {
+			super("Fight");
 		}
 		@Override
 		public void actionPerformed(ActionEvent e){
-			System.out.println("Cut command is invoked...");
+			gw.fight();
+		}
+	}
+	public class BredCommand extends Command {
+		public BredCommand() {
+			super("Bred");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.bred();
 		}
 	}
 	public class CompressCommand extends Command{

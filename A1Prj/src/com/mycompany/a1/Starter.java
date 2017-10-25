@@ -18,8 +18,10 @@ import java.io.IOException;
 public class Starter {
 	
     private Form current;
+    private Resources theme;
 
     public void init(Object context) {
+    	theme = UIManager.initFirstTheme("/theme");
         Toolbar.setGlobalToolbar(true);
     }
     
