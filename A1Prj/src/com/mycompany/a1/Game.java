@@ -76,9 +76,6 @@ public class Game extends Form {
 		add(BorderLayout.EAST, rightContainer);
 		
 		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
-		bottomContainer.add(new Label("New Alien"));	
-		bottomContainer.add(new Label("Fight"));	
-		bottomContainer.add(new Label("Tick"));	
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
 		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
@@ -99,9 +96,10 @@ public class Game extends Form {
 		Button expandButton = new Button("Expand");
 		Button compressButton = new Button("Compress");
 		Button quitButton = new Button("Quit");
-		Button bredButton = new Button("Bred")
-		Button fightButton = new Button("Fight");
 		
+		Button bredButton = new Button("Bred");
+		Button fightButton = new Button("Fight");
+		Button tickButton = new Button("Tick");
 		
 		LeftCommand myLeftCommand = new LeftCommand();
 		RightCommand myRightCommand = new RightCommand();
@@ -116,6 +114,7 @@ public class Game extends Form {
 		
 		BredCommand myBredCommand = new BredCommand();
 		FightCommand myFightCommand = new FightCommand();
+		TickCommand myTickCommand = new TickCommand();
 		
 		leftButton.setCommand(myLeftCommand);
 		rightButton.setCommand(myRightCommand);
@@ -129,6 +128,7 @@ public class Game extends Form {
 		
 		bredButton.setCommand(myBredCommand);
 		fightButton.setCommand(myFightCommand);
+		tickButton.setCommand(myTickCommand);
 
 		addKeyListener('c', myCompressCommand);
 		addKeyListener('m', myMapCommand);
@@ -141,6 +141,7 @@ public class Game extends Form {
 		addKeyListener('q', myQuitCommand);
 		addKeyListener('f', myFightCommand);
 		addKeyListener('b', myBredCommand);
+		addKeyListener('t', myTickCommand);
 		/*Button Creation & Command setup*/
 		/*North bar setup*/
 
@@ -159,6 +160,12 @@ public class Game extends Form {
 		rightContainer.add(statsButton);
 		rightContainer.add(mapButton);
 		/*East bar setup*/
+		
+		/*South bar setup*/
+		bottomContainer.add(bredButton);
+		bottomContainer.add(fightButton);
+		bottomContainer.add(tickButton);
+		/*South bar setup*/
 		
 		
 		/*Tool bar Setup*/
@@ -381,6 +388,15 @@ public class Game extends Form {
 		@Override
 		public void actionPerformed(ActionEvent e){
 			gw.stats();
+		}
+	}
+	public class TickCommand extends Command{
+		public TickCommand() {
+			super("Tick");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.tick();
 		}
 	}
 	public class QuitCommand extends Command{
