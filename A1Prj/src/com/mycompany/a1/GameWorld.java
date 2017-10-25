@@ -214,4 +214,34 @@ public class GameWorld extends Observable {
 	public void setTheGameCollection(GameCollection theGameCollection) {
 		this.theGameCollection = theGameCollection;
 	}
+	public int getRoamingAliens(){
+		return roamingAliens;
+	}
+	public void setRoamingAliens(int value){
+		roamingAliens = value;
+	}
+	public int getRoamingAstronauts(){
+		return roamingAstronauts;
+	}
+	public void setRoamingAstronauts(int value){
+		roamingAstronauts = value;
+	}
+	public int getRescuedAstronauts(){
+		return rescuedAstronauts;
+	}
+	public void setRescuedAstronauts(int value){
+		rescuedAstronauts = value;
+	}
+	public int getRescuedAliens(){
+		return rescuedAliens;
+	}
+	public void setRescuedAliens(int value){
+		rescuedAliens = value;
+	}
+	public int getScore(){
+		return score;
+	}
+	public void setScore(int value){
+		score = value;
+	}
 }

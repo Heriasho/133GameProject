@@ -12,11 +12,9 @@ public abstract class GameObject extends GameWorld {
 	private Point2D location;
 	private int size;
 	
-
 	public String getName(){
 		return name;
 	}
-	
 	
 	public int getScreenHeight() {
 		return screenHeight;
@@ -42,14 +40,12 @@ public abstract class GameObject extends GameWorld {
 		this.location = location;
 	}
 	
-	
 	public int getColor(){
 		return color;
 	}
 	public void setColor(int color){
 		this.color = color;
 	}
-	
 	
 	public int getSize() {
 		return size;

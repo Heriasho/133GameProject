@@ -14,7 +14,7 @@ public class MapView extends Container implements Observer{
 
 	public void update(Observable observable, Object data) {
 		// TODO Auto-generated method stub
-		
+		/*Will display game objects on the map*/
 	}
 
 	public GameWorld getGw() {
