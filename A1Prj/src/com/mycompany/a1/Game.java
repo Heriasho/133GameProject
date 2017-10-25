@@ -86,6 +86,8 @@ public class Game extends Form {
 	
 		
 		/*Button Creation & Command setup*/
+		Label scoreLabel = new Label("Score");
+		Label statsLabel = new Label("Stats");
 		Button leftButton = new Button("Left");
 		Button rightButton = new Button("Right");
 		Button upButton = new Button("upButton");
@@ -125,6 +127,7 @@ public class Game extends Form {
 		expandButton.setCommand(myExpandCommand);
 		mapButton.setCommand(myMapCommand);
 		statsButton.setCommand(myStatsCommand);
+		quitButton.setCommand(myQuitCommand);
 		
 		bredButton.setCommand(myBredCommand);
 		fightButton.setCommand(myFightCommand);
@@ -143,9 +146,6 @@ public class Game extends Form {
 		addKeyListener('b', myBredCommand);
 		addKeyListener('t', myTickCommand);
 		/*Button Creation & Command setup*/
-		/*North bar setup*/
-
-		/*North bar setup*/
 		
 		/*West bar setup*/
 		leftContainer.add(expandButton);
@@ -166,7 +166,6 @@ public class Game extends Form {
 		bottomContainer.add(fightButton);
 		bottomContainer.add(tickButton);
 		/*South bar setup*/
-		
 		
 		/*Tool bar Setup*/
 		myToolbar.addCommandToSideMenu(myStatsCommand);
@@ -290,7 +289,24 @@ public class Game extends Form {
 	}
 	
 	
-	
+	public class ScoreLabel extends Command{
+		public ScoreLabel() {
+			super("Score");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.score();
+		}
+	}
+	public class StatsLabel extends Command{
+		public StatsLabel() {
+			super("Stats");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.stats();
+		}
+	}
 	public class LeftCommand extends Command{
 		public LeftCommand() {
 			super("Left");
