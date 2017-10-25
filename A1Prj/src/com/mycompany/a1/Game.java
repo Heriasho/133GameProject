@@ -55,7 +55,6 @@ public class Game extends Form {
 		this.setTitle("Title");
 		this.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
 		
-		Container northContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
 		this.add(BorderLayout.NORTH, sv);
 	
 		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
@@ -73,15 +72,9 @@ public class Game extends Form {
 		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
 		
-		Container centerContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
-		//this.add(BorderLayout.CENTER, new Label("TeST"));
 		this.add(BorderLayout.CENTER, mv);
-		centerContainer.getAllStyles().setPadding(Component.TOP, 50);
-	
 		
 		/*Button Creation & Command setup*/
-		Label scoreLabel = new Label("Score");
-		Label statsLabel = new Label("Stats");
 		Button leftButton = new Button("Left");
 		Button rightButton = new Button("Right");
 		Button upButton = new Button("upButton");
@@ -281,24 +274,7 @@ public class Game extends Form {
 		}
 		); 
 	}
-	public class ScoreLabel extends Command{
-		public ScoreLabel() {
-			super("Score");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.score();
-		}
-	}
-	public class StatsLabel extends Command{
-		public StatsLabel() {
-			super("Stats");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.stats();
-		}
-	}
+
 	public class LeftCommand extends Command{
 		public LeftCommand() {
 			super("Left");
