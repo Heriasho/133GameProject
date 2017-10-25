@@ -3,26 +3,18 @@ package com.mycompany.a1;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Container;
 
 public class MapView extends Container implements Observer{
-	private GameWorld gw;
 	
 	public MapView(GameWorld gw) {
-		gw.addObserver(this);
+		this.getAllStyles().setBgTransparency(255);
+		this.getAllStyles().setBgColor(ColorUtil.YELLOW);
 	}
 
 	public void update(Observable observable, Object data) {
 		// TODO Auto-generated method stub
 		/*Will display game objects on the map*/
 	}
-
-	public GameWorld getGw() {
-		return gw;
-	}
-
-	public void setGw(GameWorld gw) {
-		this.gw = gw;
-	}
-
 }

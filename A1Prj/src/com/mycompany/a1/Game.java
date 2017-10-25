@@ -54,24 +54,17 @@ public class Game extends Form {
 		this.setLayout(new BorderLayout());
 		this.setTitle("Title");
 		this.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
-		add(BorderLayout.NORTH, new Container (new BoxLayout(BoxLayout.X_AXIS)));
 		
 		Container northContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
-		northContainer.getAllStyles().setPadding(Component.BOTTOM, 50);
-		northContainer.add(new Label("SCORE"));
-		///Add more of these.
-		northContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
-		add(BorderLayout.NORTH, northContainer);
+		this.add(BorderLayout.NORTH, sv);
 	
 		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
-		leftContainer.add(new Label("Text (1)"));
 		leftContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.WEST, leftContainer);
 
 		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
-		rightContainer.add(new Label("Text (2)"));	
 		rightContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
 		add(BorderLayout.EAST, rightContainer);
 		
@@ -81,8 +74,9 @@ public class Game extends Form {
 		add(BorderLayout.SOUTH, bottomContainer);
 		
 		Container centerContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+		//this.add(BorderLayout.CENTER, new Label("TeST"));
+		this.add(BorderLayout.CENTER, mv);
 		centerContainer.getAllStyles().setPadding(Component.TOP, 50);
-		add(BorderLayout.CENTER,centerContainer);
 	
 		
 		/*Button Creation & Command setup*/
@@ -287,8 +281,6 @@ public class Game extends Form {
 		}
 		); 
 	}
-	
-	
 	public class ScoreLabel extends Command{
 		public ScoreLabel() {
 			super("Score");

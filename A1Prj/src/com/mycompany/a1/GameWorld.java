@@ -33,6 +33,9 @@ public class GameWorld extends Observable {
 			gameObject.add((GameObject) astronaut);
 		}
 		gameObject.add((Spaceship.getSpaceship()));
+		this.setChanged();
+		this.notifyObservers();
+		this.clearChanged();
 	}
 	/*A method called when an alien is instanceof another alien. If so, they bred a new gameObject alien that spawns close to one of them.*/
 	public void bred() {
