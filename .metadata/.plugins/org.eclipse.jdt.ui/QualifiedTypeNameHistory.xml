@@ -9,16 +9,19 @@
 <fullyQualifiedTypeName name="com.mycompany.a1.Astronaut"/>
 <fullyQualifiedTypeName name="com.codename1.ui.geom.Point2D"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
-<fullyQualifiedTypeName name="java.util.Observer"/>
-<fullyQualifiedTypeName name="java.util.Observable"/>
 <fullyQualifiedTypeName name="com.codename1.ui.Button"/>
 <fullyQualifiedTypeName name="com.codename1.ui.Command"/>
 <fullyQualifiedTypeName name="com.codename1.ui.Toolbar"/>
 <fullyQualifiedTypeName name="com.codename1.ui.layouts.BorderLayout"/>
 <fullyQualifiedTypeName name="com.codename1.ui.Container"/>
 <fullyQualifiedTypeName name="com.codename1.ui.layouts.GridLayout"/>
-<fullyQualifiedTypeName name="com.codename1.charts.util.ColorUtil"/>
 <fullyQualifiedTypeName name="com.codename1.ui.plaf.Border"/>
 <fullyQualifiedTypeName name="com.codename1.ui.layouts.BoxLayout"/>
 <fullyQualifiedTypeName name="com.codename1.ui.Component"/>
+<fullyQualifiedTypeName name="com.mycompany.a1.Game"/>
+<fullyQualifiedTypeName name="javafx.beans.Observable"/>
+<fullyQualifiedTypeName name="java.util.Observer"/>
+<fullyQualifiedTypeName name="java.util.Observable"/>
+<fullyQualifiedTypeName name="com.codename1.ui.Label"/>
+<fullyQualifiedTypeName name="com.codename1.charts.util.ColorUtil"/>
 </qualifiedTypeNameHistroy>
