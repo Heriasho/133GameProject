@@ -32,6 +32,7 @@ import com.codename1.ui.plaf.Border;
 
 
 
+
 //import java.io.IOException;
 import java.lang.String;
 
@@ -53,43 +54,63 @@ public class Game extends Form {
 		setToolbar(myToolbar);
 		this.setLayout(new BorderLayout());
 		this.setTitle("Title");
-		this.getAllStyles().setBorder(Border.createLineBorder(4, ColorUtil.GREEN));
+		this.getAllStyles().setBorder(Border.createLineBorder(1, ColorUtil.GREEN));
 		
 		this.add(BorderLayout.NORTH, sv);
 	
 		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
-		leftContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
+		leftContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
 		add(BorderLayout.WEST, leftContainer);
 
 		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
-		rightContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
+		rightContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
 		add(BorderLayout.EAST, rightContainer);
 		
 		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
-		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(4,ColorUtil.BLUE));
+		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
 		
 		this.add(BorderLayout.CENTER, mv);
 		
 		/*Button Creation & Command setup*/
+		Button teleToAlienButton = new Button("TeleToAlien");
+		Button teleToAstroButton = new Button("TeleToAstro");
 		Button leftButton = new Button("Left");
 		Button rightButton = new Button("Right");
 		Button upButton = new Button("upButton");
 		Button downButton = new Button("downButton");
 		
 		Button mapButton = new Button("Map");
-		Button statsButton = new Button("Stats");
 		Button expandButton = new Button("Expand");
 		Button compressButton = new Button("Compress");
-		Button quitButton = new Button("Quit");
+		Button statsButton = new Button("Stats");
+		Button openDoorButton = new Button("OpenDoor");
 		
 		Button bredButton = new Button("Bred");
 		Button fightButton = new Button("Fight");
 		Button tickButton = new Button("Tick");
+	
+		teleToAlienButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		teleToAstroButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		leftButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		rightButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		upButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		downButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		mapButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		openDoorButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		expandButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		compressButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		statsButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		bredButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		fightButton.getAllStyles().setBorder(Border.createLineBorder(4));
+		tickButton.getAllStyles().setBorder(Border.createLineBorder(4));
 		
+		/*Creating the commands*/
+		TeleportToAstronautCommand myTeleToAstroCommand = new TeleportToAstronautCommand();
+		TeleportToAlienCommand myTeleToAlienCommand = new TeleportToAlienCommand();
 		LeftCommand myLeftCommand = new LeftCommand();
 		RightCommand myRightCommand = new RightCommand();
 		UpCommand myUpCommand = new UpCommand();
@@ -98,13 +119,21 @@ public class Game extends Form {
 		CompressCommand myCompressCommand = new CompressCommand();
 		ExpandCommand myExpandCommand = new ExpandCommand();
 		MapCommand myMapCommand = new MapCommand();
-		StatsCommand myStatsCommand = new StatsCommand();
-		QuitCommand myQuitCommand = new QuitCommand();
+		OpenDoorCommand myOpenDoorCommand = new OpenDoorCommand();
 		
 		BredCommand myBredCommand = new BredCommand();
 		FightCommand myFightCommand = new FightCommand();
 		TickCommand myTickCommand = new TickCommand();
 		
+		HelpCommand myHelpCommand = new HelpCommand();
+		AboutCommand myAboutCommand = new AboutCommand();
+		StatsCommand myStatsCommand = new StatsCommand();
+		QuitCommand myQuitCommand = new QuitCommand();
+		
+		
+		/*Set the commands for the buttons*/
+		teleToAlienButton.setCommand(myTeleToAlienCommand);
+		teleToAstroButton.setCommand(myTeleToAstroCommand);
 		leftButton.setCommand(myLeftCommand);
 		rightButton.setCommand(myRightCommand);
 		upButton.setCommand(myUpCommand);
@@ -113,13 +142,14 @@ public class Game extends Form {
 		compressButton.setCommand(myCompressCommand);
 		expandButton.setCommand(myExpandCommand);
 		mapButton.setCommand(myMapCommand);
-		statsButton.setCommand(myStatsCommand);
-		quitButton.setCommand(myQuitCommand);
-		
 		bredButton.setCommand(myBredCommand);
 		fightButton.setCommand(myFightCommand);
 		tickButton.setCommand(myTickCommand);
+		statsButton.setCommand(myStatsCommand);
+		openDoorButton.setCommand(myOpenDoorCommand);
 
+		
+		/*Adding key listeners to call commands*/
 		addKeyListener('c', myCompressCommand);
 		addKeyListener('m', myMapCommand);
 		addKeyListener('s', myStatsCommand);
@@ -132,6 +162,9 @@ public class Game extends Form {
 		addKeyListener('f', myFightCommand);
 		addKeyListener('b', myBredCommand);
 		addKeyListener('t', myTickCommand);
+		addKeyListener('s', myOpenDoorCommand);
+		addKeyListener('a', myTeleToAlienCommand);
+		addKeyListener('o', myTeleToAstroCommand);
 		/*Button Creation & Command setup*/
 		
 		/*West bar setup*/
@@ -139,6 +172,8 @@ public class Game extends Form {
 		leftContainer.add(upButton);
 		leftContainer.add(leftButton);
 		leftContainer.add(compressButton);
+		leftContainer.add(teleToAlienButton);
+		leftContainer.add(teleToAstroButton);
 		/*West bar setup*/
 		
 		/*East bar setup*/
@@ -146,6 +181,7 @@ public class Game extends Form {
 		rightContainer.add(rightButton);
 		rightContainer.add(statsButton);
 		rightContainer.add(mapButton);
+		rightContainer.add(openDoorButton);
 		/*East bar setup*/
 		
 		/*South bar setup*/
@@ -155,6 +191,8 @@ public class Game extends Form {
 		/*South bar setup*/
 		
 		/*Tool bar Setup*/
+		myToolbar.addCommandToSideMenu(myAboutCommand);
+		myToolbar.addCommandToSideMenu(myHelpCommand);
 		myToolbar.addCommandToSideMenu(myStatsCommand);
 		myToolbar.addCommandToSideMenu(myQuitCommand);
 		/*Tool bar Setup*/
@@ -176,77 +214,12 @@ public class Game extends Form {
 				switch (sCommand.charAt(0)) {
 					//List commands here
 				case 'a':
-					//Teleports the spaceship to a random alien
+					
 					gw.teleportToAlien();
 					break;
 				case 'o':
-					//Teleports the spaceship to a random astronaut
+					
 					gw.teleportToAstronaut();
-					break;
-				case 'r':
-					//Move the spaceship to the right;
-					gw.moveSpaceShipRight();
-					break;
-				case 'l':
-					//Move the spaceship to the left;
-					gw.moveSpaceShipLeft();
-					break;
-				case 'u':
-					//Move the spaceship up;
-					gw.moveSpaceShipUp();
-					break;
-				case 'd':
-					//Move the spaceship down;
-					gw.moveSpaceShipDown();
-					break;
-				case 'c':
-					//Decrease the size of the spaceship door.
-					gw.compress();
-					break;
-				case 'e':
-					//Increase the size of the spaceship door.
-					gw.expand();
-					break;
-				case 't':
-					/*Tell the Gw that the game clock has ticked.
-					 * All moving objects are told to update their positions
-					 * according to their current direction and speed.*/
-					gw.tick();
-					break;
-				case 's':
-					/*Open the door & update the score according to the types
-					 * & conditions of opponents that are let in to the spaceship
-					 * as described above in rules of play.
-					 * This causes all of the opponents whose centers are within 
-					 * the boundaries of the bounding square of the door to be removed
-					 * from the game world.*/
-					gw.openDoor();
-					break;
-				case 'w':
-					/*PRETEND that a collision occurred between two aliens. 
-					 * This type of collision means that a new alien is generated.
-					 * ELSE, if there is less than two aliens, print an error message instead.*/
-					gw.bred();
-					break;
-				case 'f':
-					/*PRETEND that a collision occurred between an alien and an astronaut.
-					 * This type of collision means that a fight occurred between the two.
-					 * Chooses random astronaut & decrements its health value, updates speed, change color.
-					 * ELSE, if there are no aliens, print an error message instead.*/
-					gw.fight();
-					break;
-				case 'p':
-					/*Print the points of game state values:
-					 * current score
-					 * number of astronauts rescued
-					 * number of aliens sneaked in to the spaceship
-					 * number of astronauts left in the world
-					 * Output should be appropriately labeled in easily readable format*/
-					gw.stats();
-					break;
-				case 'm':
-					/*Print a 'map' showing the current world state.*/
-					gw.map();
 					break;
 				case 'x':
 					/*Exit, by calling the method 'System.exit(0)' to terminate the program.
@@ -275,6 +248,60 @@ public class Game extends Form {
 		); 
 	}
 
+	public class AboutCommand extends Command{
+		public AboutCommand() {
+			super("About");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			System.out.println("Provides usefull info");
+		}
+	}
+	public class HelpCommand extends Command{
+		public HelpCommand() {
+			super("Help");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			System.out.println("Provides helpful tips");
+		}
+	}
+	//Teleports the spaceship to a random alien
+	public class TeleportToAlienCommand extends Command{
+		public TeleportToAlienCommand() {
+			super("TeleToAlien");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.teleportToAlien();
+		}
+	}
+	//Teleports the spaceship to a random astronaut
+	public class TeleportToAstronautCommand extends Command{
+		public TeleportToAstronautCommand() {
+			super("TeleToAstro");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.teleportToAstronaut();
+		}
+	}
+	/*Open the door & update the score according to the types
+	 * & conditions of opponents that are let in to the spaceship
+	 * as described above in rules of play.
+	 * This causes all of the opponents whose centers are within 
+	 * the boundaries of the bounding square of the door to be removed
+	 * from the game world.*/
+	public class OpenDoorCommand extends Command{
+		public OpenDoorCommand() {
+			super("Open Door");
+		}
+		@Override
+		public void actionPerformed(ActionEvent e){
+			gw.openDoor();
+		}
+	}
+	//Move the spaceship left;
 	public class LeftCommand extends Command{
 		public LeftCommand() {
 			super("Left");
@@ -284,6 +311,7 @@ public class Game extends Form {
 			gw.moveSpaceShipLeft();
 		}
 	}
+	//Move the spaceship right;
 	public class RightCommand extends Command{
 		public RightCommand() {
 			super("Right");
@@ -293,6 +321,7 @@ public class Game extends Form {
 			gw.moveSpaceShipRight();
 		}
 	}
+	//Move the spaceship up;
 	public class UpCommand extends Command{
 		public UpCommand() {
 			super("Up");
@@ -302,6 +331,7 @@ public class Game extends Form {
 			gw.moveSpaceShipUp();
 		}
 	}
+	//Move the spaceship down;
 	public class DownCommand extends Command{
 		public DownCommand() {
 			super("Down");
@@ -329,6 +359,7 @@ public class Game extends Form {
 			gw.bred();
 		}
 	}
+	//Decrease the size of the spaceship door.
 	public class CompressCommand extends Command{
 		public CompressCommand() {
 			super("Compress");
@@ -347,6 +378,7 @@ public class Game extends Form {
 			System.out.println("Delete command is invoked...");
 		}
 	}
+	//Increase the size of the spaceship door.
 	public class ExpandCommand extends Command{
 		public ExpandCommand() {
 			super("Expand");
@@ -374,6 +406,9 @@ public class Game extends Form {
 			gw.stats();
 		}
 	}
+	/*Tell the Gw that the game clock has ticked.
+	 * All moving objects are told to update their positions
+	 * according to their current direction and speed.*/
 	public class TickCommand extends Command{
 		public TickCommand() {
 			super("Tick");

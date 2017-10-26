@@ -79,6 +79,7 @@ public class GameWorld extends Observable {
 	public void stats() {
 		System.out.println("The score is: " + score 
 				+ "\nNumber of Astronauts rescused: " + rescuedAstronauts 
+				+ "\nNumber of Astronauts roaming: " + roamingAstronauts
 				+ "\nNumber of Aliens rescued: " + rescuedAliens
 				+ "\nNumber of Aliens roaming: " + roamingAliens);
 	}
