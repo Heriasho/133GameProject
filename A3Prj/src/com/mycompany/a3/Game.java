@@ -42,11 +42,47 @@ public class Game extends Form {
 	private ScoreView sv;
 	private boolean confirm = false;
 	
+	private AboutCommand aboutCommand;
+	private HelpCommand helpCommand;
+	private TeleportToAlienCommand teleToAlienCommand;
+	private TeleportToAstronautCommand teleToAstroCommand;
+	private LeftCommand leftCommand;
+	private RightCommand rightCommand;
+	private UpCommand upCommand;
+	private DownCommand downCommand;
+	private OpenDoorCommand openDoorCommand;
+	private FightCommand fightCommand;
+	private BredCommand bredCommand;
+	private CompressCommand compressCommand;
+	private ExpandCommand expandCommand;
+	private DeleteCommand deleteCommand;
+	private StatsCommand statsCommand;
+	private MapCommand mapCommand;
+	private TickCommand tickCommand;
+	
 	public Game() {
 		gw = new GameWorld();
 		gw.init();	
 		mv = new MapView(gw);
 		sv = new ScoreView(gw);
+		aboutCommand = new AboutCommand();
+		helpCommand = new HelpCommand();
+		teleToAlienCommand = new TeleportToAlienCommand();
+		teleToAstroCommand = new TeleportToAstronautCommand();
+		leftCommand = new LeftCommand();
+		rightCommand = new RightCommand();
+		upCommand = new UpCommand();
+		downCommand = new DownCommand();
+		openDoorCommand = new OpenDoorCommand();
+		fightCommand = new FightCommand();
+		bredCommand = new BredCommand();
+		compressCommand = new CompressCommand();
+		expandCommand = new ExpandCommand();
+		deleteCommand = new DeleteCommand();
+		statsCommand = new StatsCommand();
+		mapCommand = new MapCommand();
+		tickCommand = new TickCommand();
+		
 		gw.addObserver(mv);
 		gw.addObserver(sv);
 		
@@ -109,62 +145,55 @@ public class Game extends Form {
 		tickButton.getAllStyles().setBorder(Border.createLineBorder(4));
 		
 		/*Creating the commands*/
-		TeleportToAstronautCommand myTeleToAstroCommand = new TeleportToAstronautCommand();
-		TeleportToAlienCommand myTeleToAlienCommand = new TeleportToAlienCommand();
-		LeftCommand myLeftCommand = new LeftCommand();
-		RightCommand myRightCommand = new RightCommand();
-		UpCommand myUpCommand = new UpCommand();
-		DownCommand myDownCommand = new DownCommand();
-		
-		CompressCommand myCompressCommand = new CompressCommand();
-		ExpandCommand myExpandCommand = new ExpandCommand();
-		MapCommand myMapCommand = new MapCommand();
-		OpenDoorCommand myOpenDoorCommand = new OpenDoorCommand();
-		
-		BredCommand myBredCommand = new BredCommand();
+//		LeftCommand myLeftCommand = new LeftCommand();
+//		RightCommand myRightCommand = new RightCommand();
+//		UpCommand myUpCommand = new UpCommand();
+//		DownCommand myDownCommand = new DownCommand();
+		//CompressCommand myCompressCommand = new CompressCommand();
+		//ExpandCommand myExpandCommand = new ExpandCommand();
+		//MapCommand myMapCommand = new MapCommand();
+		//OpenDoorCommand myOpenDoorCommand = new OpenDoorCommand();
+		//BredCommand myBredCommand = new BredCommand();
 		FightCommand myFightCommand = new FightCommand();
-		TickCommand myTickCommand = new TickCommand();
-		
-		HelpCommand myHelpCommand = new HelpCommand();
-		AboutCommand myAboutCommand = new AboutCommand();
-		StatsCommand myStatsCommand = new StatsCommand();
+		//TickCommand myTickCommand = new TickCommand();
+		//StatsCommand myStatsCommand = new StatsCommand();
 		QuitCommand myQuitCommand = new QuitCommand();
 		
 		
 		/*Set the commands for the buttons*/
-		teleToAlienButton.setCommand(myTeleToAlienCommand);
-		teleToAstroButton.setCommand(myTeleToAstroCommand);
-		leftButton.setCommand(myLeftCommand);
-		rightButton.setCommand(myRightCommand);
-		upButton.setCommand(myUpCommand);
-		downButton.setCommand(myDownCommand);
+		teleToAlienButton.setCommand(teleToAlienCommand);
+		teleToAstroButton.setCommand(teleToAstroCommand);
+		leftButton.setCommand(leftCommand);
+		rightButton.setCommand(rightCommand);
+		upButton.setCommand(upCommand);
+		downButton.setCommand(downCommand);
 		
-		compressButton.setCommand(myCompressCommand);
-		expandButton.setCommand(myExpandCommand);
-		mapButton.setCommand(myMapCommand);
-		bredButton.setCommand(myBredCommand);
+		compressButton.setCommand(compressCommand);
+		expandButton.setCommand(expandCommand);
+		mapButton.setCommand(mapCommand);
+		bredButton.setCommand(bredCommand);
 		fightButton.setCommand(myFightCommand);
-		tickButton.setCommand(myTickCommand);
-		statsButton.setCommand(myStatsCommand);
-		openDoorButton.setCommand(myOpenDoorCommand);
+		tickButton.setCommand(tickCommand);
+		statsButton.setCommand(statsCommand);
+		openDoorButton.setCommand(openDoorCommand);
 
 		
 		/*Adding key listeners to call commands*/
-		addKeyListener('c', myCompressCommand);
-		addKeyListener('m', myMapCommand);
-		addKeyListener('s', myStatsCommand);
-		addKeyListener('e', myExpandCommand);
-		addKeyListener('u', myUpCommand);
-		addKeyListener('d', myDownCommand);
-		addKeyListener('l', myLeftCommand);
-		addKeyListener('r', myRightCommand);
+		addKeyListener('c', compressCommand);
+		addKeyListener('m', mapCommand);
+		addKeyListener('s', statsCommand);
+		addKeyListener('e', expandCommand);
+		addKeyListener('u', upCommand);
+		addKeyListener('d', downCommand);
+		addKeyListener('l', leftCommand);
+		addKeyListener('r', rightCommand);
 		addKeyListener('q', myQuitCommand);
 		addKeyListener('f', myFightCommand);
-		addKeyListener('b', myBredCommand);
-		addKeyListener('t', myTickCommand);
-		addKeyListener('s', myOpenDoorCommand);
-		addKeyListener('a', myTeleToAlienCommand);
-		addKeyListener('o', myTeleToAstroCommand);
+		addKeyListener('b', bredCommand);
+		addKeyListener('t', tickCommand);
+		addKeyListener('s', openDoorCommand);
+		addKeyListener('a', teleToAlienCommand);
+		addKeyListener('o', teleToAstroCommand);
 		/*Button Creation & Command setup*/
 		
 		/*West bar setup*/
@@ -191,232 +220,13 @@ public class Game extends Form {
 		/*South bar setup*/
 		
 		/*Tool bar Setup*/
-		myToolbar.addCommandToSideMenu(myAboutCommand);
-		myToolbar.addCommandToSideMenu(myHelpCommand);
-		myToolbar.addCommandToSideMenu(myStatsCommand);
+		myToolbar.addCommandToSideMenu(aboutCommand);
+		myToolbar.addCommandToSideMenu(helpCommand);
+		myToolbar.addCommandToSideMenu(statsCommand);
 		myToolbar.addCommandToSideMenu(myQuitCommand);
 		/*Tool bar Setup*/
 				
 		show();
-	}
-	/* Accepts keyboard commands from the player & invokes GameWorld methods*/
-	@SuppressWarnings("rawtypes")
-	public void play() {
-		Label myLabel = new Label("Enter a Command");
-		this.addComponent(myLabel);
-		final TextField myTextField=new TextField();
-		this.addComponent(myTextField);
-		this.show();
-		myTextField.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent evt) {
-				String sCommand = myTextField.getText().toString();
-				myTextField.clear();
-				switch (sCommand.charAt(0)) {
-					//List commands here
-				case 'a':
-					
-					gw.teleportToAlien();
-					break;
-				case 'o':
-					
-					gw.teleportToAstronaut();
-					break;
-				case 'x':
-					/*Exit, by calling the method 'System.exit(0)' to terminate the program.
-					 * Your program should confirm the user's intent to quit before actually exiting.*/
-					if(confirm)
-						System.exit(0);
-					else{
-						System.out.println("You attempted to exit the game without confirming. \nIf you wish to quit, please press 'y' then press 'x'.");
-					}
-					break;
-				case 'y':
-					/*User has confirmed the exit the exit by saying yes.*/
-					System.out.println("You are confirming you wish to exit the game.");
-					confirm = true;
-					break;
-				case 'n':
-					/*User has not confirmed the exit by saying no.*/
-					System.out.println("You are confirming you do not wish to exit the game.");
-					confirm = false;
-					break;
-				default: 
-					System.out.println("Error: Not a valid command");
-				}
-			}	
-		}
-		); 
-	}
-
-	public class AboutCommand extends Command{
-		public AboutCommand() {
-			super("About");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			System.out.println("Provides usefull info");
-		}
-	}
-	public class HelpCommand extends Command{
-		public HelpCommand() {
-			super("Help");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			System.out.println("Provides helpful tips");
-		}
-	}
-	//Teleports the spaceship to a random alien
-	public class TeleportToAlienCommand extends Command{
-		public TeleportToAlienCommand() {
-			super("TeleToAlien");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.teleportToAlien();
-		}
-	}
-	//Teleports the spaceship to a random astronaut
-	public class TeleportToAstronautCommand extends Command{
-		public TeleportToAstronautCommand() {
-			super("TeleToAstro");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.teleportToAstronaut();
-		}
-	}
-	/*Open the door & update the score according to the types
-	 * & conditions of opponents that are let in to the spaceship
-	 * as described above in rules of play.
-	 * This causes all of the opponents whose centers are within 
-	 * the boundaries of the bounding square of the door to be removed
-	 * from the game world.*/
-	public class OpenDoorCommand extends Command{
-		public OpenDoorCommand() {
-			super("Open Door");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.openDoor();
-		}
-	}
-	//Move the spaceship left;
-	public class LeftCommand extends Command{
-		public LeftCommand() {
-			super("Left");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.moveSpaceShipLeft();
-		}
-	}
-	//Move the spaceship right;
-	public class RightCommand extends Command{
-		public RightCommand() {
-			super("Right");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.moveSpaceShipRight();
-		}
-	}
-	//Move the spaceship up;
-	public class UpCommand extends Command{
-		public UpCommand() {
-			super("Up");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.moveSpaceShipUp();
-		}
-	}
-	//Move the spaceship down;
-	public class DownCommand extends Command{
-		public DownCommand() {
-			super("Down");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.moveSpaceShipDown();
-		}
-	}
-	public class FightCommand extends Command {
-		public FightCommand() {
-			super("Fight");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.fight();
-		}
-	}
-	public class BredCommand extends Command {
-		public BredCommand() {
-			super("Bred");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.bred();
-		}
-	}
-	//Decrease the size of the spaceship door.
-	public class CompressCommand extends Command{
-		public CompressCommand() {
-			super("Compress");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.compress();
-		}
-	}
-	public class DeleteCommand extends Command{
-		public DeleteCommand() {
-			super("Delete");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			System.out.println("Delete command is invoked...");
-		}
-	}
-	//Increase the size of the spaceship door.
-	public class ExpandCommand extends Command{
-		public ExpandCommand() {
-			super("Expand");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.expand();
-		}
-	}
-	public class MapCommand extends Command{
-		public MapCommand() {
-			super("Map");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.map();
-		}
-	}
-	public class StatsCommand extends Command{
-		public StatsCommand() {
-			super("Stats");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.stats();
-		}
-	}
-	/*Tell the Gw that the game clock has ticked.
-	 * All moving objects are told to update their positions
-	 * according to their current direction and speed.*/
-	public class TickCommand extends Command{
-		public TickCommand() {
-			super("Tick");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			gw.tick();
-		}
 	}
 	public class QuitCommand extends Command{
 		public QuitCommand() {
