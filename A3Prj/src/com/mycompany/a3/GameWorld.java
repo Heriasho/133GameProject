@@ -10,33 +10,61 @@ import java.util.Vector;
 //import java.util.Hashtable;
 
 public class GameWorld extends Observable {
-	private int roamingAliens = 3;
-	private int roamingAstronauts = 3;
-	private int rescuedAstronauts = 0;
-	private int rescuedAliens = 0;
-	private int score = 0;
-	private int tickTime = 1000;
-	private Random random = new Random();
+	private int roamingAliens;
+	private int roamingAstronauts;
+	private int rescuedAstronauts;
+	private int rescuedAliens;
+	private int score;
+	private int tickTime;
+	private int speed;
+	private int speedMulti;
+	private boolean sound;
 	private int screenHeight = 768;
 	private int screenWidth = 1024;
-	private int speed = 5;
-	private int speedMulti = 1;
+	private Random random = new Random();
 	private GameCollection theGameCollection;
 	private ArrayList<GameObject> gameObject = new ArrayList<GameObject>();
 	
 	/*Set the initial state of the game*/
 	public void init() {
+		roamingAliens = 3;
+		rescuedAliens = 0;
+		roamingAstronauts = 3;
+		rescuedAstronauts = 0;
+		score = 0;
+		tickTime = 1000;
+		speed = 5;
+		speedMulti = 1;
+		sound = true;
+		initialSpawn();
+		addSpaceship();
+		updateGameWorld();
+	}
+	public void initialSpawn() {
 		for(int i = 0; i < roamingAliens; ++i) {
 			//Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti);
 			//theGameCollection.add((GameObject) alien); 
-			theGameCollection.add(new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti));
+			addAlien();
 		}
 		for(int i = 0; i < roamingAstronauts; ++i) {
 			//Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti);
 			//theGameCollection.add((GameObject) astronaut);
-			theGameCollection.add(new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti));
+			addAstro();
 		}
+	}
+	public void addAlien(){
+		theGameCollection.add(new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti));
+		updateGameWorld();
+	}
+	public void addAstro(){
+		theGameCollection.add(new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti));
+		updateGameWorld();
+	}
+	public void addSpaceship(){
 		theGameCollection.add((Spaceship.getSpaceship()));
+		updateGameWorld();
+	}
+	public void updateGameWorld() {
 		this.setChanged();
 		this.notifyObservers();
 		this.clearChanged();
@@ -107,11 +135,13 @@ public class GameWorld extends Observable {
 	public void expand() {
 		Spaceship sp  = getTheSpaceship();
 		sp.expandDoor();
+		updateGameWorld();
 	}
 	/*Gets a spaceship & decreases it's size through its contractDoor().*/
 	public void compress() {
 		Spaceship sp = getTheSpaceship();
 		sp.contractDoor();
+		updateGameWorld();
 	}
 	/*Gets a spaceship & checks to see if Opponents are instanceof it.
 	 * If so, the opponents are 'rescued' & removed from the gameworld.*/
@@ -257,5 +287,12 @@ public class GameWorld extends Observable {
 	}
 	public void setScore(int value){
 		score = value;
+	}
+	public boolean getSound() {
+		return sound;
+	}
+	public void setSound(boolean b) {
+		this.sound = b;
+		updateGameWorld();
 	}
 }

@@ -5,8 +5,9 @@ import com.codename1.ui.events.ActionEvent;
 
 public class BredCommand extends Command {
 	private GameWorld gw;
-	public BredCommand() {
+	public BredCommand(GameWorld gw) {
 		super("Bred");
+		this.gw = gw;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){

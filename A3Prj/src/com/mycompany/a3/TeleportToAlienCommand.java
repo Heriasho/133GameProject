@@ -6,8 +6,9 @@ import com.codename1.ui.events.ActionEvent;
 //Teleports the spaceship to a random alien
 	public class TeleportToAlienCommand extends Command{
 		private GameWorld gw;
-		public TeleportToAlienCommand() {
+		public TeleportToAlienCommand(GameWorld gw) {
 			super("TeleToAlien");
+			this.gw = gw;
 		}
 		@Override
 		public void actionPerformed(ActionEvent e){

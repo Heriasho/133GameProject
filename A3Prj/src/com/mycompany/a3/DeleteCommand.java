@@ -5,8 +5,9 @@ import com.codename1.ui.events.ActionEvent;
 
 public class DeleteCommand extends Command{
 	private GameWorld gw;
-	public DeleteCommand() {
+	public DeleteCommand(GameWorld gw) {
 		super("Delete");
+		this.gw = gw;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){

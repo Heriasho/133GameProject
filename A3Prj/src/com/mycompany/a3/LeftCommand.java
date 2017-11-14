@@ -6,8 +6,9 @@ import com.codename1.ui.events.ActionEvent;
 //Move the spaceship left;
 public class LeftCommand extends Command{
 	private GameWorld gw;
-	public LeftCommand() {
+	public LeftCommand(GameWorld gw) {
 		super("Left");
+		this.gw = gw;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){

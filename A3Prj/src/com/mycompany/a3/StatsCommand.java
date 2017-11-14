@@ -5,8 +5,9 @@ import com.codename1.ui.events.ActionEvent;
 
 public class StatsCommand extends Command{
 	private GameWorld gw;
-	public StatsCommand() {
+	public StatsCommand(GameWorld gw) {
 		super("Stats");
+		this.gw = gw;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){

@@ -6,8 +6,9 @@ import com.codename1.ui.events.ActionEvent;
 //Move the spaceship down;
 public class DownCommand extends Command{
 	private GameWorld gw;
-	public DownCommand() {
+	public DownCommand(GameWorld gw) {
 		super("Down");
+		this.gw = gw;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){

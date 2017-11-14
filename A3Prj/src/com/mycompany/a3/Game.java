@@ -2,6 +2,7 @@ package com.mycompany.a3;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Button;
+import com.codename1.ui.CheckBox;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
@@ -22,142 +23,73 @@ import com.codename1.ui.events.ActionListener;
 
 
 import com.codename1.ui.layouts.BorderLayout;
-
-
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
-
-
 import com.codename1.ui.plaf.Border;
 
+
+
+
+import com.codename1.ui.util.UITimer;
 
 
 
 //import java.io.IOException;
 import java.lang.String;
 
-public class Game extends Form {
+public class Game extends Form implements Runnable {
 	private GameWorld gw;
 	private MapView mv;
 	private ScoreView sv;
 	private boolean confirm = false;
-	
-	private AboutCommand aboutCommand;
-	private HelpCommand helpCommand;
-	private TeleportToAlienCommand teleToAlienCommand;
-	private TeleportToAstronautCommand teleToAstroCommand;
-	private LeftCommand leftCommand;
-	private RightCommand rightCommand;
-	private UpCommand upCommand;
-	private DownCommand downCommand;
-	private OpenDoorCommand openDoorCommand;
-	private FightCommand fightCommand;
-	private BredCommand bredCommand;
-	private CompressCommand compressCommand;
-	private ExpandCommand expandCommand;
-	private DeleteCommand deleteCommand;
-	private StatsCommand statsCommand;
-	private MapCommand mapCommand;
-	private TickCommand tickCommand;
+	private UITimer timer;
 	
 	public Game() {
 		gw = new GameWorld();
 		gw.init();	
 		mv = new MapView(gw);
 		sv = new ScoreView(gw);
-		aboutCommand = new AboutCommand();
-		helpCommand = new HelpCommand();
-		teleToAlienCommand = new TeleportToAlienCommand();
-		teleToAstroCommand = new TeleportToAstronautCommand();
-		leftCommand = new LeftCommand();
-		rightCommand = new RightCommand();
-		upCommand = new UpCommand();
-		downCommand = new DownCommand();
-		openDoorCommand = new OpenDoorCommand();
-		fightCommand = new FightCommand();
-		bredCommand = new BredCommand();
-		compressCommand = new CompressCommand();
-		expandCommand = new ExpandCommand();
-		deleteCommand = new DeleteCommand();
-		statsCommand = new StatsCommand();
-		mapCommand = new MapCommand();
-		tickCommand = new TickCommand();
+		timer = new UITimer(this);
+		timer.schedule(20,true, this);
 		
 		gw.addObserver(mv);
 		gw.addObserver(sv);
 		
-		Toolbar myToolbar = new Toolbar();
-		setToolbar(myToolbar);
-		this.setLayout(new BorderLayout());
-		this.setTitle("Title");
-		this.getAllStyles().setBorder(Border.createLineBorder(1, ColorUtil.GREEN));
-		
-		this.add(BorderLayout.NORTH, sv);
-	
-		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
-		leftContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
-		add(BorderLayout.WEST, leftContainer);
-
-		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
-		rightContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
-		add(BorderLayout.EAST, rightContainer);
-		
-		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
-		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
-		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
-		add(BorderLayout.SOUTH, bottomContainer);
-		
-		this.add(BorderLayout.CENTER, mv);
-		
 		/*Button Creation & Command setup*/
-		Button teleToAlienButton = new Button("TeleToAlien");
-		Button teleToAstroButton = new Button("TeleToAstro");
-		Button leftButton = new Button("Left");
-		Button rightButton = new Button("Right");
-		Button upButton = new Button("upButton");
-		Button downButton = new Button("downButton");
-		
-		Button mapButton = new Button("Map");
-		Button expandButton = new Button("Expand");
-		Button compressButton = new Button("Compress");
-		Button statsButton = new Button("Stats");
-		Button openDoorButton = new Button("OpenDoor");
-		
-		Button bredButton = new Button("Bred");
-		Button fightButton = new Button("Fight");
-		Button tickButton = new Button("Tick");
+		Button teleToAlienButton = new CButton("TeleToAlien");
+		Button teleToAstroButton = new CButton("TeleToAstro");
+		Button leftButton = new CButton("Left");
+		Button rightButton = new CButton("Right");
+		Button upButton = new CButton("upButton");
+		Button downButton = new CButton("downButton");
+		Button mapButton = new CButton("Map");
+		Button expandButton = new CButton("Expand");
+		Button compressButton = new CButton("Compress");
+		Button statsButton = new CButton("Stats");
+		Button openDoorButton = new CButton("OpenDoor");
+		Button bredButton = new CButton("Bred");
+		Button fightButton = new CButton("Fight");
+		Button tickButton = new CButton("Tick");
 	
-		teleToAlienButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		teleToAstroButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		leftButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		rightButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		upButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		downButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		mapButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		openDoorButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		expandButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		compressButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		statsButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		bredButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		fightButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		tickButton.getAllStyles().setBorder(Border.createLineBorder(4));
-		
 		/*Creating the commands*/
-//		LeftCommand myLeftCommand = new LeftCommand();
-//		RightCommand myRightCommand = new RightCommand();
-//		UpCommand myUpCommand = new UpCommand();
-//		DownCommand myDownCommand = new DownCommand();
-		//CompressCommand myCompressCommand = new CompressCommand();
-		//ExpandCommand myExpandCommand = new ExpandCommand();
-		//MapCommand myMapCommand = new MapCommand();
-		//OpenDoorCommand myOpenDoorCommand = new OpenDoorCommand();
-		//BredCommand myBredCommand = new BredCommand();
-		FightCommand myFightCommand = new FightCommand();
-		//TickCommand myTickCommand = new TickCommand();
-		//StatsCommand myStatsCommand = new StatsCommand();
+		AboutCommand aboutCommand = new AboutCommand();
+		HelpCommand helpCommand = new HelpCommand();
+		TeleportToAlienCommand teleToAlienCommand = new TeleportToAlienCommand(gw);
+		TeleportToAstronautCommand teleToAstroCommand = new TeleportToAstronautCommand(gw);
+		LeftCommand leftCommand = new LeftCommand(gw);
+		RightCommand rightCommand = new RightCommand(gw);
+		UpCommand upCommand = new UpCommand(gw);
+		DownCommand downCommand = new DownCommand(gw);
+		CompressCommand compressCommand = new CompressCommand(gw);
+		ExpandCommand expandCommand = new ExpandCommand(gw);
+		MapCommand mapCommand = new MapCommand(gw);
+		BredCommand bredCommand = new BredCommand(gw);
+		OpenDoorCommand openDoorCommand = new OpenDoorCommand(gw);
+		TickCommand tickCommand = new TickCommand(gw);
+		StatsCommand statsCommand = new StatsCommand(gw);
+		FightCommand myFightCommand = new FightCommand(gw);
 		QuitCommand myQuitCommand = new QuitCommand();
+		SoundCheckCommand soundCheck = new SoundCheckCommand(gw);
 		
 		
 		/*Set the commands for the buttons*/
@@ -167,17 +99,15 @@ public class Game extends Form {
 		rightButton.setCommand(rightCommand);
 		upButton.setCommand(upCommand);
 		downButton.setCommand(downCommand);
-		
 		compressButton.setCommand(compressCommand);
 		expandButton.setCommand(expandCommand);
 		mapButton.setCommand(mapCommand);
 		bredButton.setCommand(bredCommand);
 		fightButton.setCommand(myFightCommand);
+		openDoorButton.setCommand(openDoorCommand);
 		tickButton.setCommand(tickCommand);
 		statsButton.setCommand(statsCommand);
-		openDoorButton.setCommand(openDoorCommand);
 
-		
 		/*Adding key listeners to call commands*/
 		addKeyListener('c', compressCommand);
 		addKeyListener('m', mapCommand);
@@ -196,7 +126,31 @@ public class Game extends Form {
 		addKeyListener('o', teleToAstroCommand);
 		/*Button Creation & Command setup*/
 		
+		/*Title Bar*/
+		Toolbar myToolbar = new Toolbar();
+		setToolbar(myToolbar);
+		this.setLayout(new BorderLayout());
+		myToolbar.setTitle("Title");
+		myToolbar.setTitleCentered(true);
+		
+		/*Score view*/
+		this.add(BorderLayout.NORTH, sv);
+		CheckBox soundCheckBox = new CheckBox();	
+		soundCheckBox.getAllStyles().setBgTransparency( 255 );
+		soundCheckBox.getAllStyles().setBgColor( ColorUtil.rgb( 150, 150, 150 ) ); //Mild Gray
+		soundCheckBox.setText( "Turn Sound OFF / ON" );
+		soundCheckBox.setCommand(soundCheck);
+		this.add(soundCheckBox);
+	
+		/*Map View*/
+		this.add(BorderLayout.CENTER, mv);
+		
+		
 		/*West bar setup*/
+		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
+		leftContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
+		add(BorderLayout.WEST, leftContainer);
 		leftContainer.add(expandButton);
 		leftContainer.add(upButton);
 		leftContainer.add(leftButton);
@@ -206,6 +160,10 @@ public class Game extends Form {
 		/*West bar setup*/
 		
 		/*East bar setup*/
+		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
+		rightContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
+		add(BorderLayout.EAST, rightContainer);
 		rightContainer.add(downButton);
 		rightContainer.add(rightButton);
 		rightContainer.add(statsButton);
@@ -214,6 +172,10 @@ public class Game extends Form {
 		/*East bar setup*/
 		
 		/*South bar setup*/
+		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
+		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
+		add(BorderLayout.SOUTH, bottomContainer);
 		bottomContainer.add(bredButton);
 		bottomContainer.add(fightButton);
 		bottomContainer.add(tickButton);
@@ -228,19 +190,6 @@ public class Game extends Form {
 				
 		show();
 	}
-	public class QuitCommand extends Command{
-		public QuitCommand() {
-			super("Quit");
-		}
-		@Override
-		public void actionPerformed(ActionEvent e){
-			if(confirm)
-				System.exit(0);
-			else{
-				System.out.println("You attempted to exit the game without confirming. \nIf you wish to quit, please press 'y' then press 'x'.");
-			}
-		}
-	}
 	
 	private void init() {
 		
@@ -252,6 +201,11 @@ public class Game extends Form {
 	
 	private void destroy() {
 		
+	}
+
+	public void run() {
+		// TODO Auto-generated method stub
+		gw.tick();
 	}
 
 }

@@ -8,8 +8,9 @@ import com.codename1.ui.events.ActionEvent;
  * according to their current direction and speed.*/
 public class TickCommand extends Command{
 	private GameWorld gw;
-	public TickCommand() {
+	public TickCommand(GameWorld gw) {
 		super("Tick");
+		this.gw = gw;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){

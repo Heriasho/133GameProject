@@ -11,8 +11,9 @@ import com.codename1.ui.events.ActionEvent;
  * from the game world.*/
 public class OpenDoorCommand extends Command{
 	private GameWorld gw;
-	public OpenDoorCommand() {
+	public OpenDoorCommand(GameWorld gw) {
 		super("Open Door");
+		this.gw = gw;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){
