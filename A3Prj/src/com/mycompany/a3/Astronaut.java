@@ -1,6 +1,8 @@
 package com.mycompany.a3;
 
 import com.codename1.charts.util.ColorUtil;
+import com.codename1.ui.Graphics;
+import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 import java.util.Random;
@@ -51,5 +53,14 @@ public class Astronaut extends Opponents {
 		int red = ColorUtil.red(getColor());
 	
 		return ColorUtil.rgb(red * getSpeed() / originalSpeed, green * getSpeed() / originalSpeed, blue * getSpeed() / originalSpeed);
+	}
+	public void draw(Graphics g, Point pCmpRelPrnt) {
+		g.setColor(this.getColor());
+		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
+		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
+		
+		g.fillRect(xLoc, yLoc, 30, 50);
+		//System.out.println("asteroid running");
+		
 	}
 }

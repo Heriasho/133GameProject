@@ -1,9 +1,11 @@
 package com.mycompany.a3;
 
+import com.codename1.ui.Graphics;
+import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 
-public abstract class GameObject extends GameWorld {
+public abstract class GameObject extends GameWorld implements IDrawable {
 	
 	private String name;
 	private int screenHeight;
@@ -71,6 +73,11 @@ public abstract class GameObject extends GameWorld {
 		while(name.length() < 10)
 			name = name + " ";
 		return name + ":\tloc=\t"+ x +"\t" + y + " \tcolor=\t" + getColor() + " \tsize=\t" + getSize();
+	}
+
+	public void draw(Graphics g, Point pCmpRelPrnt) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

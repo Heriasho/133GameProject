@@ -3,8 +3,10 @@ package com.mycompany.a3;
 import com.codename1.charts.util.ColorUtil;
 
 import java.util.ArrayList;
+import java.util.Observer;
 import java.util.Random;
 import java.util.Observable;
+import java.util.Vector;
 //import java.util.Hashtable;
 
 public class GameWorld extends Observable {
@@ -25,14 +27,16 @@ public class GameWorld extends Observable {
 	/*Set the initial state of the game*/
 	public void init() {
 		for(int i = 0; i < roamingAliens; ++i) {
-			Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti);
-			gameObject.add((GameObject) alien); 
+			//Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti);
+			//theGameCollection.add((GameObject) alien); 
+			theGameCollection.add(new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti));
 		}
 		for(int i = 0; i < roamingAstronauts; ++i) {
-			Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti);
-			gameObject.add((GameObject) astronaut);
+			//Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti);
+			//theGameCollection.add((GameObject) astronaut);
+			theGameCollection.add(new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti));
 		}
-		gameObject.add((Spaceship.getSpaceship()));
+		theGameCollection.add((Spaceship.getSpaceship()));
 		this.setChanged();
 		this.notifyObservers();
 		this.clearChanged();
@@ -86,8 +90,14 @@ public class GameWorld extends Observable {
 	
 	/*Print a 'map' showing the current world state.*/
 	public void map() {
-		for(GameObject object : gameObject)
-			System.out.println(object);
+//		for(GameObject object : gameObject)
+//			System.out.println(object);
+		Iiterator theIterator = theGameCollection.getIterator();
+		while(theIterator.hasNext())
+		{
+			GameObject obj = (GameObject) theIterator.getNext();
+			System.out.println(obj);
+		}
 	}
 	/*Returns the score.*/
 	public void score() {
@@ -212,11 +222,11 @@ public class GameWorld extends Observable {
 		}
 		return null;
 	}
-	public GameCollection getTheGameCollection() {
-		return theGameCollection;
+	public int getTheGameCollectionSize() {
+		return theGameCollection.getSize();
 	}
-	public void setTheGameCollection(GameCollection theGameCollection) {
-		this.theGameCollection = theGameCollection;
+	public GameCollection getGameCollection(){
+		return theGameCollection;
 	}
 	public int getRoamingAliens(){
 		return roamingAliens;

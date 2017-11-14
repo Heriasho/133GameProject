@@ -2,6 +2,8 @@ package com.mycompany.a3;
 
 import java.util.Random;
 
+import com.codename1.ui.Graphics;
+import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 /*Probably want to make a singleton later on.*/
@@ -49,5 +51,12 @@ public class Spaceship extends Rescuers {
 		else if(size > 1024)
 			size =1024;
 		super.setSize(size);
+	}
+	public void draw(Graphics g, Point pCmpRelPrnt) {
+		g.setColor(this.getColor());
+		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
+		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
+		
+		g.fillTriangle(xLoc-20, yLoc-40, xLoc+20, yLoc-40, xLoc, yLoc+40);
 	}
 }
