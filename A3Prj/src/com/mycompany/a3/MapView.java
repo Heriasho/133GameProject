@@ -9,19 +9,19 @@ import com.codename1.ui.Container;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 
-public class MapView extends Container implements Observer{
+public class MapView extends Container implements Observer {
 	private Graphics myGraphics;
 	private GameWorld gw;
 	private GameCollection gcp;
 	private GameObject obj;
-	
+
 	public MapView(GameWorld gw) {
 		this.gw = gw;
 		gcp = gw.getGameCollection();
 		this.getAllStyles().setBgTransparency(255);
-		this.getAllStyles().setBgColor(ColorUtil.CYAN);
+		this.getAllStyles().setBgColor(ColorUtil.GRAY);
 	}
-	
+
 	public void paint(Graphics g) {
 		super.paint(g);
 		Point pCmpRelPrnt = new Point(getX(), getY());

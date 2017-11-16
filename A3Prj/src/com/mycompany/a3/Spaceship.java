@@ -2,6 +2,7 @@ package com.mycompany.a3;
 
 import java.util.Random;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
@@ -53,10 +54,11 @@ public class Spaceship extends Rescuers {
 		super.setSize(size);
 	}
 	public void draw(Graphics g, Point pCmpRelPrnt) {
-		g.setColor(this.getColor());
+		//g.setColor(this.getColor());
+		g.setColor(ColorUtil.GREEN);
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
-		
-		g.fillTriangle(xLoc-20, yLoc-40, xLoc+20, yLoc-40, xLoc, yLoc+40);
+		g.fillRect(xLoc, yLoc, 20, 20);
+		//g.fillTriangle(xLoc-20, yLoc-40, xLoc+20, yLoc-40, xLoc, yLoc+40);
 	}
 }

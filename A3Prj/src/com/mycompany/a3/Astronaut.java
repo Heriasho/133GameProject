@@ -56,11 +56,13 @@ public class Astronaut extends Opponents {
 	}
 	
 	public void draw(Graphics g, Point pCmpRelPrnt) {
-		g.setColor(this.getColor());
+		//g.setColor(this.getColor());
+		g.setColor(ColorUtil.YELLOW);
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
 		
-		g.fillRect(xLoc, yLoc, 30, 50);
+		//g.fillRect(xLoc, yLoc, 30, 50);
+		g.fillTriangle(xLoc-20, yLoc-50, xLoc+20, yLoc-50, xLoc, yLoc+50);
 		//System.out.println("asteroid running");
 		
 	}

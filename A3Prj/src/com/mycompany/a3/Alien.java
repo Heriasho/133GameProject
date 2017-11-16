@@ -2,6 +2,7 @@ package com.mycompany.a3;
 
 import java.util.Random;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
@@ -29,11 +30,12 @@ public class Alien extends Opponents {
 		
 	}
 	public void draw(Graphics g, Point pCmpRelPrnt) {
-		g.setColor(this.getColor());
+		//g.setColor(this.getColor());
+		g.setColor(ColorUtil.BLUE);
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
-		
-		g.fillRect(xLoc, yLoc, 30, 50);
+		int r = 20;
+		g.fillArc(xLoc, yLoc, 2*r, 2*r, 0, 360);
 		//System.out.println("asteroid running");
 		
 	}
