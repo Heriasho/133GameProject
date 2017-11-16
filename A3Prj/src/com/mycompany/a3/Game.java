@@ -89,7 +89,7 @@ public class Game extends Form implements Runnable {
 		StatsCommand statsCommand = new StatsCommand(gw);
 		FightCommand myFightCommand = new FightCommand(gw);
 		QuitCommand myQuitCommand = new QuitCommand();
-		SoundCheckCommand soundCheck = new SoundCheckCommand(gw);
+		SoundCheckCommand soundCheckCommand = new SoundCheckCommand(gw);
 		
 		
 		/*Set the commands for the buttons*/
@@ -135,12 +135,14 @@ public class Game extends Form implements Runnable {
 		
 		/*Score view*/
 		this.add(BorderLayout.NORTH, sv);
-		CheckBox soundCheckBox = new CheckBox();	
+		CheckBox soundCheckBox = new CheckBox("Sound");	
 		soundCheckBox.getAllStyles().setBgTransparency( 255 );
 		soundCheckBox.getAllStyles().setBgColor( ColorUtil.rgb( 150, 150, 150 ) ); //Mild Gray
 		soundCheckBox.setText( "Turn Sound OFF / ON" );
-		soundCheckBox.setCommand(soundCheck);
-		this.add(soundCheckBox);
+		soundCheckBox.setSelected(true);
+		soundCheckBox.setCommand(soundCheckCommand);
+		soundCheckCommand.putClientProperty("sideComponent", soundCheckBox);
+		this.add(BorderLayout.NORTH,soundCheckBox);
 	
 		/*Map View*/
 		this.add(BorderLayout.CENTER, mv);
@@ -188,7 +190,7 @@ public class Game extends Form implements Runnable {
 		myToolbar.addCommandToSideMenu(myQuitCommand);
 		/*Tool bar Setup*/
 				
-		show();
+		this.show();
 	}
 	
 	private void init() {

@@ -19,14 +19,18 @@ public class GameWorld extends Observable {
 	private int speed;
 	private int speedMulti;
 	private boolean sound;
-	private int screenHeight = 768;
-	private int screenWidth = 1024;
-	private Random random = new Random();
+	private int screenHeight;
+	private int screenWidth;
+	private Random random;
 	private GameCollection theGameCollection;
-	private ArrayList<GameObject> gameObject = new ArrayList<GameObject>();
+	private ArrayList<GameObject> gameObject;
+	private Vector<Observer> myObserverList;
 	
-	/*Set the initial state of the game*/
-	public void init() {
+	public GameWorld(){
+		//random = new Random();
+		theGameCollection = new GameCollection(); //Collection of all objects
+		gameObject = new ArrayList<GameObject>(); //Array list of GameObjects
+		myObserverList = new Vector<Observer>();
 		roamingAliens = 3;
 		rescuedAliens = 0;
 		roamingAstronauts = 3;
@@ -35,12 +39,35 @@ public class GameWorld extends Observable {
 		tickTime = 1000;
 		speed = 5;
 		speedMulti = 1;
+		screenHeight = 768;
+		screenWidth = 1024;
 		sound = true;
+		//this.logicBoy();
+		init();
+	}
+/*	public void logicBoy(){
+//		Iiterator theIterator = theGameCollection.getIterator();
+//		theGameCollection.add("Hello");
+//		theGameCollection.add("There");
+//		System.out.println(theIterator.getNext());
+//		System.out.println(theIterator.toString());
+//		//Astronaut astroboy = new Astronaut(ColorUtil.MAGENTA, 20 , 15, speed, speedMulti);
+//		//gameObject.add(astroboy);
+//		while(theIterator.hasNext())
+//		{
+//			System.out.print("THERE WAS SOMETHING HERE:   ");
+//			//GameObject obj = (GameObject) theIterator.getNext();
+//			//System.out.println(obj);
+//		}
+	} */
+	/*Set the initial state of the game*/
+	public void init() {
 		initialSpawn();
 		addSpaceship();
 		updateGameWorld();
 	}
 	public void initialSpawn() {
+		//System.out.print(getTheGameCollectionSize());
 		for(int i = 0; i < roamingAliens; ++i) {
 			//Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti);
 			//theGameCollection.add((GameObject) alien); 
@@ -53,11 +80,13 @@ public class GameWorld extends Observable {
 		}
 	}
 	public void addAlien(){
-		theGameCollection.add(new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti));
+		theGameCollection.add((GameObject)new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti));
+		System.out.println("Game Collection Size: " + theGameCollection.getSize());
 		updateGameWorld();
 	}
 	public void addAstro(){
-		theGameCollection.add(new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti));
+		theGameCollection.add((GameObject)new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti));
+		System.out.println("Game Collection Size: " + theGameCollection.getSize());
 		updateGameWorld();
 	}
 	public void addSpaceship(){
@@ -294,5 +323,8 @@ public class GameWorld extends Observable {
 	public void setSound(boolean b) {
 		this.sound = b;
 		updateGameWorld();
+	}
+	public void addObserver(Observer o) {          //add observers to observer list
+		myObserverList.add(o);
 	}
 }

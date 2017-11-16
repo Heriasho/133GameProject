@@ -5,81 +5,69 @@ import java.util.Vector;
 public class GameCollection implements Icollection {         //Class to hold Game Objects, has same functionality as vector,
 	 													     //but an Iterator can be implemented
 	private Vector collection;
-	
-
+	/*DECLARE THE DAMN COLLECTION*/
 	public GameCollection() {
-		
 		collection = new Vector();
 	}
-	
+	/*A function that takes an object as a parameter and adds it to the collection.*/
 	public void add(Object obj) {                        
-		
 		collection.addElement(obj);
 	}
-	
-	public Iiterator getIterator() {                          // the iterator
-		
+	/*An Iiterator function that returns a new Game Collection Iterator*/
+	public Iiterator getIterator() {                       
 		return new GameCollectionIterator();
 	}
-	
+	/*A function that returns the int collection size.*/
 	public int getSize() {
-		
 		return collection.size();
 		
 	}
-
-	public GameObject get(int n) {           // not being used
-		
+	/*A function that takes in a paremter int n and returns a Game Object collection at position n*/
+	public GameObject get(int n) {          
 		return (GameObject) collection.get(n);
 	}
-
+	/*A function that takes in a paremeter int n and removes a collection object at position n*/
 	public void remove(int n) {            // not being used
-		
 		collection.remove(n); 
 	}
-
 	
 	private class GameCollectionIterator implements Iiterator {
 		
 		private int currIndex;	                     //The current place of the Iterator
 		
-		
-		public GameCollectionIterator() {               // This is the default constructor. This will simply set the Index to -1 so
-			                                            // that the entire algorithm works.
+		/*Default constructor that will simply set the index to -1*/
+		public GameCollectionIterator() {                                               
 			currIndex = -1;
 		}
 
-		public boolean hasNext() {                     //Checks if there is another element in the list
+		/*A boolean function that checks to see if there is another element in the list.
+		 * If the list is empty returns false, else return true*/
+		public boolean hasNext() {                     
 			
-			if ( collection.size() <= 0 )                   //Check for 'empty list'
+			if ( collection.size() <= 0 )                  
 			{	
 				return false;                               
 			}
-			if ( currIndex == (collection.size() - 1))   //Check for 'end-of-list'
+			if ( currIndex == (collection.size() - 1))   
 			{	
 				return false;
 			}
-			return true;	//Otherwise there is another element
+			return true;
 		}
 		
-		
-		public Object getNext() {                                //Gets the next element. Should be used in conjunction with hasNext().
-			
-			currIndex++;	                                  //Increment to next element true element location
+		/*Increments current index by 1 & returns the next collection element */
+		public Object getNext() {     	
+			currIndex++;	                                  
 			return collection.elementAt(currIndex);
 		}
-		
-		public void removeIt() {                     //remove current object
-			
+		/*Removes the collection object located at the current index.*/
+		public void removeIt() { 
 			collection.remove(currIndex);
 			currIndex--;
 		}
-		
-		public int getIndex() {              // not being used
-			
+		/*A function that returns the current index.*/
+		public int getIndex() {        
 			return currIndex;
-		}
-		
-		
-	}	//end of private GameCollectionIterator
+		}	
+	}	
 }

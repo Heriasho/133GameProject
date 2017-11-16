@@ -54,6 +54,7 @@ public class Astronaut extends Opponents {
 	
 		return ColorUtil.rgb(red * getSpeed() / originalSpeed, green * getSpeed() / originalSpeed, blue * getSpeed() / originalSpeed);
 	}
+	
 	public void draw(Graphics g, Point pCmpRelPrnt) {
 		g.setColor(this.getColor());
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative

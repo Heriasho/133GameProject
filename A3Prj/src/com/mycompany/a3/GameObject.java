@@ -5,7 +5,7 @@ import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 
-public abstract class GameObject extends GameWorld implements IDrawable {
+public abstract class GameObject implements IDrawable {
 	
 	private String name;
 	private int screenHeight;
@@ -24,8 +24,6 @@ public abstract class GameObject extends GameWorld implements IDrawable {
 	public void setScreenHeight(int screenHeight){
 		this.screenHeight = screenHeight;
 	}
-	
-	
 	public int getScreenWidth() {
 		return screenWidth;
 	}

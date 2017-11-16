@@ -17,15 +17,13 @@ public abstract class Opponents extends GameObject implements Imove {
 	public void setDirection(int direction) {
 		this.direction = direction % 360;
 	}
-	
-	
+
 	public int getSpeed() {
 		return speed;
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed & speedMultiplier;
 	}
-	
 	
 	public int getSpeedMultiplier() {
 		return speedMultiplier;
