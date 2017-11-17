@@ -6,7 +6,7 @@ import com.codename1.ui.events.ActionEvent;
 public class PauseCommand extends Command{
 	private Game game;
 	public PauseCommand(Game game) {
-		super("Right");
+		super("Pause");
 		this.game = game;
 	}
 	@Override

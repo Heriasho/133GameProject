@@ -47,17 +47,12 @@ public abstract class Opponents extends GameObject implements Imove {
 		setDirection(getDirection() + 5);
 		System.out.println("MOVE IS CALLED");
 		System.out.println(getLocation());
-
 		double time = tickTime;
 		double distance = getSpeed() * time;
-		
 		int direction = getDirection();
 		double radDirection = direction * (Math.PI / 180.0);
-		
-		
 		double deltaX = Math.cos(radDirection) * distance;
 		double deltaY = Math.sin(radDirection) * distance;
-		
 		System.out.println("Direction: " + direction);
 		System.out.println("Radians: " + radDirection);
 		System.out.println("deltaX: " + deltaX);
@@ -97,7 +92,6 @@ public abstract class Opponents extends GameObject implements Imove {
 
 			newLoc = new Point2D(newLoc.getX() + deltaX, newLoc.getY() + deltaY);
 		}
-
 		System.out.println(newLoc);
 		setLocation(newLoc);
 	}

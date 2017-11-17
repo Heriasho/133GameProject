@@ -132,11 +132,22 @@ public class GameWorld extends Observable {
 	public void tick(int time) {// XXX:Need to move the opponents
 		Iiterator iter = theGameCollection.getIterator();
 		while (iter.hasNext()) {
-			//Iiterator ite = theGameCollection.getIterator();
 			GameObject object = (GameObject) iter.getNext();
 			if (object instanceof Opponents) {
 				((Opponents) object).move(time);
 				System.out.println("An Opponent moved");
+				ICollider currentObject = (ICollider) iter.getNext();
+				Iiterator iter2 = theGameCollection.getIterator();
+				while(iter2.hasNext()){
+					ICollider otherObject = (ICollider) iter2.getNext();
+					if(currentObject != otherObject){
+						if(currentObject.collidesWith(otherObject)){
+							currentObject.handleCollision(otherObject);
+							System.out.println(currentObject + " has collided with " + otherObject);
+						}
+					}
+				}
+
 				updateGameWorld();
 			}
 		}

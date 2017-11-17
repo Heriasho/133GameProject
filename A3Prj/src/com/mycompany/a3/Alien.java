@@ -39,14 +39,29 @@ public class Alien extends Opponents {
 		//System.out.println("asteroid running");
 		
 	}
-
-	public boolean collidesWith(ICollider otherObject) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public void handleCollision(ICollider otherObject) {
-		// TODO Auto-generated method stub
+	/*#XXX Radius check the two objects to check if they are colliding.
+	 * */
+	@Override
+	public boolean collidesWith(ICollider obj) {
+		boolean result = false;
+		int xLoc = (int) getLocation().getX() + (getScreenHeight()/2);
+		int yLoc = (int) getLocation().getY() + (getScreenHeight()/2);
+		int otherLocX = (int) ((GameObject) obj).getLocation().getX() + (getScreenHeight()/2);
+		int otherLocY = (int) ((GameObject) obj).getLocation().getY() + (getScreenHeight()/2);
 		
+		int dx = xLoc - otherLocX;
+		int dy = yLoc - otherLocY;
+		int distanceBetweenSquared = (dx*dx + dy*dy);
+		int thisRadius = (getScreenHeight()/2);
+		int otherRadius = (getScreenHeight()/2);
+		int radiusSquared = (thisRadius*thisRadius + 2*thisRadius*otherRadius + otherRadius*otherRadius);
+		if(distanceBetweenSquared <= radiusSquared){
+			result = true;
+			System.out.println("Two objects collided");
+		}
+		return result ;
+	}
+	public void handleCollision(ICollider otherObject) {
+		System.out.println("THE BOIZ ARE BACK IN TOWN!!");
 	}
 }
