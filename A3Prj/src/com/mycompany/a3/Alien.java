@@ -35,7 +35,7 @@ public class Alien extends Opponents {
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
 		int r = 20;
-		g.fillArc(xLoc, yLoc, 2*r, 2*r, 0, 360);
+		g.fillArc(xLoc-((2*r)/2), yLoc-((2*r)/2), 2*r, 2*r, 0, 360);
 		//System.out.println("asteroid running");
 		
 	}

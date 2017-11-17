@@ -1,6 +1,7 @@
 package com.mycompany.a3;
 
 import com.codename1.charts.util.ColorUtil;
+import com.codename1.ui.geom.Point2D;
 
 import java.util.ArrayList;
 import java.util.Observer;
@@ -27,13 +28,11 @@ public class GameWorld extends Observable {
 	private int screenWidth;
 	private Random random;
 	private GameCollection theGameCollection;
-	private ArrayList<GameObject> gameObject;
 	private Vector<Observer> myObserverList;
 
 	public GameWorld() {
-		// random = new Random();
+		random = new Random();
 		theGameCollection = new GameCollection(); // Collection of all objects
-		gameObject = new ArrayList<GameObject>(); // Array list of GameObjects
 		myObserverList = new Vector<Observer>();
 		roamingAliens = 3;
 		rescuedAliens = 0;
@@ -46,7 +45,6 @@ public class GameWorld extends Observable {
 		screenHeight = 768;
 		screenWidth = 1024;
 		sound = true;
-		init();
 	}
 
 	/* Set the initial state of the game */
@@ -103,18 +101,23 @@ public class GameWorld extends Observable {
 	 * A method called when an alien is instanceof another alien. If so, they
 	 * bred a new gameObject alien that spawns close to one of them.
 	 */
-	public void bred() {
+	public void bred() { // XXX fucking hell
 		if (roamingAliens < 2) {
 			System.out.println("Error: Requires two aliens!");
 			return;
 		}
 		Alien a = getRandomAlien();
+		
 		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,
 				speedMulti);
 		theGameCollection.add((GameObject) b);
-		b.setLocation(a.getLocation());
-		b.move((int) ((a.getSize() + 5.0) / 5.0) * 1000);
+		roamingAliens++;
+		double x = a.getLocation().getX() + 40;
+		double y = a.getLocation().getY() + 40;
+		Point2D p = new Point2D(x, y);
+		b.setLocation(p);
 		System.out.println("Two aliens bred.");
+		
 	}
 
 	/*
@@ -134,8 +137,10 @@ public class GameWorld extends Observable {
 	}
 
 	/* A method that moves the opponents game objects at a set pace. */
-	public void tick() { // #TODO fix this shit
-		for (GameObject object : gameObject) {
+	public void tick() {
+		Iiterator iter = theGameCollection.getIterator();
+		while (iter.hasNext()) {
+			GameObject object = (GameObject) iter.getNext();
 			if (object instanceof Opponents) {
 				((Opponents) object).move(tickTime);
 			}
@@ -160,8 +165,6 @@ public class GameWorld extends Observable {
 
 	/* Print a 'map' showing the current world state. */
 	public void map() {
-		// for(GameObject object : gameObject)
-		// System.out.println(object);
 		Iiterator theIterator = theGameCollection.getIterator();
 		while (theIterator.hasNext()) {
 			GameObject obj = (GameObject) theIterator.getNext();
@@ -192,7 +195,7 @@ public class GameWorld extends Observable {
 	 * Gets a spaceship & checks to see if Opponents are instanceof it. If so,
 	 * the opponents are 'rescued' & removed from the gameworld.
 	 */
-	public void openDoor() { // XXX: Currently fixin this
+	public void openDoor() {
 		System.out.println("The spaceship door has opened.");
 		Spaceship sp = getTheSpaceship();
 		ArrayList<Integer> remove = new ArrayList<>();
@@ -247,10 +250,8 @@ public class GameWorld extends Observable {
 		sp.moveDown(); // Null pointer exception
 	}
 
-	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) { // XXX:
-																		// Probably
-																		// work
-		// but not 100% sure
+	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {
+		// XXX:Probably works but not 100% sure
 		if (ary.size() <= 1)
 			return ary;
 		List<Integer> a1 = ary.subList(0, ary.size() / 2);
@@ -323,10 +324,21 @@ public class GameWorld extends Observable {
 
 	/* While there is at least 1 alien remaining, returns a random alien. */
 	private Alien getRandomAlien() {
-		while (roamingAliens >= 0) {
-			int i = random.nextInt(12); // Nullpointer exception //0-max size
-			if (theGameCollection.get(i) instanceof Alien)
-				return (Alien) theGameCollection.get(i);
+		if (roamingAliens > 0) {
+			while (true) {
+				int[] alienPositions = new int[roamingAliens];
+				int pos = 0;
+				Iiterator iter = theGameCollection.getIterator();
+				while (iter.hasNext()) {
+					GameObject gObject = (GameObject) iter.getNext();
+					if (gObject instanceof Alien) {
+						alienPositions[pos] = iter.getIndex();
+						pos++;
+					}
+				}
+				return (Alien) (theGameCollection.get(alienPositions[random
+						.nextInt(roamingAliens)]));
+			}
 		}
 		return null;
 	}
@@ -347,10 +359,22 @@ public class GameWorld extends Observable {
 	 * astronaut.
 	 */
 	private Astronaut getRandomAstronaut() {
-		while (roamingAstronauts > 0) {
-			int i = random.nextInt(gameObject.size());
-			if (gameObject.get(i) instanceof Astronaut)
-				return (Astronaut) gameObject.get(i);
+		if (roamingAstronauts > 0) {
+			while (true) {
+				int[] astronautPositions = new int[roamingAstronauts];
+				int pos = 0;
+				Iiterator iter = theGameCollection.getIterator();
+				while (iter.hasNext()) {
+					GameObject gObject = (GameObject) iter.getNext();
+					if (gObject instanceof Astronaut) {
+						astronautPositions[pos] = iter.getIndex();
+						pos++;
+					}
+				}
+				return (Astronaut) (theGameCollection
+						.get(astronautPositions[random
+								.nextInt(roamingAstronauts)]));
+			}
 		}
 		return null;
 	}
