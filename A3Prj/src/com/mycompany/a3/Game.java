@@ -43,10 +43,6 @@ public class Game extends Form implements Runnable {
 	private GameWorld gw;
 	private MapView mv;
 	private ScoreView sv;
-	private boolean confirm = false;
-	private AboutCommand aboutCommand;
-	private HelpCommand helpCommand;
-	private TeleportToAlienCommand teleToAlienCommand;
 	private static UITimer timer;
 	private int time;
 	private boolean toggle;
