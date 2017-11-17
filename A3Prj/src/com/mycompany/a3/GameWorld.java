@@ -55,17 +55,10 @@ public class GameWorld extends Observable {
 	}
 
 	public void initialSpawn() {
-		// System.out.print(getTheGameCollectionSize());
 		for (int i = 0; i < roamingAliens; ++i) {
-			// Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight,
-			// screenWidth, speed, speedMulti);
-			// theGameCollection.add((GameObject) alien);
 			addAlien();
 		}
 		for (int i = 0; i < roamingAstronauts; ++i) {
-			// Astronaut astronaut = new Astronaut(ColorUtil.GREEN,
-			// screenHeight, screenWidth, speed, speedMulti);
-			// theGameCollection.add((GameObject) astronaut);
 			addAstro();
 		}
 	}
@@ -107,7 +100,6 @@ public class GameWorld extends Observable {
 			return;
 		}
 		Alien a = getRandomAlien();
-		
 		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,
 				speedMulti);
 		theGameCollection.add((GameObject) b);
@@ -137,12 +129,15 @@ public class GameWorld extends Observable {
 	}
 
 	/* A method that moves the opponents game objects at a set pace. */
-	public void tick() {
+	public void tick(int time) {// XXX:Need to move the opponents
 		Iiterator iter = theGameCollection.getIterator();
 		while (iter.hasNext()) {
+			//Iiterator ite = theGameCollection.getIterator();
 			GameObject object = (GameObject) iter.getNext();
 			if (object instanceof Opponents) {
-				((Opponents) object).move(tickTime);
+				((Opponents) object).move(time);
+				System.out.println("An Opponent moved");
+				updateGameWorld();
 			}
 		}
 		System.out.println("Game has advanced by " + tickTime + " ms = "
@@ -233,6 +228,7 @@ public class GameWorld extends Observable {
 	 * gameworld.
 	 */
 	private void rescueAnObject(GameObject object) {
+		// XXX:Gotta confirm this works later.
 		if (object instanceof Alien) {
 			score -= 10;
 			roamingAliens -= 1;
@@ -244,14 +240,8 @@ public class GameWorld extends Observable {
 		}
 	}
 
-	/* Moves the spaceship down */
-	public void moveSpaceShipDown() {
-		Spaceship sp = getTheSpaceship();
-		sp.moveDown(); // Null pointer exception
-	}
 
-	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {
-		// XXX:Probably works but not 100% sure
+	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {// XXX:Probably works but not 100% sure
 		if (ary.size() <= 1)
 			return ary;
 		List<Integer> a1 = ary.subList(0, ary.size() / 2);
@@ -280,19 +270,24 @@ public class GameWorld extends Observable {
 	/* Moves the spaceship left */
 	public void moveSpaceShipLeft() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveLeft(); // Null pointer exception
+		sp.moveLeft();
 	}
 
 	/* Moves the spaceship right */
 	public void moveSpaceShipRight() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveRight(); // Null pointer exception
+		sp.moveRight();
 	}
 
 	/* Moves the spaceship up */
 	public void moveSpaceShipUp() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveUp(); // Null pointer exception
+		sp.moveUp();
+	}
+	/* Moves the spaceship down */
+	public void moveSpaceShipDown() {
+		Spaceship sp = getTheSpaceship();
+		sp.moveDown(); // Null pointer exception
 	}
 
 	/* Teleports the spaceship to a random alien */

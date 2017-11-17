@@ -34,10 +34,12 @@ import com.codename1.ui.util.UITimer;
 
 
 
+
 //import java.io.IOException;
 import java.lang.String;
 
 public class Game extends Form implements Runnable {
+	private Game game;
 	private GameWorld gw;
 	private MapView mv;
 	private ScoreView sv;
@@ -45,19 +47,21 @@ public class Game extends Form implements Runnable {
 	private AboutCommand aboutCommand;
 	private HelpCommand helpCommand;
 	private TeleportToAlienCommand teleToAlienCommand;
-	private UITimer timer;
+	private static UITimer timer;
+	private int time;
+	private boolean toggle;
 	
 	public Game() {
 		gw = new GameWorld();
 		gw.init();	
 		mv = new MapView(gw);
 		sv = new ScoreView(gw);
-		timer = new UITimer(this);
-		timer.schedule(20,true, this);
+		setTimer(new UITimer(this));
+		time = 10;
+		getTimer().schedule(time,true, this);
 		
 		gw.addObserver(mv);
 		gw.addObserver(sv);
-		
 		/*Button Creation & Command setup*/
 		Button teleToAlienButton = new CButton("TeleToAlien");
 		Button teleToAstroButton = new CButton("TeleToAstro");
@@ -73,6 +77,7 @@ public class Game extends Form implements Runnable {
 		Button bredButton = new CButton("Bred");
 		Button fightButton = new CButton("Fight");
 		Button tickButton = new CButton("Tick");
+		Button pauseButton = new CButton("Pause");
 	
 		/*Creating the commands*/
 		AboutCommand aboutCommand = new AboutCommand();
@@ -88,12 +93,11 @@ public class Game extends Form implements Runnable {
 		MapCommand mapCommand = new MapCommand(gw);
 		BredCommand bredCommand = new BredCommand(gw);
 		OpenDoorCommand openDoorCommand = new OpenDoorCommand(gw);
-		TickCommand tickCommand = new TickCommand(gw);
 		StatsCommand statsCommand = new StatsCommand(gw);
 		FightCommand myFightCommand = new FightCommand(gw);
 		QuitCommand myQuitCommand = new QuitCommand();
 		SoundCheckCommand soundCheckCommand = new SoundCheckCommand(gw);
-		
+		PauseCommand pauseCommand = new PauseCommand(game);
 		
 		/*Set the commands for the buttons*/
 		teleToAlienButton.setCommand(teleToAlienCommand);
@@ -108,8 +112,8 @@ public class Game extends Form implements Runnable {
 		bredButton.setCommand(bredCommand);
 		fightButton.setCommand(myFightCommand);
 		openDoorButton.setCommand(openDoorCommand);
-		tickButton.setCommand(tickCommand);
 		statsButton.setCommand(statsCommand);
+		pauseButton.setCommand(pauseCommand);
 
 		/*Adding key listeners to call commands*/
 		addKeyListener('c', compressCommand);
@@ -123,7 +127,6 @@ public class Game extends Form implements Runnable {
 		addKeyListener('q', myQuitCommand);
 		addKeyListener('f', myFightCommand);
 		addKeyListener('b', bredCommand);
-		addKeyListener('t', tickCommand);
 		addKeyListener('s', openDoorCommand);
 		addKeyListener('a', teleToAlienCommand);
 		addKeyListener('o', teleToAstroCommand);
@@ -184,6 +187,7 @@ public class Game extends Form implements Runnable {
 		//bottomContainer.add(bredButton);
 		//bottomContainer.add(fightButton);
 		//bottomContainer.add(tickButton);
+		bottomContainer.add(pauseButton);
 		/*South bar setup*/
 		
 		/*Tool bar Setup*/
@@ -207,10 +211,28 @@ public class Game extends Form implements Runnable {
 	private void destroy() {
 		
 	}
+	public void pause(){
+		toggle = !toggle;
+		if(toggle){
+			timer.cancel();
+		}
+		else{
+			timer.schedule(time, true, this);
+		} 
+	}
 
 	public void run() {
 		// TODO Auto-generated method stub
-		mv.repaint();
+		gw.tick(time);
+		repaint();
+	}
+
+	public UITimer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(UITimer timer) {
+		this.timer = timer;
 	}
 
 }
