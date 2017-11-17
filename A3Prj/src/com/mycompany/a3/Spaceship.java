@@ -61,4 +61,12 @@ public class Spaceship extends Rescuers {
 		g.fillRect(xLoc, yLoc, 20, 20);
 		//g.fillTriangle(xLoc-20, yLoc-40, xLoc+20, yLoc-40, xLoc, yLoc+40);
 	}
+	public boolean collidesWith(ICollider otherObject) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public void handleCollision(ICollider otherObject) {
+		// TODO Auto-generated method stub
+		
+	}
 }

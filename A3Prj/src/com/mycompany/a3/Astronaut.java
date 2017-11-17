@@ -66,4 +66,14 @@ public class Astronaut extends Opponents {
 		//System.out.println("asteroid running");
 		
 	}
+
+	public boolean collidesWith(ICollider otherObject) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void handleCollision(ICollider otherObject) {
+		// TODO Auto-generated method stub
+		
+	}
 }

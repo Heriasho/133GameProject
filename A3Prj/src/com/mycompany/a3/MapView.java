@@ -14,6 +14,7 @@ public class MapView extends Container implements Observer {
 	private GameWorld gw;
 	private GameCollection gcp;
 	private GameObject obj;
+	private final boolean debug = false;
 
 	public MapView(GameWorld gw) {
 		this.gw = gw;
@@ -25,9 +26,9 @@ public class MapView extends Container implements Observer {
 	public void paint(Graphics g) {
 		super.paint(g);
 		Point pCmpRelPrnt = new Point(getX(), getY());
-
-		System.out.println("paint running!");
-
+		if (debug) {
+			System.out.println("paint running!");
+		}
 		Iiterator drawGameIterator = gcp.getIterator();
 		while (drawGameIterator.hasNext()) {
 			obj = (GameObject) drawGameIterator.getNext();

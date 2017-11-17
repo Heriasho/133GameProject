@@ -5,7 +5,7 @@ import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 
-public abstract class GameObject implements IDrawable {
+public abstract class GameObject implements IDrawable, ICollider {
 	
 	private String name;
 	private int screenHeight;

@@ -42,6 +42,9 @@ public class Game extends Form implements Runnable {
 	private MapView mv;
 	private ScoreView sv;
 	private boolean confirm = false;
+	private AboutCommand aboutCommand;
+	private HelpCommand helpCommand;
+	private TeleportToAlienCommand teleToAlienCommand;
 	private UITimer timer;
 	
 	public Game() {
@@ -178,9 +181,9 @@ public class Game extends Form implements Runnable {
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
 		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
-		bottomContainer.add(bredButton);
-		bottomContainer.add(fightButton);
-		bottomContainer.add(tickButton);
+		//bottomContainer.add(bredButton);
+		//bottomContainer.add(fightButton);
+		//bottomContainer.add(tickButton);
 		/*South bar setup*/
 		
 		/*Tool bar Setup*/
@@ -207,7 +210,7 @@ public class Game extends Form implements Runnable {
 
 	public void run() {
 		// TODO Auto-generated method stub
-		gw.tick();
+		mv.repaint();
 	}
 
 }

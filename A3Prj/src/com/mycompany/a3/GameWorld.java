@@ -7,6 +7,10 @@ import java.util.Observer;
 import java.util.Random;
 import java.util.Observable;
 import java.util.Vector;
+import java.util.Collections;
+import java.util.List;
+import java.lang.Integer;
+
 //import java.util.Hashtable;
 
 public class GameWorld extends Observable {
@@ -25,11 +29,11 @@ public class GameWorld extends Observable {
 	private GameCollection theGameCollection;
 	private ArrayList<GameObject> gameObject;
 	private Vector<Observer> myObserverList;
-	
-	public GameWorld(){
-		//random = new Random();
-		theGameCollection = new GameCollection(); //Collection of all objects
-		gameObject = new ArrayList<GameObject>(); //Array list of GameObjects
+
+	public GameWorld() {
+		// random = new Random();
+		theGameCollection = new GameCollection(); // Collection of all objects
+		gameObject = new ArrayList<GameObject>(); // Array list of GameObjects
 		myObserverList = new Vector<Observer>();
 		roamingAliens = 3;
 		rescuedAliens = 0;
@@ -42,165 +46,191 @@ public class GameWorld extends Observable {
 		screenHeight = 768;
 		screenWidth = 1024;
 		sound = true;
-		//this.logicBoy();
 		init();
 	}
-/*	public void logicBoy(){
-//		Iiterator theIterator = theGameCollection.getIterator();
-//		theGameCollection.add("Hello");
-//		theGameCollection.add("There");
-//		System.out.println(theIterator.getNext());
-//		System.out.println(theIterator.toString());
-//		//Astronaut astroboy = new Astronaut(ColorUtil.MAGENTA, 20 , 15, speed, speedMulti);
-//		//gameObject.add(astroboy);
-//		while(theIterator.hasNext())
-//		{
-//			System.out.print("THERE WAS SOMETHING HERE:   ");
-//			//GameObject obj = (GameObject) theIterator.getNext();
-//			//System.out.println(obj);
-//		}
-	} */
-	/*Set the initial state of the game*/
+
+	/* Set the initial state of the game */
 	public void init() {
 		initialSpawn();
 		addSpaceship();
 		updateGameWorld();
 	}
+
 	public void initialSpawn() {
-		//System.out.print(getTheGameCollectionSize());
-		for(int i = 0; i < roamingAliens; ++i) {
-			//Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti);
-			//theGameCollection.add((GameObject) alien); 
+		// System.out.print(getTheGameCollectionSize());
+		for (int i = 0; i < roamingAliens; ++i) {
+			// Alien alien = new Alien(ColorUtil.MAGENTA, screenHeight,
+			// screenWidth, speed, speedMulti);
+			// theGameCollection.add((GameObject) alien);
 			addAlien();
 		}
-		for(int i = 0; i < roamingAstronauts; ++i) {
-			//Astronaut astronaut = new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti);
-			//theGameCollection.add((GameObject) astronaut);
+		for (int i = 0; i < roamingAstronauts; ++i) {
+			// Astronaut astronaut = new Astronaut(ColorUtil.GREEN,
+			// screenHeight, screenWidth, speed, speedMulti);
+			// theGameCollection.add((GameObject) astronaut);
 			addAstro();
 		}
 	}
-	public void addAlien(){
-		theGameCollection.add((GameObject)new Alien(ColorUtil.MAGENTA, screenHeight, screenWidth, speed, speedMulti));
-		System.out.println("Game Collection Size: " + theGameCollection.getSize());
+
+	public void addAlien() {
+		theGameCollection.add((GameObject) new Alien(ColorUtil.MAGENTA,
+				screenHeight, screenWidth, speed, speedMulti));
+		System.out.println("Game Collection Size: "
+				+ theGameCollection.getSize());
 		updateGameWorld();
 	}
-	public void addAstro(){
-		theGameCollection.add((GameObject)new Astronaut(ColorUtil.GREEN, screenHeight, screenWidth, speed, speedMulti));
-		System.out.println("Game Collection Size: " + theGameCollection.getSize());
+
+	public void addAstro() {
+		theGameCollection.add((GameObject) new Astronaut(ColorUtil.GREEN,
+				screenHeight, screenWidth, speed, speedMulti));
+		System.out.println("Game Collection Size: "
+				+ theGameCollection.getSize());
 		updateGameWorld();
 	}
-	public void addSpaceship(){
+
+	public void addSpaceship() {
 		theGameCollection.add((Spaceship.getSpaceship()));
 		updateGameWorld();
 	}
+
 	public void updateGameWorld() {
 		this.setChanged();
 		this.notifyObservers();
 		this.clearChanged();
 	}
-	/*A method called when an alien is instanceof another alien. If so, they bred a new gameObject alien that spawns close to one of them.*/
+
+	/*
+	 * A method called when an alien is instanceof another alien. If so, they
+	 * bred a new gameObject alien that spawns close to one of them.
+	 */
 	public void bred() {
-		if(roamingAliens < 2){
+		if (roamingAliens < 2) {
 			System.out.println("Error: Requires two aliens!");
 			return;
 		}
 		Alien a = getRandomAlien();
-		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed, speedMulti );
-		gameObject.add((GameObject) b);
+		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,
+				speedMulti);
+		theGameCollection.add((GameObject) b);
 		b.setLocation(a.getLocation());
-		b.move((int) ((a.getSize() + 5.0) /5.0) * 1000);
+		b.move((int) ((a.getSize() + 5.0) / 5.0) * 1000);
 		System.out.println("Two aliens bred.");
 	}
-	/*A method called when an alien is instanceof an astronaut. If so, the astronaut takes damage, changes color shade, & reduces in speed.*/
+
+	/*
+	 * A method called when an alien is instanceof an astronaut. If so, the
+	 * astronaut takes damage, changes color shade, & reduces in speed.
+	 */
 	public void fight() {
-		if(roamingAstronauts <= 0 || roamingAliens <= 0){
-			System.out.println("Error: Need at least 1 astronaut & alien to fight.");
+		if (roamingAstronauts <= 0 || roamingAliens <= 0) {
+			System.out
+					.println("Error: Need at least 1 astronaut & alien to fight.");
 			return;
 		}
 		Astronaut a = getRandomAstronaut();
 		a.damage();
-		System.out.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
+		System.out
+				.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
 	}
-	/*A method that moves the opponents game objects at a set pace.*/
-	public void tick() {
-		for(GameObject object : gameObject) {
-			if(object instanceof Opponents) {
+
+	/* A method that moves the opponents game objects at a set pace. */
+	public void tick() { // #TODO fix this shit
+		for (GameObject object : gameObject) {
+			if (object instanceof Opponents) {
 				((Opponents) object).move(tickTime);
 			}
 		}
-		System.out.println("Game has advanced by " + tickTime + " ms = " + tickTime/1000 + " ticks.");
+		System.out.println("Game has advanced by " + tickTime + " ms = "
+				+ tickTime / 1000 + " ticks.");
 	}
-	
-	/*Print the points of game state values:
-	 * current score
-	 * number of astronauts rescued
-	 * number of aliens sneaked in to the spaceship
-	 * number of astronauts left in the world
-	 * Output should be appropriately labeled in easily readable format*/
+
+	/*
+	 * Print the points of game state values: current score number of astronauts
+	 * rescued number of aliens sneaked in to the spaceship number of astronauts
+	 * left in the world Output should be appropriately labeled in easily
+	 * readable format
+	 */
 	public void stats() {
-		System.out.println("The score is: " + score 
-				+ "\nNumber of Astronauts rescused: " + rescuedAstronauts 
+		System.out.println("The score is: " + score
+				+ "\nNumber of Astronauts rescused: " + rescuedAstronauts
 				+ "\nNumber of Astronauts roaming: " + roamingAstronauts
 				+ "\nNumber of Aliens rescued: " + rescuedAliens
 				+ "\nNumber of Aliens roaming: " + roamingAliens);
 	}
-	
-	/*Print a 'map' showing the current world state.*/
+
+	/* Print a 'map' showing the current world state. */
 	public void map() {
-//		for(GameObject object : gameObject)
-//			System.out.println(object);
+		// for(GameObject object : gameObject)
+		// System.out.println(object);
 		Iiterator theIterator = theGameCollection.getIterator();
-		while(theIterator.hasNext())
-		{
+		while (theIterator.hasNext()) {
 			GameObject obj = (GameObject) theIterator.getNext();
 			System.out.println(obj);
 		}
 	}
-	/*Returns the score.*/
+
+	/* Returns the score. */
 	public void score() {
 		System.out.println("The score is: " + score);
 	}
-	/*Gets a spaceship & increases it's size through its expandDoor().*/
+
+	/* Gets a spaceship & increases it's size through its expandDoor(). */
 	public void expand() {
-		Spaceship sp  = getTheSpaceship();
-		sp.expandDoor();
+		Spaceship sp = getTheSpaceship();
+		sp.expandDoor(); // Null pointer exception
 		updateGameWorld();
 	}
-	/*Gets a spaceship & decreases it's size through its contractDoor().*/
+
+	/* Gets a spaceship & decreases it's size through its contractDoor(). */
 	public void compress() {
 		Spaceship sp = getTheSpaceship();
-		sp.contractDoor();
+		sp.contractDoor(); // Null pointer exception
 		updateGameWorld();
 	}
-	/*Gets a spaceship & checks to see if Opponents are instanceof it.
-	 * If so, the opponents are 'rescued' & removed from the gameworld.*/
-	public void openDoor() {
+
+	/*
+	 * Gets a spaceship & checks to see if Opponents are instanceof it. If so,
+	 * the opponents are 'rescued' & removed from the gameworld.
+	 */
+	public void openDoor() { // XXX: Currently fixin this
 		System.out.println("The spaceship door has opened.");
 		Spaceship sp = getTheSpaceship();
-		ArrayList<GameObject> remove = new ArrayList<GameObject>();
-		for(GameObject object : gameObject) {
-			if(object instanceof Opponents) {
+		ArrayList<Integer> remove = new ArrayList<>();
+		Iiterator iter = theGameCollection.getIterator();
+		while (iter.hasNext()) {
+			GameObject object = (GameObject) iter.getNext();
+			if (object instanceof Opponents) {
 				Opponents o = (Opponents) object;
-				double x = Math.abs(sp.getLocation().getX() - o.getLocation().getX());
-				double y = Math.abs(sp.getLocation().getY() - o.getLocation().getY());
-				if(x >= 0 && x <= sp.getSize() && y >= 0 && y <= sp.getSize()) {
+				double x = Math.abs(sp.getLocation().getX()
+						- o.getLocation().getX());
+				double y = Math.abs(sp.getLocation().getY()
+						- o.getLocation().getY());
+				if (x >= 0 && x <= sp.getSize() && y >= 0 && y <= sp.getSize()) {
 					rescueAnObject(object);
-					remove.add(object);
+					remove.add(iter.getIndex());
 					System.out.println("You've rescued a " + object);
 				}
 			}
-	}
-		/* Concurrency issue with for each loop, created delete ArrayList<GameObject>.
-		 * and remove after.
+		}
+		/*
+		 * Concurrency issue with for each loop, created delete
+		 * ArrayList<GameObject>. and remove after.
 		 */
-		for(GameObject object : remove)
-			gameObject.remove(object);
+		// Collections.sort(remove);
+		fuckingSort(remove);
+		for (int i = 0; i < remove.size(); i++) {
+			theGameCollection.remove(remove.get(i) - i);
+		}
 	}
-	/*Checks to see if a given gameobject is instanceof an alien or an astroanut.
-	 * Depending on which one the object is instanceof, score is modified & so is corresponding
-	 * trackers of aliens/astronauts in the gameworld.*/
+
+	/*
+	 * Checks to see if a given gameobject is instanceof an alien or an
+	 * astroanut. Depending on which one the object is instanceof, score is
+	 * modified & so is corresponding trackers of aliens/astronauts in the
+	 * gameworld.
+	 */
 	private void rescueAnObject(GameObject object) {
-		if(object instanceof Alien) {
+		if (object instanceof Alien) {
 			score -= 10;
 			roamingAliens -= 1;
 			rescuedAliens += 1;
@@ -210,121 +240,179 @@ public class GameWorld extends Observable {
 			rescuedAstronauts += 1;
 		}
 	}
-	/*Moves the spaceship down*/
+
+	/* Moves the spaceship down */
 	public void moveSpaceShipDown() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveDown();
+		sp.moveDown(); // Null pointer exception
 	}
-	/*Moves the spaceship left*/
+
+	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) { // XXX:
+																		// Probably
+																		// work
+		// but not 100% sure
+		if (ary.size() <= 1)
+			return ary;
+		List<Integer> a1 = ary.subList(0, ary.size() / 2);
+		List<Integer> a2 = ary.subList(ary.size() / 2, ary.size());
+		ArrayList<Integer> sorted = new ArrayList<>();
+		for (int i = 0; i < ary.size(); i++) {
+			if (a1.size() == 0) {
+				sorted.add(a1.get(0));
+				a1.remove(0);
+			} else if (a2.size() == 0) {
+				sorted.add(a2.get(0));
+				a2.remove(0);
+			} else {
+				if (a1.get(0) < a2.get(0)) {
+					sorted.add(a1.get(0));
+					a1.remove(0);
+				} else {
+					sorted.add(a2.get(0));
+					a2.remove(0);
+				}
+			}
+		}
+		return sorted;
+	}
+
+	/* Moves the spaceship left */
 	public void moveSpaceShipLeft() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveLeft();
+		sp.moveLeft(); // Null pointer exception
 	}
-	/*Moves the spaceship right*/
+
+	/* Moves the spaceship right */
 	public void moveSpaceShipRight() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveRight();
+		sp.moveRight(); // Null pointer exception
 	}
-	/*Moves the spaceship up*/
+
+	/* Moves the spaceship up */
 	public void moveSpaceShipUp() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveUp();
+		sp.moveUp(); // Null pointer exception
 	}
-	/*Teleports the spaceship to a random alien*/
+
+	/* Teleports the spaceship to a random alien */
 	public void teleportToAlien() {
 		Alien a;
 		Spaceship sp;
-		if(roamingAliens > 0){
+		if (roamingAliens > 0) {
 			sp = getTheSpaceship();
 			a = getRandomAlien();
 			sp.setLocation(a.getLocation());
 			System.out.println("You've teleported to an alien");
-		}
-		else
+		} else
 			System.out.println("Error: There were no aliens to jump to.");
 	}
-	/*Teleports the spaceship to a random astronaut*/
+
+	/* Teleports the spaceship to a random astronaut */
 	public void teleportToAstronaut() {
 		Astronaut a;
 		Spaceship sp;
-		if(roamingAstronauts > 0) {
+		if (roamingAstronauts > 0) {
 			sp = getTheSpaceship();
 			a = getRandomAstronaut();
 			sp.setLocation(a.getLocation());
-			System.out.println("You've teleported to an astronaut. \n Hope you didn't hit them.");
-		}
-		else 
+			System.out
+					.println("You've teleported to an astronaut. \n Hope you didn't hit them.");
+		} else
 			System.out.println("Error: Ther were no astronauts to jump to.");
 	}
-	/*While there is at least 1 alien remaining, returns a random alien.*/
+
+	/* While there is at least 1 alien remaining, returns a random alien. */
 	private Alien getRandomAlien() {
-		while(roamingAliens >= 0){
-			int i = random.nextInt(gameObject.size());
-			if(gameObject.get(i)instanceof Alien)
-				return (Alien) gameObject.get(i);
+		while (roamingAliens >= 0) {
+			int i = random.nextInt(12); // Nullpointer exception //0-max size
+			if (theGameCollection.get(i) instanceof Alien)
+				return (Alien) theGameCollection.get(i);
 		}
 		return null;
 	}
-	/*While there is a spaceship in the gameworld, returns the spaceship.*/
+
+	/* While there is a spaceship in the gameworld, returns the spaceship. */
 	private Spaceship getTheSpaceship() {
-		for(GameObject object : gameObject)
-			if(object instanceof Spaceship)
+		Iiterator iter = theGameCollection.getIterator();
+		while (iter.hasNext()) {
+			GameObject object = (GameObject) iter.getNext();
+			if (object instanceof Spaceship)
 				return (Spaceship) object;
+		}
 		return null;
 	}
-	/*While there is at least 1 astronaut remaining, returns a random astronaut.*/
+
+	/*
+	 * While there is at least 1 astronaut remaining, returns a random
+	 * astronaut.
+	 */
 	private Astronaut getRandomAstronaut() {
-		while(roamingAstronauts > 0) {
+		while (roamingAstronauts > 0) {
 			int i = random.nextInt(gameObject.size());
 			if (gameObject.get(i) instanceof Astronaut)
 				return (Astronaut) gameObject.get(i);
 		}
 		return null;
 	}
+
 	public int getTheGameCollectionSize() {
 		return theGameCollection.getSize();
 	}
-	public GameCollection getGameCollection(){
+
+	public GameCollection getGameCollection() {
 		return theGameCollection;
 	}
-	public int getRoamingAliens(){
+
+	public int getRoamingAliens() {
 		return roamingAliens;
 	}
-	public void setRoamingAliens(int value){
+
+	public void setRoamingAliens(int value) {
 		roamingAliens = value;
 	}
-	public int getRoamingAstronauts(){
+
+	public int getRoamingAstronauts() {
 		return roamingAstronauts;
 	}
-	public void setRoamingAstronauts(int value){
+
+	public void setRoamingAstronauts(int value) {
 		roamingAstronauts = value;
 	}
-	public int getRescuedAstronauts(){
+
+	public int getRescuedAstronauts() {
 		return rescuedAstronauts;
 	}
-	public void setRescuedAstronauts(int value){
+
+	public void setRescuedAstronauts(int value) {
 		rescuedAstronauts = value;
 	}
-	public int getRescuedAliens(){
+
+	public int getRescuedAliens() {
 		return rescuedAliens;
 	}
-	public void setRescuedAliens(int value){
+
+	public void setRescuedAliens(int value) {
 		rescuedAliens = value;
 	}
-	public int getScore(){
+
+	public int getScore() {
 		return score;
 	}
-	public void setScore(int value){
+
+	public void setScore(int value) {
 		score = value;
 	}
+
 	public boolean getSound() {
 		return sound;
 	}
+
 	public void setSound(boolean b) {
 		this.sound = b;
 		updateGameWorld();
 	}
-	public void addObserver(Observer o) {          //add observers to observer list
+
+	public void addObserver(Observer o) { // add observers to observer list
 		myObserverList.add(o);
 	}
 }
