@@ -3,6 +3,7 @@ package com.mycompany.a3;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.CheckBox;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
@@ -24,14 +25,11 @@ public class ScoreView extends Container implements Observer {
 		roamingAliens = new Label("Roaming Aliens : "+gw.getRescuedAliens());
 		rescuedAstronauts = new Label("Rescued Astronauts : "+gw.getRescuedAstronauts());
 		roamingAstronauts = new Label("Roaming Astronauts :"+gw.getRoamingAstronauts());
-		CheckBox soundCheckBox = new CheckBox("Sound");
-		soundCheckBox.setSelected(true);
 		this.add(score);
 		this.add(rescuedAliens);
 		this.add(roamingAliens);
 		this.add(rescuedAstronauts);
 		this.add(roamingAstronauts);
-		this.add(soundCheckBox);
 	}
 
 	public void update(Observable observable, Object data) {

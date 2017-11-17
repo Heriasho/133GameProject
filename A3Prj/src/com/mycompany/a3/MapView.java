@@ -6,16 +6,38 @@ import java.util.Observer;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
+import com.codename1.ui.Graphics;
+import com.codename1.ui.geom.Point;
 
-public class MapView extends Container implements Observer{
-	
+public class MapView extends Container implements Observer {
+	private Graphics myGraphics;
+	private GameWorld gw;
+	private GameCollection gcp;
+	private GameObject obj;
+	private final boolean debug = false;
+
 	public MapView(GameWorld gw) {
+		this.gw = gw;
+		gcp = gw.getGameCollection();
 		this.getAllStyles().setBgTransparency(255);
-		this.getAllStyles().setBgColor(ColorUtil.CYAN);
+		this.getAllStyles().setBgColor(ColorUtil.GRAY);
 	}
 
-	public void update(Observable observable, Object data) {
-		// TODO Auto-generated method stub
-		/*Will display game objects on the map*/
+	public void paint(Graphics g) {
+		super.paint(g);
+		Point pCmpRelPrnt = new Point(getX(), getY());
+		if (debug) {
+			System.out.println("paint running!");
+		}
+		Iiterator drawGameIterator = gcp.getIterator();
+		while (drawGameIterator.hasNext()) {
+			obj = (GameObject) drawGameIterator.getNext();
+			obj.draw(g, pCmpRelPrnt);
+		}
+	}
+
+	public void update(Observable o, Object gwp) {
+		this.repaint();
+		System.out.println("update running!");
 	}
 }
