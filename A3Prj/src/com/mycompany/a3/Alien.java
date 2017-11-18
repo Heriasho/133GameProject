@@ -8,7 +8,7 @@ import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 public class Alien extends Opponents {
-
+	private GameWorld gw;
 	public Alien(int color, int screenHeight, int screenWidth, int speed,
 			int speedMultiplier) {
 		Random r = new Random();
@@ -50,9 +50,21 @@ public class Alien extends Opponents {
 	 * handleCollision should only happen once.
 	 */
 	public void handleCollision(ICollider otherObject) {
+		gw = new GameWorld();
+		System.out.println("------------------");
+		System.out.println("Collision detected with: " + otherObject);
+		
 		if (otherObject instanceof Alien) {
 			System.out.println("Alien collision!@!!!!!");
+			Alien ali = (Alien) otherObject;
+			gw.bred(ali);
 		}
+		else if(otherObject instanceof Astronaut){
+			System.out.println("Astronaut collision!!!!");
+			Astronaut astro = (Astronaut) otherObject;
+			gw.fight(astro);
+		}
+		System.out.println("------------------");
 		System.out.println("THE BOIZ ARE BACK IN TOWN!!");
 	}
 }

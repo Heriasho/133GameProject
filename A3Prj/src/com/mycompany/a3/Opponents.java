@@ -45,23 +45,23 @@ public abstract class Opponents extends GameObject implements Imove {
 	 */
 	public void move(int tickTime) {
 		setDirection(getDirection() + 5);
-		System.out.println("MOVE IS CALLED");
-		System.out.println(getLocation());
+		//System.out.println("MOVE IS CALLED");
+		//System.out.println(getLocation());
 		double time = tickTime;
 		double distance = getSpeed() * time;
 		int direction = getDirection();
 		double radDirection = direction * (Math.PI / 180.0);
 		double deltaX = Math.cos(radDirection) * distance;
 		double deltaY = Math.sin(radDirection) * distance;
-		System.out.println("Direction: " + direction);
-		System.out.println("Radians: " + radDirection);
-		System.out.println("deltaX: " + deltaX);
-		System.out.println("deltaY: " + deltaY);
-		System.out.println("speed " + speed);
-		System.out.println("speedMult " + speedMultiplier);
-		System.out.println("effectiveSpeed " + getSpeed());
-		System.out.println("time " + time);
-		System.out.println("totalDist " + distance);
+//		System.out.println("Direction: " + direction);
+//		System.out.println("Radians: " + radDirection);
+//		System.out.println("deltaX: " + deltaX);
+//		System.out.println("deltaY: " + deltaY);
+//		System.out.println("speed " + speed);
+//		System.out.println("speedMult " + speedMultiplier);
+//		System.out.println("effectiveSpeed " + getSpeed());
+//		System.out.println("time " + time);
+//		System.out.println("totalDist " + distance);
 
 		Point2D newLoc = new Point2D(getLocation().getX() + deltaX,
 				getLocation().getY() + deltaY);
@@ -92,7 +92,7 @@ public abstract class Opponents extends GameObject implements Imove {
 
 			newLoc = new Point2D(newLoc.getX() + deltaX, newLoc.getY() + deltaY);
 		}
-		System.out.println(newLoc);
+		//System.out.println(newLoc);
 		setLocation(newLoc);
 	}
 	
@@ -113,7 +113,7 @@ public abstract class Opponents extends GameObject implements Imove {
 		int radiusSquared = (thisRadius*thisRadius + 2*thisRadius*otherRadius + otherRadius*otherRadius);
 		if(distanceBetweenSquared <= radiusSquared){
 			result = true;
-			System.out.println("Two objects collided");
+			System.out.println(obj + " collided with something");
 		}
 		return result ;
 	}
@@ -123,5 +123,9 @@ public abstract class Opponents extends GameObject implements Imove {
 			direct = "0" + direct;
 		}
 		return super.toString() + "\tspeed=\t" + speed + "\tdir=\t" + direct;
+	}
+	public void handleCollision(ICollider otherObject) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -34,9 +34,9 @@ public class GameWorld extends Observable {
 		random = new Random();
 		theGameCollection = new GameCollection(); // Collection of all objects
 		myObserverList = new Vector<Observer>();
-		roamingAliens = 3;
+		roamingAliens = 8;
 		rescuedAliens = 0;
-		roamingAstronauts = 3;
+		roamingAstronauts = 5;
 		rescuedAstronauts = 0;
 		score = 0;
 		tickTime = 1000;
@@ -66,16 +66,16 @@ public class GameWorld extends Observable {
 	public void addAlien() {
 		theGameCollection.add((GameObject) new Alien(ColorUtil.MAGENTA,
 				screenHeight, screenWidth, speed, speedMulti));
-		System.out.println("Game Collection Size: "
-				+ theGameCollection.getSize());
+		// System.out.println("Game Collection Size: "+
+		// theGameCollection.getSize());
 		updateGameWorld();
 	}
 
 	public void addAstro() {
 		theGameCollection.add((GameObject) new Astronaut(ColorUtil.GREEN,
 				screenHeight, screenWidth, speed, speedMulti));
-		System.out.println("Game Collection Size: "
-				+ theGameCollection.getSize());
+		// System.out.println("Game Collection Size: " +
+		// theGameCollection.getSize());
 		updateGameWorld();
 	}
 
@@ -94,38 +94,41 @@ public class GameWorld extends Observable {
 	 * A method called when an alien is instanceof another alien. If so, they
 	 * bred a new gameObject alien that spawns close to one of them.
 	 */
-	public void bred() { // XXX fucking hell
+	public void bred(Alien colliderAlien) { // XXX fucking hell
 		if (roamingAliens < 2) {
 			System.out.println("Error: Requires two aliens!");
 			return;
 		}
-		Alien a = getRandomAlien();
+		// Alien a = getRandomAlien();
 		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,
 				speedMulti);
 		theGameCollection.add((GameObject) b);
 		roamingAliens++;
-		double x = a.getLocation().getX() + 40;
-		double y = a.getLocation().getY() + 40;
+		double x = ((GameObject) colliderAlien).getLocation().getX() + 40;
+		double y = ((GameObject) colliderAlien).getLocation().getY() + 40;
 		Point2D p = new Point2D(x, y);
 		b.setLocation(p);
 		System.out.println("Two aliens bred.");
-		
+		System.out.println("Number of roaming aliens: " + roamingAliens);
+
 	}
 
 	/*
 	 * A method called when an alien is instanceof an astronaut. If so, the
 	 * astronaut takes damage, changes color shade, & reduces in speed.
 	 */
-	public void fight() {
+	public void fight(Astronaut colliderAstronaut) {
 		if (roamingAstronauts <= 0 || roamingAliens <= 0) {
 			System.out
 					.println("Error: Need at least 1 astronaut & alien to fight.");
 			return;
 		}
-		Astronaut a = getRandomAstronaut();
-		a.damage();
+		// Astronaut a = getRandomAstronaut();
+		((Astronaut) colliderAstronaut).damage();
 		System.out
 				.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
+		System.out.println("The astronaut's speed is : "
+				+ ((Astronaut) colliderAstronaut).getSpeed());
 	}
 
 	/* A method that moves the opponents game objects at a set pace. */
@@ -138,12 +141,13 @@ public class GameWorld extends Observable {
 				System.out.println("An Opponent moved");
 				ICollider currentObject = (ICollider) iter.getNext();
 				Iiterator iter2 = theGameCollection.getIterator();
-				while(iter2.hasNext()){
+				while (iter2.hasNext()) {
 					ICollider otherObject = (ICollider) iter2.getNext();
-					if(currentObject != otherObject){
-						if(currentObject.collidesWith(otherObject)){
+					if (currentObject != otherObject) {
+						if (currentObject.collidesWith(otherObject)) {
 							currentObject.handleCollision(otherObject);
-							System.out.println(currentObject + " has collided with " + otherObject);
+							System.out.println(currentObject
+									+ " has collided with " + otherObject);
 						}
 					}
 				}
@@ -251,8 +255,10 @@ public class GameWorld extends Observable {
 		}
 	}
 
-
-	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {// XXX:Probably works but not 100% sure
+	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {// XXX:Probably
+																	// works but
+																	// not 100%
+																	// sure
 		if (ary.size() <= 1)
 			return ary;
 		List<Integer> a1 = ary.subList(0, ary.size() / 2);
@@ -295,6 +301,7 @@ public class GameWorld extends Observable {
 		Spaceship sp = getTheSpaceship();
 		sp.moveUp();
 	}
+
 	/* Moves the spaceship down */
 	public void moveSpaceShipDown() {
 		Spaceship sp = getTheSpaceship();
