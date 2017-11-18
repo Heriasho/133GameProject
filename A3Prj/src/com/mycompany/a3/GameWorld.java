@@ -94,7 +94,7 @@ public class GameWorld extends Observable {
 	 * A method called when an alien is instanceof another alien. If so, they
 	 * bred a new gameObject alien that spawns close to one of them.
 	 */
-	public void bred(Alien colliderAlien) { // XXX fucking hell
+	public void bred(Alien colliderAlien) { // XXX fucking hell fix this. 
 		if (roamingAliens < 2) {
 			System.out.println("Error: Requires two aliens!");
 			return;
