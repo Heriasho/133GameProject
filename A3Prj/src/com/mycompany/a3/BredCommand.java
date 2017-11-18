@@ -11,6 +11,7 @@ public class BredCommand extends Command {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){
-		gw.bred();
+		//gw.bred();
 	}
 }
+ 	

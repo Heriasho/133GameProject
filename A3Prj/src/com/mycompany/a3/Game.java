@@ -19,21 +19,12 @@ import com.codename1.ui.events.ActionListener;
 //import com.codename1.io.Log;
 //import com.codename1.ui.Toolbar;
 
-
-
-
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.Border;
 
-
-
-
 import com.codename1.ui.util.UITimer;
-
-
-
 
 //import java.io.IOException;
 import java.lang.String;
@@ -45,20 +36,20 @@ public class Game extends Form implements Runnable {
 	private ScoreView sv;
 	private static UITimer timer;
 	private int time;
-	private boolean toggle;
-	
+	private boolean toggle = false;
+
 	public Game() {
 		gw = new GameWorld();
-		gw.init();	
+		gw.init();
 		mv = new MapView(gw);
 		sv = new ScoreView(gw);
 		setTimer(new UITimer(this));
 		time = 10;
-		getTimer().schedule(time,true, this);
-		
+		getTimer().schedule(time, true, this);
+
 		gw.addObserver(mv);
 		gw.addObserver(sv);
-		/*Button Creation & Command setup*/
+		/* Button Creation & Command setup */
 		Button teleToAlienButton = new CButton("TeleToAlien");
 		Button teleToAstroButton = new CButton("TeleToAstro");
 		Button leftButton = new CButton("Left");
@@ -71,15 +62,17 @@ public class Game extends Form implements Runnable {
 		Button statsButton = new CButton("Stats");
 		Button openDoorButton = new CButton("OpenDoor");
 		Button bredButton = new CButton("Bred");
-		Button fightButton = new CButton("Fight");
-		Button tickButton = new CButton("Tick");
+		// Button fightButton = new CButton("Fight");
+		// Button tickButton = new CButton("Tick");
 		Button pauseButton = new CButton("Pause");
-	
-		/*Creating the commands*/
+
+		/* Creating the commands */
 		AboutCommand aboutCommand = new AboutCommand();
 		HelpCommand helpCommand = new HelpCommand();
-		TeleportToAlienCommand teleToAlienCommand = new TeleportToAlienCommand(gw);
-		TeleportToAstronautCommand teleToAstroCommand = new TeleportToAstronautCommand(gw);
+		TeleportToAlienCommand teleToAlienCommand = new TeleportToAlienCommand(
+				gw);
+		TeleportToAstronautCommand teleToAstroCommand = new TeleportToAstronautCommand(
+				gw);
 		LeftCommand leftCommand = new LeftCommand(gw);
 		RightCommand rightCommand = new RightCommand(gw);
 		UpCommand upCommand = new UpCommand(gw);
@@ -94,8 +87,8 @@ public class Game extends Form implements Runnable {
 		QuitCommand myQuitCommand = new QuitCommand();
 		SoundCheckCommand soundCheckCommand = new SoundCheckCommand(gw);
 		PauseCommand pauseCommand = new PauseCommand(game);
-		
-		/*Set the commands for the buttons*/
+
+		/* Set the commands for the buttons */
 		teleToAlienButton.setCommand(teleToAlienCommand);
 		teleToAstroButton.setCommand(teleToAstroCommand);
 		leftButton.setCommand(leftCommand);
@@ -106,12 +99,12 @@ public class Game extends Form implements Runnable {
 		expandButton.setCommand(expandCommand);
 		mapButton.setCommand(mapCommand);
 		bredButton.setCommand(bredCommand);
-		fightButton.setCommand(myFightCommand);
+		// fightButton.setCommand(myFightCommand);
 		openDoorButton.setCommand(openDoorCommand);
 		statsButton.setCommand(statsCommand);
 		pauseButton.setCommand(pauseCommand);
 
-		/*Adding key listeners to call commands*/
+		/* Adding key listeners to call commands */
 		addKeyListener('c', compressCommand);
 		addKeyListener('m', mapCommand);
 		addKeyListener('s', statsCommand);
@@ -126,34 +119,35 @@ public class Game extends Form implements Runnable {
 		addKeyListener('s', openDoorCommand);
 		addKeyListener('a', teleToAlienCommand);
 		addKeyListener('o', teleToAstroCommand);
-		/*Button Creation & Command setup*/
-		
-		/*Title Bar*/
+		/* Button Creation & Command setup */
+
+		/* Title Bar */
 		Toolbar myToolbar = new Toolbar();
 		setToolbar(myToolbar);
 		this.setLayout(new BorderLayout());
 		myToolbar.setTitle("Title");
 		myToolbar.setTitleCentered(true);
-		
-		/*Score view*/
+
+		/* Score view */
 		this.add(BorderLayout.NORTH, sv);
-		CheckBox soundCheckBox = new CheckBox("Sound");	
-		soundCheckBox.getAllStyles().setBgTransparency( 255 );
-		soundCheckBox.getAllStyles().setBgColor( ColorUtil.rgb( 150, 150, 150 ) ); //Mild Gray
-		soundCheckBox.setText( "Turn Sound OFF / ON" );
+		CheckBox soundCheckBox = new CheckBox("Sound");
+		soundCheckBox.getAllStyles().setBgTransparency(255);
+		soundCheckBox.getAllStyles().setBgColor(ColorUtil.rgb(150, 150, 150)); // Mild
+																				// Gray
+		soundCheckBox.setText("Turn Sound OFF / ON");
 		soundCheckBox.setSelected(true);
 		soundCheckBox.setCommand(soundCheckCommand);
 		soundCheckCommand.putClientProperty("sideComponent", soundCheckBox);
-		this.add(BorderLayout.NORTH,soundCheckBox);
-	
-		/*Map View*/
+		this.add(BorderLayout.NORTH, soundCheckBox);
+
+		/* Map View */
 		this.add(BorderLayout.CENTER, mv);
-		
-		
-		/*West bar setup*/
+
+		/* West bar setup */
 		Container leftContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		leftContainer.getAllStyles().setPadding(Component.TOP, 50);
-		leftContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
+		leftContainer.getAllStyles().setBorder(
+				Border.createLineBorder(1, ColorUtil.BLUE));
 		add(BorderLayout.WEST, leftContainer);
 		leftContainer.add(expandButton);
 		leftContainer.add(upButton);
@@ -161,60 +155,66 @@ public class Game extends Form implements Runnable {
 		leftContainer.add(compressButton);
 		leftContainer.add(teleToAlienButton);
 		leftContainer.add(teleToAstroButton);
-		/*West bar setup*/
-		
-		/*East bar setup*/
-		Container rightContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+		/* West bar setup */
+
+		/* East bar setup */
+		Container rightContainer = new Container(
+				new BoxLayout(BoxLayout.Y_AXIS));
 		rightContainer.getAllStyles().setPadding(Component.TOP, 50);
-		rightContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
+		rightContainer.getAllStyles().setBorder(
+				Border.createLineBorder(1, ColorUtil.BLUE));
 		add(BorderLayout.EAST, rightContainer);
 		rightContainer.add(downButton);
 		rightContainer.add(rightButton);
 		rightContainer.add(statsButton);
 		rightContainer.add(mapButton);
 		rightContainer.add(openDoorButton);
-		/*East bar setup*/
-		
-		/*South bar setup*/
-		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+		/* East bar setup */
+
+		/* South bar setup */
+		Container bottomContainer = new Container(new BoxLayout(
+				BoxLayout.X_AXIS));
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
-		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1,ColorUtil.BLUE));
+		bottomContainer.getAllStyles().setBorder(
+				Border.createLineBorder(1, ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
-		//bottomContainer.add(bredButton);
-		//bottomContainer.add(fightButton);
-		//bottomContainer.add(tickButton);
+		// bottomContainer.add(bredButton);
+		// bottomContainer.add(fightButton);
+		// bottomContainer.add(tickButton);
 		bottomContainer.add(pauseButton);
-		/*South bar setup*/
-		
-		/*Tool bar Setup*/
+		/* South bar setup */
+
+		/* Tool bar Setup */
 		myToolbar.addCommandToSideMenu(aboutCommand);
 		myToolbar.addCommandToSideMenu(helpCommand);
 		myToolbar.addCommandToSideMenu(statsCommand);
 		myToolbar.addCommandToSideMenu(myQuitCommand);
-		/*Tool bar Setup*/
-				
+		/* Tool bar Setup */
+
 		this.show();
 	}
-	
+
 	private void init() {
-		
+
 	}
-	
+
 	private void stop() {
-		
+
 	}
-	
+
 	private void destroy() {
-		
+
 	}
-	public void pause(){
+
+	public void pause() {
 		toggle = !toggle;
-		if(toggle){
+		if (toggle) {
 			timer.cancel();
-		}
-		else{
+			System.out.println("timer is canceled");
+		} else {
 			timer.schedule(time, true, this);
-		} 
+			System.out.println("timer is resumed");
+		}
 	}
 
 	public void run() {
