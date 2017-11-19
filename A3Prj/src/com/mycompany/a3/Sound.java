@@ -19,6 +19,7 @@ public class Sound implements Runnable {
 			if(is != null) {
 				m = MediaManager.createMedia(is, "audio/wav", this);
 				is.close();
+				m.cleanup();
 			} else {
 				System.err.print("Resource cannot be found: ");
 				System.err.println(file);

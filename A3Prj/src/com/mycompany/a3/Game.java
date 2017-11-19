@@ -23,6 +23,7 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.Border;
+import com.mycompany.a3.BottomButton;
 
 import com.codename1.ui.util.UITimer;
 
@@ -37,7 +38,7 @@ public class Game extends Form implements Runnable {
 	private static UITimer timer;
 	private int time;
 	private boolean toggle = false;
-	BottomButton bPauseCommand;
+	private BottomButton bPauseCommand;
 
 	public Game() {
 		gw = new GameWorld();
