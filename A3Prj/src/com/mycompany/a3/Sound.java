@@ -14,8 +14,8 @@ public class Sound implements Runnable {
 	
 	public Sound(String file, GameWorld gw) {
 		this.gw = gw;
-		final InputStream is = Display.getInstance().getResourceAsStream(getClass(), "/" + file);
 		try {
+			final InputStream is = Display.getInstance().getResourceAsStream(getClass(), "/" + file);
 			if(is != null) {
 				m = MediaManager.createMedia(is, "audio/wav", this);
 				is.close();
@@ -40,7 +40,6 @@ public class Sound implements Runnable {
 		}
 		return canPlay;
 	}
-	
 	public boolean pause() {
 		boolean canPause = (m != null);
 		if(canPause) m.pause();

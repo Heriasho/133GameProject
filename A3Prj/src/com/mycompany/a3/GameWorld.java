@@ -33,13 +33,14 @@ public class GameWorld extends Observable {
 	private boolean isSoundOn = true;
 	private GameCollection theGameCollection;
 	private Vector<Observer> myObserverList;
-    BGsound bgMusic  = new BGsound("music.wav",this);
-    Sound   alienSound     = new Sound("alien.wav",this);
-    Sound   astronautSound = new Sound("astro.wav",this);
-    Sound   doorSound      = new Sound("door.wav",this);
+	BGsound bgMusic = new BGsound("music.wav", this);
+	Sound alienSound = new Sound("alien.wav", this);
+	Sound astronautSound = new Sound("astro.wav", this);
+	Sound doorSound = new Sound("door.wav", this);
+
 	public GameWorld() {
 		random = new Random();
-		theGameCollection = new GameCollection(); 
+		theGameCollection = new GameCollection();
 		myObserverList = new Vector<Observer>();
 		roamingAliens = 3;
 		rescuedAliens = 0;
@@ -102,7 +103,7 @@ public class GameWorld extends Observable {
 			System.out.println("Error: Requires two aliens!");
 			return;
 		}
-		//Alien a = getRandomAlien();
+		// Alien a = getRandomAlien();
 		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,
 				speedMulti);
 		theGameCollection.add((GameObject) b);
@@ -112,23 +113,26 @@ public class GameWorld extends Observable {
 		Point2D p = new Point2D(x, y);
 		b.setLocation(p);
 		System.out.println("Two aliens bred.");
-		if((getIsPlaying() == true) && (getIsSoundOn() == true)) alienSound.play();
+		if ((getIsPlaying() == true) && (getIsSoundOn() == true))
+			alienSound.play();
 		updateGameWorld();
-		
+
 	}
 
 	public void fight() {
 		if (roamingAstronauts <= 0 || roamingAliens <= 0) {
-			System.out.println("Error: Need at least 1 astronaut & alien to fight.");
+			System.out
+					.println("Error: Need at least 1 astronaut & alien to fight.");
 			return;
 		}
 		Astronaut a = getRandomAstronaut();
 		a.damage();
-		if((getIsPlaying() == true) && (getIsSoundOn() == true)) astronautSound.play();
+		if ((getIsPlaying() == true) && (getIsSoundOn() == true))
+			astronautSound.play();
 		updateGameWorld();
-		System.out.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
-		
-		
+		System.out
+				.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
+
 	}
 
 	public void tick(int time) {
@@ -140,13 +144,14 @@ public class GameWorld extends Observable {
 				System.out.println("An Opponent moved");
 				ICollider currentObject = (ICollider) iter.getNext();
 				Iiterator iter2 = theGameCollection.getIterator();
-				while(iter2.hasNext()){
+				while (iter2.hasNext()) {
 					ICollider otherObject = (ICollider) iter2.getNext();
-					if(currentObject != otherObject){
-						if(currentObject.collidesWith(otherObject)){
+					if (currentObject != otherObject) {
+						if (currentObject.collidesWith(otherObject)) {
 							currentObject.handleCollision(otherObject);
-							
-							System.out.println(currentObject + " has collided with " + otherObject);
+
+							System.out.println(currentObject
+									+ " has collided with " + otherObject);
 						}
 					}
 				}
@@ -158,7 +163,6 @@ public class GameWorld extends Observable {
 				+ tickTime / 1000 + " ticks.");
 	}
 
-	
 	public void stats() {
 		System.out.println("The score is: " + score
 				+ "\nNumber of Astronauts rescused: " + rescuedAstronauts
@@ -174,19 +178,23 @@ public class GameWorld extends Observable {
 			System.out.println(obj);
 		}
 	}
+
 	public void score() {
 		System.out.println("The score is: " + score);
 	}
+
 	public void expand() {
 		Spaceship sp = getTheSpaceship();
 		sp.expandDoor(); // Null pointer exception
 		updateGameWorld();
 	}
+
 	public void compress() {
 		Spaceship sp = getTheSpaceship();
 		sp.contractDoor(); // Null pointer exception
 		updateGameWorld();
 	}
+
 	public void openDoor() {
 		System.out.println("The spaceship door has opened.");
 		Spaceship sp = getTheSpaceship();
@@ -206,13 +214,15 @@ public class GameWorld extends Observable {
 					System.out.println("You've rescued a " + object);
 				}
 			}
-			
+
 		}
 		fuckingSort(remove);
 		for (int i = 0; i < remove.size(); i++) {
 			theGameCollection.remove(remove.get(i) - i);
 		}
-		if(this.isSoundOn) if(!doorSound.play()) System.err.print("Door cannot be played!");
+		if (this.isSoundOn)
+			if (!doorSound.play())
+				System.err.print("Door cannot be played!");
 	}
 
 	private void rescueAnObject(GameObject object) {
@@ -228,8 +238,10 @@ public class GameWorld extends Observable {
 		}
 	}
 
-
-	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {// XXX:Probably works but not 100% sure
+	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {// XXX:Probably
+																	// works but
+																	// not 100%
+																	// sure
 		if (ary.size() <= 1)
 			return ary;
 		List<Integer> a1 = ary.subList(0, ary.size() / 2);
@@ -272,10 +284,11 @@ public class GameWorld extends Observable {
 		Spaceship sp = getTheSpaceship();
 		sp.moveUp();
 	}
+
 	/* Moves the spaceship down */
 	public void moveSpaceShipDown() {
 		Spaceship sp = getTheSpaceship();
-		sp.moveDown(); 
+		sp.moveDown();
 	}
 
 	/* Teleports the spaceship to a random alien */
@@ -379,17 +392,21 @@ public class GameWorld extends Observable {
 	public void setRoamingAstronauts(int value) {
 		roamingAstronauts = value;
 	}
+
 	public int getStartHeight() {
-		return startHeight; 
+		return startHeight;
 	}
-	   public int getStartWidth() {
-			return endWidth; 
-		}
-    public int getEndWidth() {
-		return endWidth; 
+
+	public int getStartWidth() {
+		return endWidth;
 	}
+
+	public int getEndWidth() {
+		return endWidth;
+	}
+
 	public int getEndHeight() {
-		return endHeight; 
+		return endHeight;
 	}
 
 	public int getRescuedAstronauts() {
@@ -411,65 +428,70 @@ public class GameWorld extends Observable {
 	public int getScore() {
 		return score;
 	}
-    public void setStartWidth(int width) {
-		this.startWidth = width; 
+
+	public void setStartWidth(int width) {
+		this.startWidth = width;
 	}
+
 	public void setStartHeight(int height) {
-		this.startHeight = height; 
+		this.startHeight = height;
 	}
-    public void setEndWidth(int width) {
-		this.endWidth = width; 
+
+	public void setEndWidth(int width) {
+		this.endWidth = width;
 	}
+
 	public void setEndHeight(int height) {
-		this.endHeight = height; 
+		this.endHeight = height;
 	}
 
 	public void setScore(int value) {
 		score = value;
 	}
-    public boolean getIsSoundOn() {
-    	return isSoundOn;
-    }
 
-    public void setIsSoundOn() {
-        isSoundOn = !isSoundOn;
-    }
-    public boolean getIsPlaying() {
-        return isPlaying;
-    }
-    public void setIsPlaying() {
-        isPlaying = !isPlaying;
-    }
-  
-    public void pauseSound() {
-        if(getIsPlaying()==false) {
-            bgMusic.pause();
-            alienSound.pause();
-            astronautSound.pause();
-            doorSound.pause();
-        } else{
-            bgMusic.resume();
-            alienSound.resume();
-            astronautSound.resume();
-            doorSound.resume();
-        }
-    }
-    
-    public void muteSound() {
-        if(getIsSoundOn()==false) {
-            bgMusic.pause();
-            alienSound.pause();
-            astronautSound.pause();
-            doorSound.pause();
-        } else{
-            bgMusic.play();
-        }
-    }
-    
-
-	public void addObserver(Observer o) { 
-		myObserverList.add(o);
+	public boolean getIsSoundOn() {
+		return isSoundOn;
 	}
 
+	public void setIsSoundOn() {
+		isSoundOn = !isSoundOn;
+	}
+
+	public boolean getIsPlaying() {
+		return isPlaying;
+	}
+
+	public void setIsPlaying() {
+		isPlaying = !isPlaying;
+	}
+
+	public void pauseSound() {
+		if (getIsPlaying() == false) {
+			bgMusic.pause();
+			alienSound.pause();
+			astronautSound.pause();
+			doorSound.pause();
+		} else {
+			bgMusic.resume();
+			alienSound.resume();
+			astronautSound.resume();
+			doorSound.resume();
+		}
+	}
+
+	public void muteSound() {
+		if (getIsSoundOn() == false) {
+			bgMusic.pause();
+			alienSound.pause();
+			astronautSound.pause();
+			doorSound.pause();
+		} else {
+			bgMusic.play();
+		}
+	}
+
+	public void addObserver(Observer o) {
+		myObserverList.add(o);
+	}
 
 }
