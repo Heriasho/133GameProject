@@ -14,4 +14,3 @@ public class BredCommand extends Command {
 		//gw.bred();
 	}
 }
- 	

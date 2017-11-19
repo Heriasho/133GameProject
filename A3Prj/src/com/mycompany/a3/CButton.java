@@ -3,7 +3,7 @@ package com.mycompany.a3;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Button;
 
-public class CButton extends Button {               //button class with set style
+public class CButton extends Button {              
 	
 	public CButton(String label) {              
 		super(label);
