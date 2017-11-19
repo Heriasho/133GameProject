@@ -133,23 +133,49 @@ public class GameWorld extends Observable {
 
 	}
 
+	/*A method that animates the gameObjects based on time passed in a timer.
+	 * This calls the move method within the Opponents class and causes it's children to move.
+	 * If a child collides with another gameObject, it will react based on what kind of child it is.
+	 * Collisions only happen once.
+	 * To ensure this, two nested loops of collision will take place.*/
 	public void tick(int time) {
 		Iiterator iter = theGameCollection.getIterator();
+		ArrayList<ICollider> collisionVector = new ArrayList<ICollider>(); //
 		while (iter.hasNext()) {
 			GameObject object = (GameObject) iter.getNext();
 			if (object instanceof Opponents) {
 				((Opponents) object).move(time);
 				System.out.println("An Opponent moved");
+				/*ICollider curObj gets the next current ICOllider Object in iter1
+				 * Iiterator iter2 gets the next gameCollection object.
+				 * While iter2 still has objects, another ICollider object (otherObject) in iter2.
+				 * The iterators are seperated to not overlap.
+				 * If the current object isn't equal to the other object then we check for collision.
+				 * If current object and other object are within a certain distance (oversimplied) of eachother
+				 * then they have collided and should handle collision.
+				 * Each object should have a list of objects they have already colliding with & Removed when not.
+				 * TO do this, there will also be a Vector list of each collidable object [known as the Collision Vector].
+				 * When collision occurs, obj2 is added to Collision Vector of obj1 and vise versa.
+				 * At each collision detection, if both are no longer colliding, remove them, else, do not add them.
+				 * Java's contains() can check if obj is already in collision vector or not, thus, can be used to determine 
+				 * if collision handling happens or not.
+				 * 
+				 * */
 				ICollider currentObject = (ICollider) iter.getNext();
 				Iiterator iter2 = theGameCollection.getIterator();
 				while (iter2.hasNext()) {
 					ICollider otherObject = (ICollider) iter2.getNext();
 					if (currentObject != otherObject) {
 						if (currentObject.collidesWith(otherObject)) {
-							currentObject.handleCollision(otherObject);
-
+							if(!collisionVector.contains(otherObject)){
+								collisionVector.add(otherObject); //
+								currentObject.handleCollision(otherObject);
+							}
 							System.out.println(currentObject
 									+ " has collided with " + otherObject);
+						}
+						else{
+							collisionVector.remove(otherObject);
 						}
 					}
 				}

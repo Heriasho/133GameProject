@@ -10,6 +10,7 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speed;
 	private int direction;
 	private int speedMultiplier;
+	private GameWorld gw = new GameWorld();
 
 	public int getDirection() {
 		return direction;
@@ -124,8 +125,27 @@ public abstract class Opponents extends GameObject implements Imove {
 		}
 		return super.toString() + "\tspeed=\t" + speed + "\tdir=\t" + direct;
 	}
+	/*
+	 * #TODO: Moving objects should consider consider the width and height of
+	 * the mv in move(). TODO: When two objects collide, handle the
+	 * handleCollision should only happen once.
+	 */
 	public void handleCollision(ICollider otherObject) {
-		// TODO Auto-generated method stub
+		//gw = new GameWorld();
+		System.out.println("------------------");
+		System.out.println("Collision detected with: " + otherObject);
 		
+		if (otherObject instanceof Alien) {
+			System.out.println("Alien collision!@!!!!!");
+			//Alien ali = (Alien) otherObject;
+			gw.bred();
+		}
+		else if(otherObject instanceof Astronaut){
+			System.out.println("Astronaut collision!!!!");
+			Astronaut astro = (Astronaut) otherObject;
+			//gw.fight();
+		}
+		System.out.println("------------------");
+		System.out.println("THE BOIZ ARE BACK IN TOWN!!");
 	}
 }
