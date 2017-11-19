@@ -2,21 +2,24 @@ package com.mycompany.a3;
 
 import com.codename1.ui.Command;
 import com.codename1.ui.events.ActionEvent;
+import com.mycompany.a3.Game;
+import com.mycompany.a3.GameWorld;
 
 public class SoundCheckCommand extends Command {
-	private GameWorld gw;
-	public SoundCheckCommand(GameWorld gw) {
-		super("Sound check");
-		this.gw = gw;
-	}
-	@Override
-	public void actionPerformed(ActionEvent e){
-		if ( gw.getSound() == false ){
-			gw.setSound( true );
-		}
-		else{
-			gw.setSound( false );
-		}
-		//SideMenuBar.closeCurrentMenu();
-	}
+    GameWorld gw;
+    Game game;
+    
+    public SoundCheckCommand(String command, GameWorld gw, Game game) {
+        super(command);
+        this.gw = gw;
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        // Allow the sound to be changed even when paused
+        //if(gw.isPlaying) {
+        	gw.setIsSoundOn();
+    		gw.muteSound(); // toggle bgmusic
+            System.out.println("Toggle Sound");
+        //}
+    }
 }
