@@ -98,26 +98,24 @@ public class GameWorld extends Observable {
 		this.clearChanged();
 	}
 
-	public void bred(Alien ali) { // XXX fucking hell
-		if (roamingAliens < 2) {
-			System.out.println("Error: Requires two aliens!");
-			return;
-		}
-		// Alien a = getRandomAlien();
-		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,
-				speedMulti);
-		theGameCollection.add((GameObject) b);
-		roamingAliens++;
-		double x = ali.getLocation().getX() + 40;
-		double y = ali.getLocation().getY() + 40;
-		Point2D p = new Point2D(x, y);
-		b.setLocation(p);
-		System.out.println("Two aliens bred.");
-		if ((getIsPlaying() == true) && (getIsSoundOn() == true))
-			alienSound.play();
-		updateGameWorld();
-
-	}
+    public void bred() { // XXX fucking hell
+        if (roamingAliens < 2) {
+            System.out.println("Error: Requires two aliens!");
+            return;
+        }
+        //#XXX ALIEN THRUST
+//        Alien a = getRandomAlien();
+//        Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,speedMulti);
+//        theGameCollection.add((GameObject) b);
+//        roamingAliens++;
+//        double x = a.getLocation().getX() + 40;
+//        double y = a.getLocation().getY() + 40;
+//        Point2D p = new Point2D(x, y);
+//        b.setLocation(p);
+        System.out.println("Two aliens bred.");
+        if(getIsSoundOn() && getIsPlaying()) alienSound.play();
+        updateGameWorld();
+    }
 
 	public void fight() {
 		if (roamingAstronauts <= 0 || roamingAliens <= 0) {

@@ -57,8 +57,8 @@ public class Alien extends Opponents {
 		
 		if (otherObject instanceof Alien) {
 			System.out.println("Alien collision!@!!!!!");
-			Alien ali = (Alien) otherObject;
-			//gw.bred(ali);
+			//Alien ali = (Alien) otherObject;
+			gw.bred();
 		}
 		else if(otherObject instanceof Astronaut){
 			System.out.println("Astronaut collision!!!!");
