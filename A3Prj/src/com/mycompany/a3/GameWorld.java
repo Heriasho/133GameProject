@@ -37,8 +37,8 @@ public class GameWorld extends Observable {
 	private Alien parent = null;
 	private Sound sound;
 	private BackgroundSound bgMusic = new BackgroundSound("music.wav", this);
-	private Sound alienSound = new Sound("alien.wav", this);
 	private Sound astronautSound = new Sound("astro.wav", this);
+	private Sound alienSound = new Sound("alien.wav", this);
 	private Sound doorSound = new Sound("door.wav", this);
 
 	public GameWorld() {

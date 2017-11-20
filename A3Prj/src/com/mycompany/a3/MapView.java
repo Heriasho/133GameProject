@@ -24,11 +24,9 @@ public class MapView extends Container implements Observer {
     private Image bgImage;
     private Container mvContainer;
     private String[] bgImages = {
-		"cluster.jpg",
-		"milkyway.jpg",
-		"milkyway2.jpg",
-		"nebulae.jpg",
-		"pillars.jpg"
+		"chromaCosmos1.jpg",
+		"cosmosBackground1.jpg",
+		"chaosCircle1.jpg"
     };
 
 	public MapView(GameWorld gw) {
