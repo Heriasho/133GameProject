@@ -36,7 +36,7 @@ public class GameWorld extends Observable {
 	private Vector<Observer> myObserverList;
 	private Alien parent = null;
 	private Sound sound;
-	private BGsound bgMusic = new BGsound("music.wav", this);
+	private BackgroundSound bgMusic = new BackgroundSound("music.wav", this);
 	private Sound alienSound = new Sound("alien.wav", this);
 	private Sound astronautSound = new Sound("astro.wav", this);
 	private Sound doorSound = new Sound("door.wav", this);
@@ -726,11 +726,11 @@ public class GameWorld extends Observable {
 		isPlaying = !isPlaying;
 	}
 
-	public BGsound getBgMusic() {
+	public BackgroundSound getBgMusic() {
 		return bgMusic;
 	}
 
-	public void setBgMusic(BGsound bgMusic) {
+	public void setBgMusic(BackgroundSound bgMusic) {
 		this.bgMusic = bgMusic;
 	}
 

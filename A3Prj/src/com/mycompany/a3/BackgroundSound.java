@@ -8,10 +8,10 @@ import com.codename1.media.MediaManager;
 import com.codename1.ui.Display;
 import com.mycompany.a3.GameWorld;
 
-public class BGsound extends Sound implements Runnable {
+public class BackgroundSound extends Sound implements Runnable {
 	private GameWorld gw;
 	
-	public BGsound(String file, GameWorld gw) {
+	public BackgroundSound(String file, GameWorld gw) {
 		super(file, gw);
 		this.gw = gw;
 	}
