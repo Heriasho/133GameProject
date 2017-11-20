@@ -31,12 +31,30 @@ public class GameWorld extends Observable {
 	private Random random;
 	private boolean isPlaying = true;
 	private boolean isSoundOn = true;
+	private boolean debug = true;
 	private GameCollection theGameCollection;
 	private Vector<Observer> myObserverList;
-	BGsound bgMusic = new BGsound("music.wav", this);
-	Sound alienSound = new Sound("alien.wav", this);
-	Sound astronautSound = new Sound("astro.wav", this);
-	Sound doorSound = new Sound("door.wav", this);
+	private Sound sound;
+	private BGsound bgMusic = new BGsound("music.wav", this);
+	private Sound alienSound = new Sound("alien.wav", this);
+	private Sound astronautSound = new Sound("astro.wav", this);
+	private Sound doorSound = new Sound("door.wav", this);
+
+	public BGsound getBgMusic() {
+		return bgMusic;
+	}
+
+	public void setBgMusic(BGsound bgMusic) {
+		this.bgMusic = bgMusic;
+	}
+
+	public Sound getSound() {
+		return sound;
+	}
+
+	public void setSound(Sound sound) {
+		this.sound = sound;
+	}
 
 	public GameWorld() {
 		random = new Random();
@@ -56,10 +74,14 @@ public class GameWorld extends Observable {
 
 	/* Set the initial state of the game */
 	public void init() {
+		System.out.println("Game Collection size: "
+				+ getTheGameCollectionSize());
 		initialSpawn();
 		addSpaceship();
 		bgMusic.play();
 		updateGameWorld();
+		System.out.println("Game Collection size: "
+				+ getTheGameCollectionSize());
 	}
 
 	public void initialSpawn() {
@@ -96,95 +118,181 @@ public class GameWorld extends Observable {
 		this.setChanged();
 		this.notifyObservers();
 		this.clearChanged();
+		this.debug();
 	}
 
-    public void bred() { // XXX fucking hell
-        if (roamingAliens < 2) {
-            System.out.println("Error: Requires two aliens!");
-            return;
-        }
-        //#XXX ALIEN THRUST
-//        Alien a = getRandomAlien();
-//        Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,speedMulti);
-//        theGameCollection.add((GameObject) b);
-//        roamingAliens++;
-//        double x = a.getLocation().getX() + 40;
-//        double y = a.getLocation().getY() + 40;
-//        Point2D p = new Point2D(x, y);
-//        b.setLocation(p);
-        System.out.println("Two aliens bred.");
-        if(getIsSoundOn() && getIsPlaying()) alienSound.play();
-        updateGameWorld();
-    }
+	public void bred() { // XXX fucking hell
+		System.out.println("BREEDDDDD");
+		Alien a = getRandomAlien();
+		Alien b = getAlienChild();
+		double x = a.getLocation().getX() + 40;
+		double y = a.getLocation().getY() + 40;
+		Point2D p = new Point2D(x, y);
+		b.setLocation(p);
+		getGameCollection().add(b);
+		System.out.println("Two aliens bred.");
+		if (getIsSoundOn() && getIsPlaying()) {
+			setSound(alienSound);
+			getSound().play();
+		}
+		updateGameWorld();
+	}
+
+	public Alien getAlienChild() {
+		Alien b = new Alien(ColorUtil.BLACK, screenHeight, screenWidth, speed,
+				speedMulti);
+		System.out.println(b);
+		setRoamingAliens(getRoamingAliens() + 1);
+		System.out.println("Roaming alien total: " + getRoamingAliens());
+		updateGameWorld();
+		return b;
+
+	}
 
 	public void fight() {
-		if (roamingAstronauts <= 0 || roamingAliens <= 0) {
-			System.out
-					.println("Error: Need at least 1 astronaut & alien to fight.");
-			return;
-		}
 		Astronaut a = getRandomAstronaut();
 		a.damage();
-		if ((getIsPlaying() == true) && (getIsSoundOn() == true))
-			astronautSound.play();
+		if ((getIsPlaying() == true) && (getIsSoundOn() == true)) {
+
+		}
+		astronautSound.play();
 		updateGameWorld();
 		System.out
 				.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
 
 	}
 
-	/*A method that animates the gameObjects based on time passed in a timer.
-	 * This calls the move method within the Opponents class and causes it's children to move.
-	 * If a child collides with another gameObject, it will react based on what kind of child it is.
-	 * Collisions only happen once.
-	 * To ensure this, two nested loops of collision will take place.*/
+	/*
+	 * A method that animates the gameObjects based on time passed in a timer.
+	 * This calls the move method within the Opponents class and causes it's
+	 * children to move. If a child collides with another gameObject, it will
+	 * react based on what kind of child it is. Collisions only happen once. To
+	 * ensure this, two nested loops of collision will take place.
+	 */
+
+	/*
+	 * ICollider curObj gets the next current ICOllider Object in iter1
+	 * Iiterator iter2 gets the next gameCollection object. While iter2 still
+	 * has objects, another ICollider object (otherObject) in iter2. The
+	 * iterators are seperated to not overlap. If the current object isn't equal
+	 * to the other object then we check for collision. If current object and
+	 * other object are within a certain distance (oversimplied) of eachother
+	 * then they have collided and should handle collision. Each object should
+	 * have a list of objects they have already colliding with & Removed when
+	 * not. TO do this, there will also be a Vector list of each collidable
+	 * object [known as the Collision Vector]. When collision occurs, obj2 is
+	 * added to Collision Vector of obj1 and vise versa. At each collision
+	 * detection, if both are no longer colliding, remove them, else, do not add
+	 * them. Java's contains() can check if obj is already in collision vector
+	 * or not, thus, can be used to determine if collision handling happens or
+	 * not.
+	 */
 	public void tick(int time) {
 		Iiterator iter = theGameCollection.getIterator();
-		ArrayList<ICollider> collisionVector = new ArrayList<ICollider>(); //
+		System.out.println("TICKER TICKER TICKER TICKER");
+		System.out.println("theGameCollection size "
+				+ getTheGameCollectionSize());
+		System.out.println("iter index: " + iter.getIndex());
+		ArrayList<ICollider> collisionVectorObj1 = new ArrayList<ICollider>(); //
+		ArrayList<ICollider> collisionVectorObj2 = new ArrayList<ICollider>(); //
 		while (iter.hasNext()) {
 			GameObject object = (GameObject) iter.getNext();
 			if (object instanceof Opponents) {
-				((Opponents) object).move(time);
 				System.out.println("An Opponent moved");
-				/*ICollider curObj gets the next current ICOllider Object in iter1
-				 * Iiterator iter2 gets the next gameCollection object.
-				 * While iter2 still has objects, another ICollider object (otherObject) in iter2.
-				 * The iterators are seperated to not overlap.
-				 * If the current object isn't equal to the other object then we check for collision.
-				 * If current object and other object are within a certain distance (oversimplied) of eachother
-				 * then they have collided and should handle collision.
-				 * Each object should have a list of objects they have already colliding with & Removed when not.
-				 * TO do this, there will also be a Vector list of each collidable object [known as the Collision Vector].
-				 * When collision occurs, obj2 is added to Collision Vector of obj1 and vise versa.
-				 * At each collision detection, if both are no longer colliding, remove them, else, do not add them.
-				 * Java's contains() can check if obj is already in collision vector or not, thus, can be used to determine 
-				 * if collision handling happens or not.
-				 * 
-				 * */
+				((Opponents) object).move(time);
 				ICollider currentObject = (ICollider) iter.getNext();
 				Iiterator iter2 = theGameCollection.getIterator();
-				while (iter2.hasNext()) {
-					ICollider otherObject = (ICollider) iter2.getNext();
-					if (currentObject != otherObject) {
-						if (currentObject.collidesWith(otherObject)) {
-							if(!collisionVector.contains(otherObject)){
-								collisionVector.add(otherObject); //
-								currentObject.handleCollision(otherObject);
-							}
-							System.out.println(currentObject
-									+ " has collided with " + otherObject);
-						}
-						else{
-							collisionVector.remove(otherObject);
-						}
-					}
-				}
-
+				System.out.println("INSIDE TICK METHOD");
+				System.out.println("theGameCollection size "
+						+ getTheGameCollectionSize());
+				System.out.println("iter index: " + iter2.getIndex());
+				bred();
+				// while (iter2.hasNext()) {
+				// ICollider otherObject = (ICollider) iter2.getNext();
+				// if (currentObject != otherObject) {
+				// System.out.println("CurrentObject != OtherObject");
+				// System.out.println("theGameCollection size "
+				// + getTheGameCollectionSize());
+				// if (currentObject.collidesWith(otherObject)) {
+				// if (!collisionVectorObj1.contains(currentObject)
+				// || !collisionVectorObj2
+				// .contains(otherObject)) {
+				// collisionVectorObj1.add(otherObject); //
+				// collisionVectorObj2.add(currentObject);
+				// collisionString(currentObject, otherObject);
+				// System.out.println("theGameCollection size "
+				// + getTheGameCollectionSize());
+				// currentObject.handleCollision(otherObject);
+				// System.out.println(collisionVectorObj1
+				// .toArray());
+				// System.out.println(collisionVectorObj2
+				// .toArray());
+				// }
+				// } else {
+				// collisionVectorObj1.remove(otherObject);
+				// collisionVectorObj2.remove(currentObject);
+				// System.out.println("Collision Vector1 has removed "
+				// + otherObject);
+				// System.out.println("Collision Vector2 has removed "
+				// + currentObject);
+				// System.out.println("theGameCollection size "
+				// + getTheGameCollectionSize());
+				// updateGameWorld();
+				// }
+				// } else {
+				// System.out.println("CurrentObject == OtherObject");
+				// }
+				// }
 				updateGameWorld();
 			}
 		}
+		System.out.println("<<<<<<<<END OF TICKMETHOD>>>>>>>>>>");
 		System.out.println("Game has advanced by " + tickTime + " ms = "
 				+ tickTime / 1000 + " ticks.");
+	}
+
+	public void collisionString(ICollider currentObject, ICollider otherObject) {
+		String curObj = "";
+		String otherObj = "";
+		System.out.println("CUR OBJ: " + currentObject.toString());
+		System.out.println("OTHER OBJ: " + otherObject.toString());
+		if (currentObject instanceof Alien) {
+			curObj = "Alien";
+		} else if (currentObject instanceof Astronaut) {
+			curObj = "Astronaut";
+		} else {
+			curObj = "Spaceship";
+		}
+		if (otherObject instanceof Alien) {
+			otherObj = "Alien";
+		} else if (otherObject instanceof Astronaut) {
+			otherObj = "Astronaut";
+		} else {
+			otherObj = "Spaceship";
+		}
+		System.out.println("<<CollisionString>>");
+		System.out.println(curObj + " has collided with " + otherObj);
+		System.out.println("Collision Vector1 has added " + otherObject);
+		System.out.println("Collision Vector2 has added " + currentObject);
+		updateGameWorld();
+	}
+
+	public void debug() {
+		if (debug) {
+			if (getTheGameCollectionSize() == 0) {
+				System.out
+						.println("WOAH, what happened to your collection buddy?");
+			}
+			if (getRoamingAliens() < 2) {
+				System.out.println("Error: Requires two aliens!");
+				return;
+			}
+			if (getRoamingAstronauts() <= 0 || roamingAliens <= 0) {
+				System.out
+						.println("Error: Need at least 1 astronaut & alien to fight.");
+				return;
+			}
+		}
 	}
 
 	public void stats() {
@@ -263,9 +371,7 @@ public class GameWorld extends Observable {
 	}
 
 	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {// XXX:Probably
-																	// works but
-																	// not 100%
-																	// sure
+																	// works
 		if (ary.size() <= 1)
 			return ary;
 		List<Integer> a1 = ary.subList(0, ary.size() / 2);
@@ -319,7 +425,7 @@ public class GameWorld extends Observable {
 	public void teleportToAlien() {
 		Alien a;
 		Spaceship sp;
-		if (roamingAliens > 0) {
+		if (getRoamingAliens() > 0) {
 			sp = getTheSpaceship();
 			a = getRandomAlien();
 			sp.setLocation(a.getLocation());
@@ -332,7 +438,7 @@ public class GameWorld extends Observable {
 	public void teleportToAstronaut() {
 		Astronaut a;
 		Spaceship sp;
-		if (roamingAstronauts > 0) {
+		if (getRoamingAstronauts() > 0) {
 			sp = getTheSpaceship();
 			a = getRandomAstronaut();
 			sp.setLocation(a.getLocation());
@@ -342,21 +448,36 @@ public class GameWorld extends Observable {
 			System.out.println("Error: Ther were no astronauts to jump to.");
 	}
 
-	private Alien getRandomAlien() {
-		if (roamingAliens > 0) {
+	public Alien getRandomAlien() {
+		Iiterator iter = getGameCollection().getIterator();
+		if (getRoamingAliens() > 0) {
 			while (true) {
-				int[] alienPositions = new int[roamingAliens];
+				int[] alienPositions = new int[getRoamingAliens()];
 				int pos = 0;
-				Iiterator iter = theGameCollection.getIterator();
+				System.out.println("Current Index is : " + pos);
+				System.out
+						.println("Alien Positions : " + alienPositions.length);
 				while (iter.hasNext()) {
 					GameObject gObject = (GameObject) iter.getNext();
 					if (gObject instanceof Alien) {
 						alienPositions[pos] = iter.getIndex();
 						pos++;
+						System.out.println("Current Index is : " + pos);
+					}
+					System.out.println("Alien Positions "
+							+ alienPositions.length);
+					if (pos == alienPositions.length) {
+						System.out.println("BREAK OUT");
+						break;
 					}
 				}
+				System.out.println("ESCAPED THE WHILE LOOP");
+				System.out
+						.println((Alien) (theGameCollection
+								.get(alienPositions[random
+										.nextInt(getRoamingAliens())])));
 				return (Alien) (theGameCollection.get(alienPositions[random
-						.nextInt(roamingAliens)]));
+						.nextInt(getRoamingAliens())]));
 			}
 		}
 		return null;
@@ -364,6 +485,8 @@ public class GameWorld extends Observable {
 
 	private Spaceship getTheSpaceship() {
 		Iiterator iter = theGameCollection.getIterator();
+		System.out.println("Game Collection size: "
+				+ getTheGameCollectionSize());
 		while (iter.hasNext()) {
 			GameObject object = (GameObject) iter.getNext();
 			if (object instanceof Spaceship)
@@ -373,9 +496,9 @@ public class GameWorld extends Observable {
 	}
 
 	private Astronaut getRandomAstronaut() {
-		if (roamingAstronauts > 0) {
+		if (getRoamingAstronauts() > 0) {
 			while (true) {
-				int[] astronautPositions = new int[roamingAstronauts];
+				int[] astronautPositions = new int[getRoamingAstronauts()];
 				int pos = 0;
 				Iiterator iter = theGameCollection.getIterator();
 				while (iter.hasNext()) {
@@ -387,7 +510,7 @@ public class GameWorld extends Observable {
 				}
 				return (Astronaut) (theGameCollection
 						.get(astronautPositions[random
-								.nextInt(roamingAstronauts)]));
+								.nextInt(getRoamingAstronauts())]));
 			}
 		}
 		return null;

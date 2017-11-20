@@ -114,7 +114,10 @@ public abstract class Opponents extends GameObject implements Imove {
 		int radiusSquared = (thisRadius*thisRadius + 2*thisRadius*otherRadius + otherRadius*otherRadius);
 		if(distanceBetweenSquared <= radiusSquared){
 			result = true;
-			System.out.println(obj + " collided with something");
+			System.out.println("CollidesWith Went off");
+		}
+		else{
+			System.out.println("COllidesWith DID NOT go off");
 		}
 		return result ;
 	}
@@ -133,8 +136,8 @@ public abstract class Opponents extends GameObject implements Imove {
 	public void handleCollision(ICollider otherObject) {
 		//gw = new GameWorld();
 		System.out.println("------------------");
-		System.out.println("Collision detected with: " + otherObject);
-		
+		System.out.println("------------------");
+		System.out.println("------------------");
 		if (otherObject instanceof Alien) {
 			System.out.println("Alien collision!@!!!!!");
 			//Alien ali = (Alien) otherObject;
@@ -146,6 +149,7 @@ public abstract class Opponents extends GameObject implements Imove {
 			//gw.fight();
 		}
 		System.out.println("------------------");
-		System.out.println("THE BOIZ ARE BACK IN TOWN!!");
+		System.out.println("------------------");
+		System.out.println("------------------");
 	}
 }
