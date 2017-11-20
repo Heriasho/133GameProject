@@ -10,7 +10,11 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speed;
 	private int direction;
 	private int speedMultiplier;
-	private GameWorld gw = new GameWorld();
+	private GameWorld gw;
+	
+	public Opponents(GameWorld gw){
+		this.gw = gw;
+	}
 
 	public int getDirection() {
 		return direction;

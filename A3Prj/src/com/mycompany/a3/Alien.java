@@ -8,10 +8,10 @@ import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 public class Alien extends Opponents {
-	private GameWorld gw = new GameWorld();
+	private GameWorld gw;
 	public Alien(int color, int screenHeight, int screenWidth, int speed,
-			int speedMultiplier) {
-		gw = new GameWorld();
+			int speedMultiplier, GameWorld gw) {
+		super(gw);
 		setName("Alien");
 		Random r = new Random();
 		setColor(color);

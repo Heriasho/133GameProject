@@ -10,7 +10,8 @@ import java.util.Random;
 public class Astronaut extends Opponents {
 	private int originalSpeed;
 	
-	public Astronaut(int color, int screenHeight, int screenWidth, int speed, int speedMultiplier) {
+	public Astronaut(int color, int screenHeight, int screenWidth, int speed, int speedMultiplier, GameWorld gw) {
+		super(gw);
 		Random r = new Random();
 		this.originalSpeed = speed;
 		setName("Astronaut");

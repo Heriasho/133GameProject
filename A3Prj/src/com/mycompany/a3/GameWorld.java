@@ -95,7 +95,7 @@ public class GameWorld extends Observable {
 
 	public void addAlien() {
 		theGameCollection.add((GameObject) new Alien(ColorUtil.MAGENTA,
-				screenHeight, screenWidth, speed, speedMulti));
+				screenHeight, screenWidth, speed, speedMulti, this));
 		System.out.println("Game Collection Size: "
 				+ theGameCollection.getSize());
 		updateGameWorld();
@@ -103,7 +103,7 @@ public class GameWorld extends Observable {
 
 	public void addAstro() {
 		theGameCollection.add((GameObject) new Astronaut(ColorUtil.GREEN,
-				screenHeight, screenWidth, speed, speedMulti));
+				screenHeight, screenWidth, speed, speedMulti, this));
 		System.out.println("Game Collection Size: "
 				+ theGameCollection.getSize());
 		updateGameWorld();
@@ -143,8 +143,8 @@ public class GameWorld extends Observable {
 
 	public Alien getAlienChild() {
 		theGameCollection.add((GameObject) new Alien(ColorUtil.BLACK,
-				screenHeight, screenWidth, speed, speedMulti));
-		Alien b = (Alien) theGameCollection.get(getTheGameCollectionSize());
+				screenHeight, screenWidth, speed, speedMulti, this));
+		Alien b = (Alien) theGameCollection.get(getTheGameCollectionSize()-1);
 		System.out.println(b);
 		setRoamingAliens(getRoamingAliens() + 1);
 		System.out.println("Roaming alien total: " + getRoamingAliens());
@@ -235,7 +235,7 @@ public class GameWorld extends Observable {
 		}
 	}
 
-	public void collisionManager(ICollider currentObject, ICollider otherObject) {
+	public synchronized void collisionManager(ICollider currentObject, ICollider otherObject) {
 		ArrayList<ICollider> collisionVectorObj1 = new ArrayList<ICollider>(); //
 		ArrayList<ICollider> collisionVectorObj2 = new ArrayList<ICollider>(); //
 		if (currentObject != otherObject) {
@@ -467,6 +467,7 @@ public class GameWorld extends Observable {
 
 	public Alien getRandomAlien() {
 		Iiterator iter = getGameCollection().getIterator();
+		System.out.println(theGameCollection.getSize());
 		if (getRoamingAliens() > 0) {
 			while (true) {
 				int[] alienPositions = new int[getRoamingAliens()];
@@ -488,6 +489,7 @@ public class GameWorld extends Observable {
 						break;
 					}
 				}
+				System.out.println(theGameCollection.getSize());
 				return (Alien) (theGameCollection.get(alienPositions[random
 						.nextInt(getRoamingAliens())]));
 			}
