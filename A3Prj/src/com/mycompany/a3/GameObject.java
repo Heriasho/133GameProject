@@ -17,6 +17,9 @@ public abstract class GameObject implements IDrawable, ICollider {
 	public String getName(){
 		return name;
 	}
+	public void setName(String objectName){
+		this.name = objectName;
+	}
 	
 	public int getScreenHeight() {
 		return screenHeight;

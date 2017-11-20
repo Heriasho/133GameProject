@@ -10,6 +10,11 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speed;
 	private int direction;
 	private int speedMultiplier;
+	private GameWorld gw;
+	
+	public Opponents(GameWorld gw){
+		this.gw = gw;
+	}
 
 	public int getDirection() {
 		return direction;
@@ -113,7 +118,10 @@ public abstract class Opponents extends GameObject implements Imove {
 		int radiusSquared = (thisRadius*thisRadius + 2*thisRadius*otherRadius + otherRadius*otherRadius);
 		if(distanceBetweenSquared <= radiusSquared){
 			result = true;
-			System.out.println(obj + " collided with something");
+			System.out.println("CollidesWith Went off");
+		}
+		else{
+			System.out.println("COllidesWith DID NOT go off");
 		}
 		return result ;
 	}
@@ -124,8 +132,28 @@ public abstract class Opponents extends GameObject implements Imove {
 		}
 		return super.toString() + "\tspeed=\t" + speed + "\tdir=\t" + direct;
 	}
+	/*
+	 * #TODO: Moving objects should consider consider the width and height of
+	 * the mv in move(). TODO: When two objects collide, handle the
+	 * handleCollision should only happen once.
+	 */
 	public void handleCollision(ICollider otherObject) {
-		// TODO Auto-generated method stub
-		
+		//gw = new GameWorld();
+		System.out.println("------------------");
+		System.out.println("------------------");
+		System.out.println("------------------");
+		if (otherObject instanceof Alien) {
+			System.out.println("Alien collision!@!!!!!");
+			//Alien ali = (Alien) otherObject;
+			gw.bred();
+		}
+		else if(otherObject instanceof Astronaut){
+			System.out.println("Astronaut collision!!!!");
+			Astronaut astro = (Astronaut) otherObject;
+			gw.fight(astro);
+		}
+		System.out.println("------------------");
+		System.out.println("------------------");
+		System.out.println("------------------");
 	}
 }

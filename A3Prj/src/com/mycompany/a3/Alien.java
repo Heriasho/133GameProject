@@ -8,10 +8,12 @@ import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
 public class Alien extends Opponents {
-	private GameWorld gw = new GameWorld();
+	private GameWorld gw;
+	private boolean recentSpawned = false;
 	public Alien(int color, int screenHeight, int screenWidth, int speed,
-			int speedMultiplier) {
-		
+			int speedMultiplier, GameWorld gw, boolean recentSpawned) {
+		super(gw);
+		setName("Alien");
 		Random r = new Random();
 		setColor(color);
 		setScreenHeight(screenHeight);
@@ -44,31 +46,15 @@ public class Alien extends Opponents {
 				360);
 
 	}
-
-	/*
-	 * #TODO: Moving objects should consider consider the width and height of
-	 * the mv in move(). TODO: When two objects collide, handle the
-	 * handleCollision should only happen once.
-	 */
-	public void handleCollision(ICollider otherObject) {
-		//gw = new GameWorld();
-		System.out.println("------------------");
-		System.out.println("Collision detected with: " + otherObject);
-		
-		if (otherObject instanceof Alien) {
-			System.out.println("Alien collision!@!!!!!");
-			//Alien ali = (Alien) otherObject;
-			gw.bred();
-		}
-		else if(otherObject instanceof Astronaut){
-			System.out.println("Astronaut collision!!!!");
-			Astronaut astro = (Astronaut) otherObject;
-			//gw.fight();
-		}
-		System.out.println("------------------");
-		System.out.println("THE BOIZ ARE BACK IN TOWN!!");
-	}
 	public void run(){
 		
+	}
+
+	public boolean getRecentSpawned() {
+		return recentSpawned;
+	}
+
+	public void setRecentSpawned(boolean recentSpawned) {
+		this.recentSpawned = recentSpawned;
 	}
 }
