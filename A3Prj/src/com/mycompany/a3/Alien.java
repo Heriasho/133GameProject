@@ -9,8 +9,9 @@ import com.codename1.ui.geom.Point2D;
 
 public class Alien extends Opponents {
 	private GameWorld gw;
+	private boolean recentSpawned = false;
 	public Alien(int color, int screenHeight, int screenWidth, int speed,
-			int speedMultiplier, GameWorld gw) {
+			int speedMultiplier, GameWorld gw, boolean recentSpawned) {
 		super(gw);
 		setName("Alien");
 		Random r = new Random();
@@ -47,5 +48,13 @@ public class Alien extends Opponents {
 	}
 	public void run(){
 		
+	}
+
+	public boolean getRecentSpawned() {
+		return recentSpawned;
+	}
+
+	public void setRecentSpawned(boolean recentSpawned) {
+		this.recentSpawned = recentSpawned;
 	}
 }
