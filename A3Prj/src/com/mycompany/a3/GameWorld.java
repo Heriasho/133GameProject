@@ -125,12 +125,7 @@ public class GameWorld extends Observable {
 		System.out.println("BREEDDDDD");
 		Alien a = getRandomAlien();
 		Alien b = getAlienChild();
-		double x = a.getLocation().getX() + 40;
-		double y = a.getLocation().getY() + 40;
-		Point2D p = new Point2D(x, y);
-		b.setLocation(p);
-		getGameCollection().add(b);
-		System.out.println("Two aliens bred.");
+		getBabyLocation(a, b);
 		if (getIsSoundOn() && getIsPlaying()) {
 			setSound(alienSound);
 			getSound().play();
@@ -146,20 +141,26 @@ public class GameWorld extends Observable {
 		System.out.println("Roaming alien total: " + getRoamingAliens());
 		updateGameWorld();
 		return b;
-
 	}
 
-	public void fight() {
-		Astronaut a = getRandomAstronaut();
+	public void getBabyLocation(Alien a, Alien b) {
+		double x = a.getLocation().getX() + 40;
+		double y = a.getLocation().getY() + 40;
+		Point2D p = new Point2D(x, y);
+		b.setLocation(p);
+		getGameCollection().add(b);
+		System.out.println("Two aliens bred.");
+		updateGameWorld();
+	}
+
+	public void fight(Astronaut a) {
 		a.damage();
 		if ((getIsPlaying() == true) && (getIsSoundOn() == true)) {
-
+			astronautSound.play();
+			System.out
+					.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
 		}
-		astronautSound.play();
 		updateGameWorld();
-		System.out
-				.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
-
 	}
 
 	/*

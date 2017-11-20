@@ -146,7 +146,7 @@ public abstract class Opponents extends GameObject implements Imove {
 		else if(otherObject instanceof Astronaut){
 			System.out.println("Astronaut collision!!!!");
 			Astronaut astro = (Astronaut) otherObject;
-			//gw.fight();
+			gw.fight(astro);
 		}
 		System.out.println("------------------");
 		System.out.println("------------------");
