@@ -38,7 +38,7 @@ public class Game extends Form implements Runnable {
 	private static UITimer timer;
 	private int time;
 	private boolean toggle = false;
-	private BottomButton bPauseCommand;
+	private BottomButton newPauseCommand;
 
 	public Game() {
 		gw = new GameWorld();
@@ -86,10 +86,9 @@ public class Game extends Form implements Runnable {
 		OpenDoorCommand openDoorCommand = new OpenDoorCommand(gw);
 		StatsCommand statsCommand = new StatsCommand(gw);
 		FightCommand myFightCommand = new FightCommand(gw);
-		bPauseCommand   = new BottomButton(pausedMessage, pauseCommand);
 		QuitCommand myQuitCommand = new QuitCommand();
 		SoundCommand soundCheckCommand = new SoundCommand("Sound", gw, game);
-		//PauseCommand pauseCommand = new PauseCommand(pausedMessage,this,gw);
+		newPauseCommand   = new BottomButton(pausedMessage, pauseCommand);
 
 		/* Set the commands for the buttons */
 		teleToAlienButton.setCommand(teleToAlienCommand);
@@ -183,7 +182,7 @@ public class Game extends Form implements Runnable {
 		// bottomContainer.add(bredButton);
 		// bottomContainer.add(fightButton);
 		// bottomContainer.add(tickButton);
-		bottomContainer.add(bPauseCommand);
+		bottomContainer.add(newPauseCommand);
 		bottomContainer.add(soundCheckBox);
 		/* South bar setup */
 
@@ -235,9 +234,8 @@ public class Game extends Form implements Runnable {
 	}
 
 	public boolean pausedInfo(String text) {
-		// TODO Auto-generated method stub
 		gw.pauseSound();
-		bPauseCommand.setText(text);
+		newPauseCommand.setText(text);
 		return true;
 	}
 

@@ -21,10 +21,10 @@ public class ScoreView extends Container implements Observer {
 	public ScoreView(GameWorld gw) {
 		this.getAllStyles().setPadding(Component.TOP, 50);
 		score = new Label("Score : "+gw.getScore());
-		rescuedAliens = new Label("Rescued Aliens : "+gw.getRescuedAliens());
-		roamingAliens = new Label("Roaming Aliens : "+gw.getRescuedAliens());
-		rescuedAstronauts = new Label("Rescued Astronauts : "+gw.getRescuedAstronauts());
-		roamingAstronauts = new Label("Roaming Astronauts :"+gw.getRoamingAstronauts());
+		rescuedAliens = new Label("\tRescued Aliens : "+gw.getRescuedAliens());
+		roamingAliens = new Label("\tRoaming Aliens : "+gw.getRoamingAliens());
+		rescuedAstronauts = new Label("\tRescued Astronauts : "+gw.getRescuedAstronauts());
+		roamingAstronauts = new Label("\tRoaming Astronauts :"+gw.getRoamingAstronauts());
 		this.add(score);
 		this.add(rescuedAliens);
 		this.add(roamingAliens);

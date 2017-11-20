@@ -10,6 +10,7 @@ import com.codename1.ui.geom.Point2D;
 public class Alien extends Opponents {
 	private GameWorld gw;
 	private boolean recentSpawned = false;
+
 	public Alien(int color, int screenHeight, int screenWidth, int speed,
 			int speedMultiplier, GameWorld gw, boolean recentSpawned) {
 		super(gw);
@@ -20,6 +21,7 @@ public class Alien extends Opponents {
 		setScreenWidth(screenWidth);
 		setSpeedMultiplier(speedMultiplier);
 		setDirection(r.nextInt(360));
+		setRecentSpawned(false);
 		setLocation(new Point2D(r.nextDouble() * screenWidth, r.nextDouble()
 				* screenHeight));
 		super.setSize(r.nextInt(31) + 20);
@@ -46,8 +48,9 @@ public class Alien extends Opponents {
 				360);
 
 	}
-	public void run(){
-		
+
+	public void run() {
+
 	}
 
 	public boolean getRecentSpawned() {
