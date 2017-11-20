@@ -15,7 +15,7 @@ public class Astronaut extends Opponents {
 		Random r = new Random();
 		this.originalSpeed = speed;
 		setName("Astronaut");
-		setColor(color);
+		super.setColor(color);
 		setScreenHeight(screenHeight);
 		setScreenWidth(screenWidth);
 		setSpeedMultiplier(speedMultiplier);
@@ -25,10 +25,10 @@ public class Astronaut extends Opponents {
 		setSpeed(speed);
 	}
 
-	@Override
-	public void setColor(int size) {
-		
-	}	
+//	@Override
+//	public void setColor(int color) {
+//		this.color = color;
+//	}	
 
 	@Override
 	public void setSize(int size) {
@@ -58,8 +58,8 @@ public class Astronaut extends Opponents {
 	}
 	
 	public void draw(Graphics g, Point pCmpRelPrnt) {
-		//g.setColor(this.getColor());
-		g.setColor(ColorUtil.YELLOW);
+		g.setColor(this.getColor());
+		System.out.println("Astronaut color:  "+ this.getColor());
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
 		
