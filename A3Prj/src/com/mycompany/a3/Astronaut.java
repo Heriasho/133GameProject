@@ -15,7 +15,7 @@ public class Astronaut extends Opponents {
 		Random r = new Random();
 		this.originalSpeed = speed;
 		setName("Astronaut");
-		super.setColor(color);
+		setColor(color);
 		setScreenHeight(screenHeight);
 		setScreenWidth(screenWidth);
 		setSpeedMultiplier(speedMultiplier);

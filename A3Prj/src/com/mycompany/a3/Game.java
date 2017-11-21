@@ -179,11 +179,11 @@ public class Game extends Form implements Runnable {
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
 		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1, ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
+		bottomContainer.add(newPauseCommand);
+		bottomContainer.add(soundCheckBox);
 		// bottomContainer.add(bredButton);
 		// bottomContainer.add(fightButton);
 		// bottomContainer.add(tickButton);
-		bottomContainer.add(newPauseCommand);
-		bottomContainer.add(soundCheckBox);
 		/* South bar setup */
 
 		/* Tool bar Setup */
@@ -217,6 +217,10 @@ public class Game extends Form implements Runnable {
 			timer.schedule(time, true, this);
 			System.out.println("timer is resumed");
 		}
+	}
+	public void gameOver(){
+		timer.cancel();
+		
 	}
 
 	public void run() {

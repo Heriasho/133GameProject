@@ -149,7 +149,7 @@ public abstract class Opponents extends GameObject implements Imove {
 			System.out.println("Alien collision occurs");
 			 Alien ali = (Alien) otherObject;
 			 gw.setParent(ali);
-			gw.bred();
+			 gw.bred();
 		} else if (otherObject instanceof Astronaut) {
 			System.out.println("Astronaut collision occurs");
 			Astronaut astro = (Astronaut) otherObject;

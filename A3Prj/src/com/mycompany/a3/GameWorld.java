@@ -36,6 +36,7 @@ public class GameWorld extends Observable {
 	private Vector<Observer> myObserverList;
 	private Alien parent = null;
 	private Sound sound;
+	private Game g;
 	private BackgroundSound bgMusic = new BackgroundSound("music.wav", this);
 	private Sound astronautSound = new Sound("astro.wav", this);
 	private Sound alienSound = new Sound("alien.wav", this);
@@ -114,7 +115,7 @@ public class GameWorld extends Observable {
 	}
 
 	public void addSpaceship() {
-		theGameCollection.add((Spaceship.getSpaceship()));
+		theGameCollection.add((Spaceship.getSpaceship(ColorUtil.LTGRAY, screenHeight, screenWidth)));
 		updateGameWorld();
 	}
 
@@ -134,6 +135,14 @@ public class GameWorld extends Observable {
 		this.notifyObservers();
 		this.clearChanged();
 		this.debug();
+	}
+	/*#XXX: Insert a way to end the game here.
+	 * */
+	public void gameOverCheck(Game g){
+		if (getRoamingAstronauts() <= 0 ) {
+			System.out.println("GameOVER");
+			g.gameOver();
+		}
 	}
 
 	/*
@@ -165,6 +174,7 @@ public class GameWorld extends Observable {
 		Iiterator collectionIterator = theGameCollection.getIterator();
 		System.out.println("Ticker is called");
 		spawnString();
+		gameOverCheck(g);
 		System.out.println("iter index: " + collectionIterator.getIndex());
 		while (collectionIterator.hasNext()) {
 			GameObject object = (GameObject) collectionIterator.getNext();
@@ -207,22 +217,23 @@ public class GameWorld extends Observable {
 			if (currentObject.collidesWith(otherObject)) {
 				if (!collisionVectorObj1.contains(currentObject)
 						&& !collisionVectorObj2.contains(otherObject)) {
-					/*
-					 * This if statement checks to see if either alien was
-					 * recently spawned & preventing collision if so. Comment
-					 * out this if/else statement to see animation
-					 */
-					if (checkIfSpawnedAliens(collisionVectorObj1,
-							collisionVectorObj2, currentObject, otherObject) == true) {
-						System.out
-								.println("Collision: Neither alien was spawned recently");
-						collisionLogic(collisionVectorObj1,
-								collisionVectorObj2, currentObject, otherObject);
-					} else {
-						System.out
-								.println("No Collision: An alien was spawned recently");
-					}
-					/**/
+					// /*
+					// * This if statement checks to see if either alien was
+					// * recently spawned & preventing collision if so. Comment
+					// * out this if/else statement to see animation
+					// */
+					// if (checkIfSpawnedAliens(collisionVectorObj1,
+					// collisionVectorObj2, currentObject, otherObject) == true)
+					// {
+					// System.out
+					// .println("Collision: Neither alien was spawned recently");
+					// collisionLogic(collisionVectorObj1,
+					// collisionVectorObj2, currentObject, otherObject);
+					// } else {
+					// System.out
+					// .println("No Collision: An alien was spawned recently");
+					// }
+					// /**/
 				}
 			} else {
 				collisionVectorObj1.remove(otherObject);
@@ -253,8 +264,12 @@ public class GameWorld extends Observable {
 		}
 		return false;
 	}
-	/*This method handles all the collision logic, adding both current and other object to eachother's collision vectors.
-	 * After this, the handleCollision method was called.*/
+
+	/*
+	 * This method handles all the collision logic, adding both current and
+	 * other object to eachother's collision vectors. After this, the
+	 * handleCollision method was called.
+	 */
 	public void collisionLogic(ArrayList<ICollider> collisionVectorObj1,
 			ArrayList<ICollider> collisionVectorObj2, ICollider currentObject,
 			ICollider otherObject) {
@@ -428,11 +443,13 @@ public class GameWorld extends Observable {
 			GameObject object = (GameObject) iter.getNext();
 			if (object instanceof Opponents) {
 				Opponents o = (Opponents) object;
-				double x = Math.abs(sp.getLocation().getX()
+				double spaceXPosition = Math.abs(sp.getLocation().getX()
 						- o.getLocation().getX());
-				double y = Math.abs(sp.getLocation().getY()
+				double spaceYPosition = Math.abs(sp.getLocation().getY()
 						- o.getLocation().getY());
-				if (x >= 0 && x <= sp.getSize() && y >= 0 && y <= sp.getSize()) {
+				if (spaceXPosition >= 0 && spaceXPosition <= sp.getSize()
+						&& spaceYPosition >= 0
+						&& spaceYPosition <= sp.getSize()) {
 					rescueAnObject(object);
 					remove.add(iter.getIndex());
 					System.out.println("You've rescued a " + object);
@@ -451,14 +468,15 @@ public class GameWorld extends Observable {
 
 	private void rescueAnObject(GameObject object) {
 		if (object instanceof Alien) {
-			score -= 10;
-			roamingAliens -= 1;
-			rescuedAliens += 1;
+			setScore(getScore()-10);
+			setRoamingAliens(getRoamingAliens()-1);
+			setRescuedAliens(getRescuedAliens()-1);
 		} else if (object instanceof Astronaut) {
-			score += (5 + ((Astronaut) object).getSpeed());
-			roamingAstronauts -= 1;
-			rescuedAstronauts += 1;
+			setScore(getScore()+(5 + ((Astronaut) object).getSpeed()));
+			setRoamingAstronauts(getRoamingAstronauts()-1);
+			setRescuedAstronauts(getRescuedAstronauts()+1);
 		}
+		System.out.println("SOMETHING WAS DECREASED");
 	}
 
 	/*

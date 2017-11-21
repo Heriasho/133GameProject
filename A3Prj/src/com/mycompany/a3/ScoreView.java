@@ -39,5 +39,6 @@ public class ScoreView extends Container implements Observer {
 		rescuedAstronauts.setText("Rescued Astronauts : "+((GameWorld) observable).getRescuedAstronauts());
 		roamingAstronauts.setText("Roaming Astronauts : "+((GameWorld) observable).getRoamingAstronauts());
 		revalidate();
+		this.setVisible(true);
 	}
 }

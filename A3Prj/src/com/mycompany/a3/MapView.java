@@ -5,11 +5,13 @@ import java.util.Observable;
 import java.util.Observer;
 //import java.util.Random;
 
+
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
+import com.codename1.ui.Label;
 import com.codename1.ui.geom.Point;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.Border;
@@ -21,6 +23,7 @@ public class MapView extends Container implements Observer {
 	private GameObject obj;
 	private static final Random R = Random.getInstance();
 	private final boolean debug = false;
+	private boolean gameOver = false;
     private Image bgImage;
     private Container mvContainer;
     private String[] bgImages = {
@@ -36,7 +39,7 @@ public class MapView extends Container implements Observer {
 		this.getAllStyles().setBgColor(ColorUtil.GRAY);
 	   	this.setLayout(new FlowLayout());
     	//this.getAllStyles().setBgTransparency(255);
-        this.getAllStyles().setBorder(Border.createLineBorder(2, ColorUtil.BLUE));
+        this.getAllStyles().setBorder(Border.createLineBorder(2, ColorUtil.GREEN));
     	
         bgImage = null;
 		try {
@@ -65,12 +68,19 @@ public class MapView extends Container implements Observer {
 		Iiterator drawGameIterator = gcp.getIterator();
 		while (drawGameIterator.hasNext()) {
 			obj = (GameObject) drawGameIterator.getNext();
+			//pCmpRelPrnt = new Point((int)obj.getLocation().getX(),(int)obj.getLocation().getY());
 			obj.draw(g, pCmpRelPrnt);
 		}
 	}
 
 	public void update(Observable o, Object gwp) {
-		if(gw.getIsPlaying()) this.repaint();
+		if(gw.getIsPlaying()){
+			this.repaint();
+		}
+		if(gameOver == true){
+			Label gameOver = new Label("Game Over");
+			this.add(gameOver);
+		}
 		System.out.println("BG IMAGE REDRAWN");
 	}
 }
