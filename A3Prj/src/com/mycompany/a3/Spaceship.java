@@ -11,21 +11,27 @@ import com.codename1.ui.geom.Point2D;
 public class Spaceship extends Rescuers {
 
 	private static Spaceship spaceship;
-	private boolean debug = false;
+	private boolean debug = true;
 
-	private Spaceship(int color, int screenHeight, int screenWidth) {
+	private Spaceship(int color, int mapViewHeight, int mapViewWidth) {
 		Random r = new Random();
 		super.setColor(color);
-		setLocation(new Point2D(r.nextDouble() * screenWidth, r.nextDouble()
-				* screenHeight));
+		setScreenHeight(mapViewHeight);
+		setScreenWidth(mapViewWidth);
+		setLocation(new Point2D(r.nextDouble() * getScreenWidth(), r.nextDouble()
+				* getScreenHeight()));
 		setSize(50);
-		setScreenHeight(screenHeight);
-		setScreenWidth(screenWidth);
+		if(debug){
+			System.err.println("x: " + getLocation().getX());
+			System.err.println("y: " + getLocation().getY());
+			System.err.println("Ss screenHeight: " + getScreenHeight());
+			System.err.println("Ss screenWidth: " + getScreenWidth());
+		}
 	}
 
-	public static Spaceship getSpaceship(int color, int screenHeight, int screenWidth) {
+	public static Spaceship getSpaceship(int color, int mapViewHeight, int mapViewWidth) {
 		if (spaceship == null) {
-			spaceship = new Spaceship(color, screenHeight, screenWidth);
+			spaceship = new Spaceship(color, mapViewHeight, mapViewWidth);
 		}
 		return spaceship;
 	}
@@ -66,10 +72,6 @@ public class Spaceship extends Rescuers {
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();
 		g.fillRect(xLoc - (getSize() / 2), yLoc - (getSize() / 2), getSize(),
 				getSize());
-		if(debug){
-			System.err.println("x: " + getLocation().getX());
-			System.err.println("y: " + getLocation().getY());
-		}
 	}
 
 	public boolean collidesWith(ICollider otherObject) {

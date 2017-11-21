@@ -31,7 +31,7 @@ public class GameWorld extends Observable {
 	private boolean isPlaying = true;
 	private boolean isSoundOn = true;
 	private final boolean debug = false;
-	private final boolean debugErr = true;
+	private final boolean debugErr = false;
 	private GameCollection theGameCollection;
 	private Vector<Observer> myObserverList;
 	private Alien parent = null;
@@ -60,6 +60,13 @@ public class GameWorld extends Observable {
 		mapViewWidth = 814; //XXX HardCoded
 		mapViewHeight = 501;//XXX HardCoded
 	}
+	public void init() {
+		initialSpawn();
+		addSpaceship();
+		//bgMusic.play(); XXX:REMEMBER TO TURN THIS BACK ON
+		//getMapViewSize(mv);
+		updateGameWorld();
+	}
 
 	public void debug() {
 		if (debug) {
@@ -78,14 +85,14 @@ public class GameWorld extends Observable {
 			}
 		}
 	}
-	public void getMapViewSize(MapView mv){
-		setMapViewWidth(mv.getWidth());
-		setMapViewHeight(mv.getHeight());
-		if(debugErr){
-			System.err.println("Gw mv copy's width: " + getMapViewWidth());
-			System.err.println("Gw mv copy's height: " + getMapViewHeight());	
-		}
-	}
+//	public void getMapViewSize(MapView mv){
+//		setMapViewWidth(mv.getWidth());
+//		setMapViewHeight(mv.getHeight());
+//		if(debugErr){
+//			System.err.println("Gw mv copy's width: " + getMapViewWidth());
+//			System.err.println("Gw mv copy's height: " + getMapViewHeight());	
+//		}
+//	}
 
 	public void spawnString() {
 		if(debug)
@@ -96,19 +103,12 @@ public class GameWorld extends Observable {
 	/*
 	 * XXX This is where everything begins. Set the initial state of the game
 	 */
-	public void init() {
-		initialSpawn();
-		addSpaceship();
-		//bgMusic.play(); XXX:REMEMBER TO TURN THIS BACK ON
-		//getMapViewSize(mv);
-		updateGameWorld();
-	}
 
 	public void initialSpawn() {
-		for (int i = 0; i < roamingAliens; ++i) {
+		for (int i = 0; i < getRoamingAliens(); ++i) {
 			addAlien();
 		}
-		for (int i = 0; i < roamingAstronauts; ++i) {
+		for (int i = 0; i < getRoamingAstronauts(); ++i) {
 			addAstro();
 		}
 	}

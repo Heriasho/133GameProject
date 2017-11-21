@@ -40,7 +40,6 @@ public class Alien extends Opponents {
 
 	public void draw(Graphics g, Point pCmpRelPrnt) {
 		g.setColor(this.getColor());
-		// System.out.println("Alien color:  "+ this.getColor());
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();
 		int r = 20;
