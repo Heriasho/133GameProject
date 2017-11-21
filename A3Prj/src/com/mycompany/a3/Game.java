@@ -6,6 +6,7 @@ import com.codename1.ui.CheckBox;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
@@ -24,8 +25,8 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.Border;
 import com.mycompany.a3.BottomButton;
-
 import com.codename1.ui.util.UITimer;
+
 
 //import java.io.IOException;
 import java.lang.String;
@@ -62,7 +63,7 @@ public class Game extends Form implements Runnable {
 
 
 	public Game() {
-		gw.init();
+		gw.init(this);
 		mv = new MapView(gw, this);
 		sv = new ScoreView(gw);
 		setTimer(new UITimer(this));
@@ -236,8 +237,8 @@ public class Game extends Form implements Runnable {
 	}
 	
 	public void gameOver(){
-		timer.cancel();
-		
+		pause();
+		Dialog.show("Game Over",gw.getStats(), "Ok", null);
 	}
 
 	public void run() {

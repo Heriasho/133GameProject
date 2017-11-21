@@ -33,7 +33,6 @@ public class ScoreView extends Container implements Observer {
 	}
 
 	public void update(Observable observable, Object data) {
-		System.out.println("Hurray I was called");
 		score.setText(""+((GameWorld) observable).getScore());
 		rescuedAliens.setText("Rescued Aliens : "+((GameWorld) observable).getRescuedAliens());
 		roamingAliens.setText("Roaming Aliens : "+((GameWorld) observable).getRoamingAliens());

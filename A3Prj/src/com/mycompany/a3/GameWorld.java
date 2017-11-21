@@ -28,6 +28,7 @@ public class GameWorld extends Observable {
 	private int mapViewWidth;
 	private int mapViewHeight;
 	private Random random;
+	private String statsString = "";
 	private boolean isPlaying = true;
 	private boolean isSoundOn = true;
 	private final boolean debug = false;
@@ -63,7 +64,8 @@ public class GameWorld extends Observable {
 		mapViewHeight = 501;// XXX HardCoded
 	}
 
-	public void init() {
+	public void init(Game g) {
+		this.g = g;
 		initialSpawn();
 		addSpaceship();
 		bgMusic.play();
@@ -151,9 +153,8 @@ public class GameWorld extends Observable {
 	/*
 	 * #XXX: Insert a way to end the game here.
 	 */
-	public void gameOverCheck(Game g) {
+	public void gameOverCheck() {
 		if (getRoamingAstronauts() <= 0) {
-			System.out.println("GameOVER");
 			g.gameOver();
 		}
 	}
@@ -190,13 +191,14 @@ public class GameWorld extends Observable {
 		spawnString();
 		collisionVectorObj1 = new ArrayList<ICollider>(); //
 		collisionVectorObj2 = new ArrayList<ICollider>();
-		// gameOverCheck(g);
+		gameOverCheck();
 		if (debug)
 			System.out.println("iter index: " + collectionIterator.getIndex());
 		while (collectionIterator.hasNext()) {
 			GameObject object = (GameObject) collectionIterator.getNext();
 
-			if(debug)System.out.println(object.toString());
+			if (debug)
+				System.out.println(object.toString());
 			if (object instanceof Opponents) {
 				if (debug) {
 					System.out.println("An Opponent moved");
@@ -217,12 +219,12 @@ public class GameWorld extends Observable {
 		while (secondIt.hasNext()) {
 			a2.add((ICollider) secondIt.getNext());
 		}
-		for(ICollider ic1 : a1){
-			for(ICollider ic2 : a2){
+		for (ICollider ic1 : a1) {
+			for (ICollider ic2 : a2) {
 				collisionManager(ic1, ic2);
 			}
 		}
-		
+
 		if (debug)
 			System.out.println("Ticker method ends");
 		if (debug)
@@ -231,10 +233,10 @@ public class GameWorld extends Observable {
 	}
 
 	/* A Tick helper method that handles all the collision between two objects. */
-	/* TODO rerite
-	 * This if statement checks to see if either alien was
-	 * recently spawned & preventing collision if so. Comment
-	 * out this if/else statement to see animation
+	/*
+	 * TODO rerite This if statement checks to see if either alien was recently
+	 * spawned & preventing collision if so. Comment out this if/else statement
+	 * to see animation
 	 */
 	public void collisionManager(ICollider currentObject, ICollider otherObject) {
 		if (currentObject != otherObject) {
@@ -248,9 +250,11 @@ public class GameWorld extends Observable {
 					collisionString(currentObject, otherObject, true);
 					currentObject.handleCollision(otherObject);
 					if (debug)
-						System.out.println(Arrays.toString(collisionVectorObj1.toArray()));
+						System.out.println(Arrays.toString(collisionVectorObj1
+								.toArray()));
 					if (debug)
-						System.out.println(Arrays.toString(collisionVectorObj2.toArray()));
+						System.out.println(Arrays.toString(collisionVectorObj2
+								.toArray()));
 					updateGameWorld();
 				}
 			} else {
@@ -260,12 +264,11 @@ public class GameWorld extends Observable {
 				updateGameWorld();
 			}
 		} else {
-			if (debug){
+			if (debug) {
 				System.out.println("CurrentObject == OtherObject");
 			}
 		}
 	}
-
 
 	/*
 	 * This method provides valuable information about the results of collisions
@@ -320,10 +323,10 @@ public class GameWorld extends Observable {
 	 * alien) or should spawn by a random 'guardian' alien.
 	 */
 	public void bred() {
-		if (debug){
+		if (debug) {
 			System.out.println("Bred method is called");
 		}
-		if(getRoamingAliens() < 30){
+		if (getRoamingAliens() < 30) {
 			if (getParent() != null) {
 				Alien a = getParent();
 				if (debug)
@@ -336,7 +339,7 @@ public class GameWorld extends Observable {
 				Alien a = getRandomAlien();
 				if (debug)
 					System.out
-					.println("Guardian has been provided for the orphaned child");
+							.println("Guardian has been provided for the orphaned child");
 				Alien b = spawnAlienChild();
 				if (debug)
 					System.out.println("The child is spawned");
@@ -358,7 +361,8 @@ public class GameWorld extends Observable {
 	 */
 	public Alien spawnAlienChild() {
 		theGameCollection.add((GameObject) new Alien(ColorUtil.BLACK,
-				getMapViewHeight(), getMapViewWidth(), speed, speedMulti, this, true));
+				getMapViewHeight(), getMapViewWidth(), speed, speedMulti, this,
+				true));
 		Alien b = (Alien) theGameCollection.get(getTheGameCollectionSize() - 1);
 		System.out.println(b);
 		setRoamingAliens(getRoamingAliens() + 1);
@@ -377,7 +381,8 @@ public class GameWorld extends Observable {
 		Point2D p = new Point2D(x, y);
 		b.setLocation(p);
 		getGameCollection().add(b);
-		if(debug)System.out.println("Two aliens bred.");
+		if (debug)
+			System.out.println("Two aliens bred.");
 		updateGameWorld();
 	}
 
@@ -386,11 +391,13 @@ public class GameWorld extends Observable {
 	 * astronaut's health and speed.
 	 */
 	public void fight(Astronaut a) {
-		if(debug)System.out.println("Alien speed before hand "+ a.getSpeed());
+		if (debug)
+			System.out.println("Alien speed before hand " + a.getSpeed());
 		a.damage();
-		if(debug)System.out
-				.println("Astronaut takes 1 point of damage.");
-		if(debug)System.out.println("Astronaut health: " + a.getSpeed());
+		if (debug)
+			System.out.println("Astronaut takes 1 point of damage.");
+		if (debug)
+			System.out.println("Astronaut health: " + a.getSpeed());
 		if ((getIsPlaying() == true) && (getIsSoundOn() == true)) {
 			astronautSound.play();
 		}
@@ -407,6 +414,20 @@ public class GameWorld extends Observable {
 				+ "\nNumber of Astronauts roaming: " + getRoamingAstronauts()
 				+ "\nNumber of Aliens rescued: " + getRescuedAliens()
 				+ "\nNumber of Aliens roaming: " + getRoamingAliens());
+		statsString = "The score is: " + getScore()
+				+ "\nNumber of Astronauts rescused: " + getRescuedAstronauts()
+				+ "\nNumber of Astronauts roaming: " + getRoamingAstronauts()
+				+ "\nNumber of Aliens rescued: " + getRescuedAliens()
+				+ "\nNumber of Aliens roaming: " + getRoamingAliens();
+		setStats(statsString);
+	}
+
+	public String getStats() {
+		return statsString;
+	}
+
+	public void setStats(String statsString) {
+		this.statsString = statsString;
 	}
 
 	public void map() {
@@ -641,7 +662,7 @@ public class GameWorld extends Observable {
 			astronautSound.pause();
 			doorSound.pause();
 		} else {
-			 bgMusic.play();
+			bgMusic.play();
 		}
 	}
 
@@ -730,6 +751,7 @@ public class GameWorld extends Observable {
 	public void setSound(Sound sound) {
 		this.sound = sound;
 	}
+
 	public Alien getParent() {
 		return parent;
 	}
