@@ -28,11 +28,6 @@ public class Astronaut extends Opponents implements ISelectable {
 		setSpeed(speed);
 	}
 
-	// @Override
-	// public void setColor(int color) {
-	// this.color = color;
-	// }
-
 	@Override
 	public void setSize(int size) {
 
@@ -46,6 +41,11 @@ public class Astronaut extends Opponents implements ISelectable {
 		setSpeed(getSpeed() - 1);
 		if (getSpeed() < 0)
 			setSpeed(0);
+		super.setColor(getRGB());
+	}
+	public void heal(){
+		System.out.println("This astronaut has been healed");
+		setSpeed(5);
 		super.setColor(getRGB());
 	}
 
@@ -86,6 +86,7 @@ public class Astronaut extends Opponents implements ISelectable {
 			g.drawLine(xLoc - 20, yLoc - 50, xLoc + 20, yLoc - 50);
 			g.drawLine(xLoc + 20, yLoc - 50, xLoc, yLoc + 50);
 			g.drawLine(xLoc, yLoc + 50, xLoc - 20, yLoc - 50);
+			//heal();
 		} else {
 			//System.err.println("I WAS BORN A TRIANGLE");
 			g.fillTriangle(xLoc - 20, yLoc - 50, xLoc + 20, yLoc - 50, xLoc,

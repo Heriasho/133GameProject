@@ -5,12 +5,14 @@ import java.util.Observable;
 import java.util.Observer;
 //import java.util.Random;
 
+
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.geom.Point;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.Border;
@@ -18,6 +20,7 @@ import com.mycompany.a3.Random;
 
 public class MapView extends Container implements Observer {
 	private Graphics myGraphics;
+	private Game g;
 	private GameWorld gw;
 	private GameCollection gcp;
 	private GameObject obj;
@@ -29,6 +32,8 @@ public class MapView extends Container implements Observer {
 	private boolean gameOver = false;
 	private Image bgImage;
 	private Container mvContainer;
+	private Astronaut selectedAstro;
+	private HealCommand healCommand = new HealCommand(gw, selectedAstro);
 	private String[] bgImages = { "chromaCosmos1.jpg", "cosmosBackground1.jpg",
 			"chaosCircle1.jpg" };
 
@@ -51,10 +56,6 @@ public class MapView extends Container implements Observer {
 		}
 
 		mvContainer = new Container();
-		/*
-		 * XXX DO literally nothing fam gw.setMapViewWidth(this.getWidth()); ===
-		 * 0 gw.setMapViewHeight(this.getHeight()); === 0
-		 */
 	}
 
 	public void paint(Graphics g) {
@@ -111,6 +112,9 @@ public class MapView extends Container implements Observer {
 				if ((a.contains(pPtrRelPrnt, pCmpRelPrnt))) {
 					System.err.println("Astronaut is selected");
 					a.setSelected(true);
+					healCommand.setAstronaut(a);
+					g.keyPressed('h');
+					
 				} else {
 					System.err.println("Astronaut is not selected");
 					a.setSelected(false);

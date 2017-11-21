@@ -40,6 +40,26 @@ public class Game extends Form implements Runnable {
 	private boolean toggle = false;
 	private boolean isPaused = false;
 	private BottomButton newPauseCommand;
+	private AboutCommand aboutCommand = new AboutCommand();
+	private HelpCommand helpCommand = new HelpCommand();
+	private HealCommand healCommand = new HealCommand(gw, null);
+	private TeleportToAlienCommand teleToAlienCommand = new TeleportToAlienCommand(gw);
+	private TeleportToAstronautCommand teleToAstroCommand = new TeleportToAstronautCommand(gw);
+	private LeftCommand leftCommand = new LeftCommand(gw);
+	private RightCommand rightCommand = new RightCommand(gw);
+	private UpCommand upCommand = new UpCommand(gw);
+	private DownCommand downCommand = new DownCommand(gw);
+	private CompressCommand compressCommand = new CompressCommand(gw);
+	private ExpandCommand expandCommand = new ExpandCommand(gw);
+	private MapCommand mapCommand = new MapCommand(gw);
+	private BredCommand bredCommand = new BredCommand(gw);
+	private OpenDoorCommand openDoorCommand = new OpenDoorCommand(gw);
+	private StatsCommand statsCommand = new StatsCommand(gw);
+	private FightCommand myFightCommand = new FightCommand(gw);
+	private QuitCommand myQuitCommand = new QuitCommand();
+	private SoundCommand soundCheckCommand = new SoundCommand("Sound", gw, game);
+	
+
 
 	public Game() {
 		gw = new GameWorld();
@@ -72,25 +92,7 @@ public class Game extends Form implements Runnable {
 		
 
 		/* Creating the commands */
-		AboutCommand aboutCommand = new AboutCommand();
-		HelpCommand helpCommand = new HelpCommand();
-		TeleportToAlienCommand teleToAlienCommand = new TeleportToAlienCommand(gw);
-		TeleportToAstronautCommand teleToAstroCommand = new TeleportToAstronautCommand(gw);
-		LeftCommand leftCommand = new LeftCommand(gw);
-		RightCommand rightCommand = new RightCommand(gw);
-		UpCommand upCommand = new UpCommand(gw);
-		DownCommand downCommand = new DownCommand(gw);
-		CompressCommand compressCommand = new CompressCommand(gw);
-		ExpandCommand expandCommand = new ExpandCommand(gw);
-		MapCommand mapCommand = new MapCommand(gw);
-		BredCommand bredCommand = new BredCommand(gw);
-		OpenDoorCommand openDoorCommand = new OpenDoorCommand(gw);
-		StatsCommand statsCommand = new StatsCommand(gw);
-		FightCommand myFightCommand = new FightCommand(gw);
-		QuitCommand myQuitCommand = new QuitCommand();
-		SoundCommand soundCheckCommand = new SoundCommand("Sound", gw, game);
 		newPauseCommand   = new BottomButton(pausedMessage, pauseCommand);
-
 		/* Set the commands for the buttons */
 		teleToAlienButton.setCommand(teleToAlienCommand);
 		teleToAstroButton.setCommand(teleToAstroCommand);
@@ -124,6 +126,7 @@ public class Game extends Form implements Runnable {
 		addKeyListener('a', teleToAlienCommand);
 		addKeyListener('o', teleToAstroCommand);
 		addKeyListener('p', pauseCommand);
+		addKeyListener('h', healCommand);
 		/* Button Creation & Command setup */
 
 		/* Title Bar */
@@ -202,15 +205,37 @@ public class Game extends Form implements Runnable {
 		if (toggle) {
 			timer.cancel();
 			System.out.println("timer is canceled");
+			healCommand.setEnabled(true);
+			
+			teleToAlienCommand.setEnabled(false);
+			teleToAstroCommand.setEnabled(false);
+			leftCommand.setEnabled(false);
+			rightCommand.setEnabled(false);
+			upCommand.setEnabled(false);
+			downCommand.setEnabled(false);
+			mapCommand.setEnabled(false);
+			openDoorCommand.setEnabled(false);
+			compressCommand.setEnabled(false);
+			expandCommand.setEnabled(false);
+			statsCommand.setEnabled(false);
+			
 		} else {
 			timer.schedule(time, true, this);
 			System.out.println("timer is resumed");
+			healCommand.setEnabled(false);
+			
+			teleToAlienCommand.setEnabled(true);
+			teleToAstroCommand.setEnabled(true);
+			leftCommand.setEnabled(true);
+			rightCommand.setEnabled(true);
+			upCommand.setEnabled(true);
+			downCommand.setEnabled(true);
+			mapCommand.setEnabled(true);
+			openDoorCommand.setEnabled(true);
+			compressCommand.setEnabled(true);
+			expandCommand.setEnabled(true);
+			statsCommand.setEnabled(true);
 		}
-	}
-	public void paused(){
-		timer.cancel();
-		/*Set Commands to be deactivated except for heal command*/
-		
 	}
 	
 	public boolean pausedInfo(String text) {

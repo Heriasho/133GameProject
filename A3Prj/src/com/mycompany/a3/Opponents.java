@@ -13,6 +13,7 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speedMultiplier;
 	private GameWorld gw;
 	private final boolean debug = false;
+	private final boolean debugCollision = true;
 
 	public Opponents(GameWorld gw) {
 		this.gw = gw;
@@ -139,22 +140,22 @@ public abstract class Opponents extends GameObject implements Imove {
 	 * handleCollision should only happen once.
 	 */
 	public void handleCollision(ICollider otherObject) {
-		if(debug){
+		if(debugCollision){
 			System.out.println("Collision is being handled");
 			System.out.println("------------------");
 		}
 		
 		if (otherObject instanceof Alien) {
-			if(debug)System.out.println("Alien collision occurs");
+			if(debugCollision)System.out.println("Alien collision occurs");
 			 Alien ali = (Alien) otherObject;
 			 gw.setParent(ali);
 			 gw.bred();
 		} else if (otherObject instanceof Astronaut) {
-			if(debug)System.out.println("Astronaut collision occurs");
+			if(debugCollision)System.out.println("Astronaut collision occurs");
 			Astronaut astro = (Astronaut) otherObject;
 			gw.fight(astro);
 		}
-		if(debug){
+		if(debugCollision){
 			System.out.println("------------------");
 			System.out.println("Collision was handled");
 		}
