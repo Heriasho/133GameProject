@@ -463,7 +463,7 @@ public class GameWorld extends Observable {
 			}
 
 		}
-		fuckingSort(remove);
+		simpleMergeSort(remove);
 		for (int i = 0; i < remove.size(); i++) {
 			theGameCollection.remove(remove.get(i) - i);
 		}
@@ -490,7 +490,7 @@ public class GameWorld extends Observable {
 	 * Since Codename One overrides Collections.sort, I implemented my own
 	 * version of the Merge Sort to conduct sorting for the openDoor method.
 	 */
-	private ArrayList<Integer> fuckingSort(ArrayList<Integer> ary) {
+	private ArrayList<Integer> simpleMergeSort(ArrayList<Integer> ary) {
 		if (ary.size() <= 1)
 			return ary;
 		List<Integer> a1 = ary.subList(0, ary.size() / 2);
