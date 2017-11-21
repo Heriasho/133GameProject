@@ -11,19 +11,19 @@ public class Alien extends Opponents {
 	private GameWorld gw;
 	private boolean recentSpawned = false;
 
-	public Alien(int color, int screenHeight, int screenWidth, int speed,
+	public Alien(int color, int mapViewHeight, int mapViewWidth, int speed,
 			int speedMultiplier, GameWorld gw, boolean recentSpawned) {
 		super(gw);
 		setName("Alien");
 		Random r = new Random();
 		super.setColor(color);
-		setScreenHeight(screenHeight);
-		setScreenWidth(screenWidth);
+		setScreenHeight(mapViewHeight);
+		setScreenWidth(mapViewWidth);
 		setSpeedMultiplier(speedMultiplier);
 		setDirection(r.nextInt(360));
 		setRecentSpawned(false);
-		setLocation(new Point2D(r.nextDouble() * screenWidth, r.nextDouble()
-				* screenHeight));
+		setLocation(new Point2D(r.nextDouble() * mapViewWidth, r.nextDouble()
+				* mapViewHeight));
 		super.setSize(r.nextInt(31) + 20);
 		setSpeed(speed);
 	}
@@ -40,7 +40,7 @@ public class Alien extends Opponents {
 
 	public void draw(Graphics g, Point pCmpRelPrnt) {
 		g.setColor(this.getColor());
-		System.out.println("Alien color:  "+ this.getColor());
+		// System.out.println("Alien color:  "+ this.getColor());
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();
 		int r = 20;

@@ -196,18 +196,6 @@ public class Game extends Form implements Runnable {
 		this.show();
 	}
 
-	private void init() {
-
-	}
-
-	private void stop() {
-
-	}
-
-	private void destroy() {
-
-	}
-
 	public void pause() {
 		toggle = !toggle;
 		if (toggle) {
@@ -241,6 +229,18 @@ public class Game extends Form implements Runnable {
 		gw.pauseSound();
 		newPauseCommand.setText(text);
 		return true;
+	}
+	
+	private void init() {
+		
+	}
+	
+	private void stop() {
+		
+	}
+	
+	private void destroy() {
+		
 	}
 
 }

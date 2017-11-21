@@ -1,6 +1,7 @@
 package com.mycompany.a3;
 
 import com.codename1.ui.geom.Point2D;
+import java.util.Random;
 //import java.util.Hashtable;
 //import java.util.Random;
 
@@ -11,6 +12,7 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int direction;
 	private int speedMultiplier;
 	private GameWorld gw;
+	private final boolean debug = false;
 
 	public Opponents(GameWorld gw) {
 		this.gw = gw;
@@ -49,7 +51,10 @@ public abstract class Opponents extends GameObject implements Imove {
 	 * they move there.
 	 */
 	public void move(int tickTime) {
-		setDirection(getDirection() + 5);
+		Random r = new Random();
+		setDirection(getDirection() + r.nextInt(11) - 5);
+		if(debug)System.out.println("GET THE DIRECTION OF THE MOVE: "+ getDirection());
+		//133 - 250 - 360 - 246 - 152
 		// System.out.println("MOVE IS CALLED");
 		// System.out.println(getLocation());
 		double time = tickTime;
@@ -58,16 +63,17 @@ public abstract class Opponents extends GameObject implements Imove {
 		double radDirection = direction * (Math.PI / 180.0);
 		double deltaX = Math.cos(radDirection) * distance;
 		double deltaY = Math.sin(radDirection) * distance;
-		// System.out.println("Direction: " + direction);
-		// System.out.println("Radians: " + radDirection);
-		// System.out.println("deltaX: " + deltaX);
-		// System.out.println("deltaY: " + deltaY);
-		// System.out.println("speed " + speed);
-		// System.out.println("speedMult " + speedMultiplier);
-		// System.out.println("effectiveSpeed " + getSpeed());
-		// System.out.println("time " + time);
-		// System.out.println("totalDist " + distance);
-
+		if(debug){
+			System.out.println("Direction: " + direction);
+			System.out.println("Radians: " + radDirection);
+			System.out.println("deltaX: " + deltaX);
+			System.out.println("deltaY: " + deltaY);
+			System.out.println("speed " + speed);
+			System.out.println("speedMult " + speedMultiplier);
+			System.out.println("effectiveSpeed " + getSpeed());
+			System.out.println("time " + time);
+			System.out.println("totalDist " + distance);
+		}
 		Point2D newLoc = new Point2D(getLocation().getX() + deltaX,
 				getLocation().getY() + deltaY);
 
@@ -122,9 +128,9 @@ public abstract class Opponents extends GameObject implements Imove {
 				* otherRadius + otherRadius * otherRadius);
 		if (distanceBetweenSquared <= radiusSquared) {
 			result = true;
-			System.out.println("CollidesWith Went off");
+			if(debug) System.out.println("CollidesWith Went off");
 		} else {
-			System.out.println("COllidesWith DID NOT go off");
+			if (debug) System.out.println("COllidesWith DID NOT go off");
 		}
 		return result;
 	}
@@ -143,19 +149,24 @@ public abstract class Opponents extends GameObject implements Imove {
 	 * handleCollision should only happen once.
 	 */
 	public void handleCollision(ICollider otherObject) {
-		System.out.println("Collision is being handled");
-		System.out.println("------------------");
+		if(debug){
+			System.out.println("Collision is being handled");
+			System.out.println("------------------");
+		}
+		
 		if (otherObject instanceof Alien) {
-			System.out.println("Alien collision occurs");
+			if(debug)System.out.println("Alien collision occurs");
 			 Alien ali = (Alien) otherObject;
 			 gw.setParent(ali);
 			 gw.bred();
 		} else if (otherObject instanceof Astronaut) {
-			System.out.println("Astronaut collision occurs");
+			if(debug)System.out.println("Astronaut collision occurs");
 			Astronaut astro = (Astronaut) otherObject;
 			gw.fight(astro);
 		}
-		System.out.println("------------------");
-		System.out.println("Collision was handled");
+		if(debug){
+			System.out.println("------------------");
+			System.out.println("Collision was handled");
+		}
 	}
 }

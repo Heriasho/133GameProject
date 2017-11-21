@@ -23,6 +23,7 @@ public class MapView extends Container implements Observer {
 	private GameObject obj;
 	private static final Random R = Random.getInstance();
 	private final boolean debug = false;
+	private final boolean debugerr = false;
 	private boolean gameOver = false;
     private Image bgImage;
     private Container mvContainer;
@@ -49,9 +50,10 @@ public class MapView extends Container implements Observer {
 		}
         
         mvContainer = new Container();
-        
-        gw.setEndWidth(this.getWidth());
-        gw.setEndHeight(this.getHeight());
+        /*XXX DO literally nothing fam
+        gw.setMapViewWidth(this.getWidth());    === 0
+        gw.setMapViewHeight(this.getHeight());  === 0
+        */
 	}
 
 	public void paint(Graphics g) {
@@ -62,6 +64,12 @@ public class MapView extends Container implements Observer {
 		}
 		if(bgImage != null) {
 			g.drawImage(bgImage, getX(), getY(), getWidth(), getHeight());
+			if(debugerr){
+				System.err.println("MapView's width: " + this.getWidth());
+				System.err.println("MapView's height: " + this.getHeight());
+				System.err.println("MapView's X: " + this.getX());
+				System.err.println("MapView's Y: " + this.getY());	
+			}
 		} else {
 			System.err.println("Cannot display background");
 		}

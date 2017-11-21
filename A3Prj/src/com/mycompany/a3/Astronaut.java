@@ -59,7 +59,6 @@ public class Astronaut extends Opponents {
 	
 	public void draw(Graphics g, Point pCmpRelPrnt) {
 		g.setColor(this.getColor());
-		System.out.println("Astronaut color:  "+ this.getColor());
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape location relative
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to parent’s origin
 		

@@ -11,16 +11,13 @@ import com.codename1.ui.geom.Point2D;
 public class Spaceship extends Rescuers {
 
 	private static Spaceship spaceship;
+	private boolean debug = false;
 
 	private Spaceship(int color, int screenHeight, int screenWidth) {
 		Random r = new Random();
 		super.setColor(color);
 		setLocation(new Point2D(r.nextDouble() * screenWidth, r.nextDouble()
 				* screenHeight));
-		System.err.println("screen width: " + screenWidth);
-		System.err.println("screen height: " + screenHeight);
-		System.err.println("x: " + getLocation().getX());
-		System.err.println("y: " + getLocation().getY());
 		setSize(50);
 		setScreenHeight(screenHeight);
 		setScreenWidth(screenWidth);
@@ -65,16 +62,14 @@ public class Spaceship extends Rescuers {
 
 	public void draw(Graphics g, Point pCmpRelPrnt) {
 		g.setColor(this.getColor());
-		//g.setColor(ColorUtil.GREEN);
-		// shape location relative
-		// to parent’s origin
-		System.err.println("x: " + getLocation().getX());
-		System.err.println("y: " + getLocation().getY());
 		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();
 		g.fillRect(xLoc - (getSize() / 2), yLoc - (getSize() / 2), getSize(),
 				getSize());
-		// g.fillTriangle(xLoc-20, yLoc-40, xLoc+20, yLoc-40, xLoc, yLoc+40);
+		if(debug){
+			System.err.println("x: " + getLocation().getX());
+			System.err.println("y: " + getLocation().getY());
+		}
 	}
 
 	public boolean collidesWith(ICollider otherObject) {
