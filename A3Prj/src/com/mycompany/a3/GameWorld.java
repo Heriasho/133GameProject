@@ -243,10 +243,6 @@ public class GameWorld extends Observable {
 			if (currentObject.collidesWith(otherObject)) {
 				if (!collisionVectorObj1.contains(currentObject)
 						&& !collisionVectorObj2.contains(otherObject)) {
-					/*FIX*/
-//					if (checkIfSpawnedAliens(collisionVectorObj1,
-//							collisionVectorObj2, currentObject, otherObject) == true) {
-						//System.out.println("Collision: Neither alien was spawned recently");
 					collisionVectorObj1.add(otherObject);
 					collisionVectorObj2.add(currentObject);
 					collisionString(currentObject, otherObject, true);
@@ -256,8 +252,6 @@ public class GameWorld extends Observable {
 					if (debug)
 						System.out.println(Arrays.toString(collisionVectorObj2.toArray()));
 					updateGameWorld();
-//					}
-					/**/
 				}
 			} else {
 				collisionVectorObj1.remove(otherObject);
@@ -364,7 +358,7 @@ public class GameWorld extends Observable {
 	 */
 	public Alien spawnAlienChild() {
 		theGameCollection.add((GameObject) new Alien(ColorUtil.BLACK,
-				screenHeight, screenWidth, speed, speedMulti, this, true));
+				getMapViewHeight(), getMapViewWidth(), speed, speedMulti, this, true));
 		Alien b = (Alien) theGameCollection.get(getTheGameCollectionSize() - 1);
 		System.out.println(b);
 		setRoamingAliens(getRoamingAliens() + 1);
@@ -392,11 +386,11 @@ public class GameWorld extends Observable {
 	 * astronaut's health and speed.
 	 */
 	public void fight(Astronaut a) {
-		System.out.println("Alien speed before hand "+ a.getSpeed());
+		if(debug)System.out.println("Alien speed before hand "+ a.getSpeed());
 		a.damage();
-		System.out
+		if(debug)System.out
 				.println("Astronaut takes 1 point of damage.");
-		System.out.println("Astronaut health: " + a.getSpeed());
+		if(debug)System.out.println("Astronaut health: " + a.getSpeed());
 		if ((getIsPlaying() == true) && (getIsSoundOn() == true)) {
 			astronautSound.play();
 		}
@@ -477,12 +471,13 @@ public class GameWorld extends Observable {
 		if (object instanceof Alien) {
 			setScore(getScore() - 10);
 			setRoamingAliens(getRoamingAliens() - 1);
-			setRescuedAliens(getRescuedAliens() - 1);
+			setRescuedAliens(getRescuedAliens() + 1);
 		} else if (object instanceof Astronaut) {
 			setScore(getScore() + (5 + ((Astronaut) object).getSpeed()));
 			setRoamingAstronauts(getRoamingAstronauts() - 1);
 			setRescuedAstronauts(getRescuedAstronauts() + 1);
 		}
+		updateGameWorld();
 		System.out.println("SOMETHING WAS DECREASED");
 	}
 
@@ -735,11 +730,6 @@ public class GameWorld extends Observable {
 	public void setSound(Sound sound) {
 		this.sound = sound;
 	}
-
-	public void addObserver(Observer o) {
-		myObserverList.add(o);
-	}
-
 	public Alien getParent() {
 		return parent;
 	}

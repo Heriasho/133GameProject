@@ -13,6 +13,7 @@ public abstract class GameObject implements IDrawable, ICollider {
 	private int color;
 	private Point2D location;
 	private int size;
+	private boolean debug = false;
 	
 	public String getName(){
 		return name;
@@ -42,19 +43,19 @@ public abstract class GameObject implements IDrawable, ICollider {
 	public void setLocation(Point2D location){
 		if(location.getX() > screenWidth){
 			location.setX(screenWidth);
-			System.err.println("Set x to screenWeight " + screenWidth);
+			if(debug)System.err.println("Set x to screenWeight " + screenWidth);
 		}
 		if(location.getY() > screenHeight){
 			location.setY(screenHeight);
-			System.err.println("Set x to screenHeight " + screenHeight);
+			if(debug)System.err.println("Set x to screenHeight " + screenHeight);
 		}
 		if(location.getX() < 0){
 			location.setX(0);
-			System.err.println("Set x to 0");
+			if(debug)System.err.println("Set x to 0");
 		}
 		if(location.getY() < 0){
 			location.setY(0);
-			System.err.println("Set y to 0");
+			if(debug)System.err.println("Set y to 0");
 		}
 		this.location = location;
 	}
