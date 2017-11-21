@@ -30,7 +30,7 @@ public class GameWorld extends Observable {
 	private Random random;
 	private boolean isPlaying = true;
 	private boolean isSoundOn = true;
-	private final boolean debug = true;
+	private final boolean debug = false;
 	private final boolean debugErr = false;
 	private GameCollection theGameCollection;
 	private Vector<Observer> myObserverList;
@@ -55,7 +55,7 @@ public class GameWorld extends Observable {
 		rescuedAstronauts = 0;
 		score = 0;
 		tickTime = 1000;
-		speed = 1;
+		speed = 5;
 		speedMulti = 1;
 		screenHeight = 768;
 		screenWidth = 1024;
@@ -196,7 +196,7 @@ public class GameWorld extends Observable {
 		while (collectionIterator.hasNext()) {
 			GameObject object = (GameObject) collectionIterator.getNext();
 
-			System.out.println(object.toString());
+			if(debug)System.out.println(object.toString());
 			if (object instanceof Opponents) {
 				if (debug) {
 					System.out.println("An Opponent moved");
@@ -207,17 +207,22 @@ public class GameWorld extends Observable {
 				updateGameWorld();
 			}
 		}
-
+		ArrayList<ICollider> a1 = new ArrayList<ICollider>();
+		ArrayList<ICollider> a2 = new ArrayList<ICollider>();
 		Iiterator firstIt = getGameCollection().getIterator();
 		Iiterator secondIt = getGameCollection().getIterator();
 		while (firstIt.hasNext()) {
-			ICollider a = (ICollider) firstIt.getNext();
-			while (secondIt.hasNext()) {
-				ICollider b = (ICollider) secondIt.getNext();
-				collisionManager(a, b);
+			a1.add((ICollider) firstIt.getNext());
+		}
+		while (secondIt.hasNext()) {
+			a2.add((ICollider) secondIt.getNext());
+		}
+		for(ICollider ic1 : a1){
+			for(ICollider ic2 : a2){
+				collisionManager(ic1, ic2);
 			}
 		}
-
+		
 		if (debug)
 			System.out.println("Ticker method ends");
 		if (debug)
@@ -226,6 +231,11 @@ public class GameWorld extends Observable {
 	}
 
 	/* A Tick helper method that handles all the collision between two objects. */
+	/* TODO rerite
+	 * This if statement checks to see if either alien was
+	 * recently spawned & preventing collision if so. Comment
+	 * out this if/else statement to see animation
+	 */
 	public void collisionManager(ICollider currentObject, ICollider otherObject) {
 		if (currentObject != otherObject) {
 			if (debug)
@@ -233,21 +243,20 @@ public class GameWorld extends Observable {
 			if (currentObject.collidesWith(otherObject)) {
 				if (!collisionVectorObj1.contains(currentObject)
 						&& !collisionVectorObj2.contains(otherObject)) {
-					/*
-					 * This if statement checks to see if either alien was
-					 * recently spawned & preventing collision if so. Comment
-					 * out this if/else statement to see animation
-					 */
-					if (checkIfSpawnedAliens(collisionVectorObj1,
-							collisionVectorObj2, currentObject, otherObject) == true) {
-						System.out
-								.println("Collision: Neither alien was spawned recently");
-						collisionLogic(collisionVectorObj1,
-								collisionVectorObj2, currentObject, otherObject);
-					} else {
-						System.out
-								.println("No Collision: An alien was spawned recently");
-					}
+					/*FIX*/
+//					if (checkIfSpawnedAliens(collisionVectorObj1,
+//							collisionVectorObj2, currentObject, otherObject) == true) {
+						//System.out.println("Collision: Neither alien was spawned recently");
+					collisionVectorObj1.add(otherObject);
+					collisionVectorObj2.add(currentObject);
+					collisionString(currentObject, otherObject, true);
+					currentObject.handleCollision(otherObject);
+					if (debug)
+						System.out.println(Arrays.toString(collisionVectorObj1.toArray()));
+					if (debug)
+						System.out.println(Arrays.toString(collisionVectorObj2.toArray()));
+					updateGameWorld();
+//					}
 					/**/
 				}
 			} else {
@@ -257,48 +266,12 @@ public class GameWorld extends Observable {
 				updateGameWorld();
 			}
 		} else {
-			if (debug)
+			if (debug){
 				System.out.println("CurrentObject == OtherObject");
-		}
-	}
-
-	/*
-	 * This collision helper method checks to see if either alien was recently
-	 * spawned & returns a boolean based on this.
-	 */
-	public boolean checkIfSpawnedAliens(
-			ArrayList<ICollider> collisionVectorObj1,
-			ArrayList<ICollider> collisionVectorObj2, ICollider currentObject,
-			ICollider otherObject) {
-		if (currentObject instanceof Alien && otherObject instanceof Alien) {
-			Alien a = (Alien) currentObject;
-			Alien b = (Alien) otherObject;
-			if ((a.getRecentSpawned() == false)
-					&& (b.getRecentSpawned() == false)) {
-				return true;
 			}
 		}
-		return false;
 	}
 
-	/*
-	 * This method handles all the collision logic, adding both current and
-	 * other object to eachother's collision vectors. After this, the
-	 * handleCollision method was called.
-	 */
-	public void collisionLogic(ArrayList<ICollider> collisionVectorObj1,
-			ArrayList<ICollider> collisionVectorObj2, ICollider currentObject,
-			ICollider otherObject) {
-		collisionVectorObj1.add(otherObject);
-		collisionVectorObj2.add(currentObject);
-		collisionString(currentObject, otherObject, true);
-		currentObject.handleCollision(otherObject);
-		if (debug)
-			System.out.println(Arrays.toString(collisionVectorObj1.toArray()));
-		if (debug)
-			System.out.println(Arrays.toString(collisionVectorObj2.toArray()));
-		updateGameWorld();
-	}
 
 	/*
 	 * This method provides valuable information about the results of collisions
@@ -353,31 +326,34 @@ public class GameWorld extends Observable {
 	 * alien) or should spawn by a random 'guardian' alien.
 	 */
 	public void bred() {
-		if (debug)
+		if (debug){
 			System.out.println("Bred method is called");
-		if (getParent() != null) {
-			Alien a = getParent();
-			if (debug)
-				System.out.println("The parent is found");
-			Alien b = spawnAlienChild();
-			if (debug)
-				System.out.println("The child is spawned");
-			setBabyLocation(a, b);
-		} else {
-			Alien a = getRandomAlien();
-			if (debug)
-				System.out
-						.println("Guardian has been provided for the orphaned child");
-			Alien b = spawnAlienChild();
-			if (debug)
-				System.out.println("The child is spawned");
-			setBabyLocation(a, b);
 		}
-		if (debug)
-			System.out.println("Spawn process is done");
-		if (getIsSoundOn() && getIsPlaying()) {
-			setSound(alienSound);
-			getSound().play();
+		if(getRoamingAliens() < 30){
+			if (getParent() != null) {
+				Alien a = getParent();
+				if (debug)
+					System.out.println("The parent is found");
+				Alien b = spawnAlienChild();
+				if (debug)
+					System.out.println("The child is spawned");
+				setBabyLocation(a, b);
+			} else {
+				Alien a = getRandomAlien();
+				if (debug)
+					System.out
+					.println("Guardian has been provided for the orphaned child");
+				Alien b = spawnAlienChild();
+				if (debug)
+					System.out.println("The child is spawned");
+				setBabyLocation(a, b);
+			}
+			if (debug)
+				System.out.println("Spawn process is done");
+			if (getIsSoundOn() && getIsPlaying()) {
+				setSound(alienSound);
+				getSound().play();
+			}
 		}
 		updateGameWorld();
 	}
@@ -407,7 +383,7 @@ public class GameWorld extends Observable {
 		Point2D p = new Point2D(x, y);
 		b.setLocation(p);
 		getGameCollection().add(b);
-		System.out.println("Two aliens bred.");
+		if(debug)System.out.println("Two aliens bred.");
 		updateGameWorld();
 	}
 
@@ -416,9 +392,10 @@ public class GameWorld extends Observable {
 	 * astronaut's health and speed.
 	 */
 	public void fight(Astronaut a) {
+		System.out.println("Alien speed before hand "+ a.getSpeed());
 		a.damage();
 		System.out
-				.println("The astronaut fought the alien & the alien won.\nAstronaut takes 1 point of damage.");
+				.println("Astronaut takes 1 point of damage.");
 		System.out.println("Astronaut health: " + a.getSpeed());
 		if ((getIsPlaying() == true) && (getIsSoundOn() == true)) {
 			astronautSound.play();

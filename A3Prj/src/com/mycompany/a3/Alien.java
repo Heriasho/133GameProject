@@ -15,6 +15,7 @@ public class Alien extends Opponents implements ISelectable {
 	public Alien(int color, int mapViewHeight, int mapViewWidth, int speed,
 			int speedMultiplier, GameWorld gw, boolean recentSpawned) {
 		super(gw);
+		this.gw = gw;
 		setName("Alien");
 		Random r = new Random();
 		super.setColor(color);
@@ -22,7 +23,7 @@ public class Alien extends Opponents implements ISelectable {
 		setScreenWidth(mapViewWidth);
 		setSpeedMultiplier(speedMultiplier);
 		setDirection(r.nextInt(360));
-		setRecentSpawned(false);
+		setRecentSpawned(recentSpawned);
 		setLocation(new Point2D(r.nextDouble() * mapViewWidth, r.nextDouble()
 				* mapViewHeight));
 		super.setSize(r.nextInt(31) + 20);
@@ -86,5 +87,21 @@ public class Alien extends Opponents implements ISelectable {
 			return true;
 		else
 			return false;
+	}
+	public void handleCollision(ICollider otherObject) {
+		
+		if (otherObject instanceof Alien && ((Alien) otherObject).getRecentSpawned() == false) {
+			 Alien ali = (Alien) otherObject;
+			 gw.setParent(ali);
+			 gw.bred();
+		}
+		if (otherObject instanceof Astronaut) {
+			Astronaut astro = (Astronaut) otherObject;
+			gw.fight(astro);
+		}
+		if(!(otherObject instanceof Spaceship)){
+			bounce();
+			((Opponents) otherObject).bounce();	
+		}
 	}
 }

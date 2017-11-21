@@ -1,6 +1,8 @@
 package com.mycompany.a3;
 
 import com.codename1.ui.geom.Point2D;
+
+import java.util.ArrayList;
 import java.util.Random;
 //import java.util.Hashtable;
 //import java.util.Random;
@@ -13,7 +15,7 @@ public abstract class Opponents extends GameObject implements Imove {
 	private int speedMultiplier;
 	private GameWorld gw;
 	private final boolean debug = false;
-	private final boolean debugCollision = true;
+	private final boolean debugCollision = false;
 
 	public Opponents(GameWorld gw) {
 		this.gw = gw;
@@ -120,7 +122,7 @@ public abstract class Opponents extends GameObject implements Imove {
 
 		int dx = Math.abs(xLoc - otherLocX);
 		int dy = Math.abs(yLoc - otherLocY);
-		if(dx <= 20 && dy <= 20){
+		if(dx <= 40 && dy <= 40){
 			result = true;
 		}
 		return result;
@@ -140,24 +142,9 @@ public abstract class Opponents extends GameObject implements Imove {
 	 * handleCollision should only happen once.
 	 */
 	public void handleCollision(ICollider otherObject) {
-		if(debugCollision){
-			System.out.println("Collision is being handled");
-			System.out.println("------------------");
-		}
-		
-		if (otherObject instanceof Alien) {
-			if(debugCollision)System.out.println("Alien collision occurs");
-			 Alien ali = (Alien) otherObject;
-			 gw.setParent(ali);
-			 gw.bred();
-		} else if (otherObject instanceof Astronaut) {
-			if(debugCollision)System.out.println("Astronaut collision occurs");
-			Astronaut astro = (Astronaut) otherObject;
-			gw.fight(astro);
-		}
-		if(debugCollision){
-			System.out.println("------------------");
-			System.out.println("Collision was handled");
-		}
+
+	}
+	public void bounce() {
+		setDirection(getDirection() + 180);
 	}
 }

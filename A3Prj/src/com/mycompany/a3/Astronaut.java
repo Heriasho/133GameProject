@@ -10,10 +10,12 @@ import java.util.Random;
 public class Astronaut extends Opponents implements ISelectable {
 	private int originalSpeed;
 	private boolean selected = false;
+	private GameWorld gw;
 
 	public Astronaut(int color, int screenHeight, int screenWidth, int speed,
 			int speedMultiplier, GameWorld gw) {
 		super(gw);
+		this.gw = gw;
 		Random r = new Random();
 		this.originalSpeed = speed;
 		setName("Astronaut");
@@ -124,4 +126,10 @@ public class Astronaut extends Opponents implements ISelectable {
 		else
 			return false;
 	}
+//	public void handleCollision(ICollider otherObject) {
+//		if(!(otherObject instanceof Spaceship)){
+//			bounce();
+//			((Opponents) otherObject).bounce();	
+//		}
+//	}
 }

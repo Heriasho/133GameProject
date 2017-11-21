@@ -5,7 +5,6 @@ import java.util.Observable;
 import java.util.Observer;
 //import java.util.Random;
 
-
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
@@ -37,7 +36,8 @@ public class MapView extends Container implements Observer {
 	private String[] bgImages = { "chromaCosmos1.jpg", "cosmosBackground1.jpg",
 			"chaosCircle1.jpg" };
 
-	public MapView(GameWorld gw) {
+	public MapView(GameWorld gw, Game g) {
+		this.g = g;
 		this.gw = gw;
 		gcp = gw.getGameCollection();
 		this.getAllStyles().setBgTransparency(255);
@@ -90,38 +90,39 @@ public class MapView extends Container implements Observer {
 	 */
 	@Override
 	public void pointerPressed(int x, int y) {
-		System.out.println("POINTER PRESS HAS BEEN FOUND");
-		System.out.println("Mouse coords. x: " + x + " y: " + y);
-		System.out.println("Container coords. x: " + getX() + " y: " + getY());
-		System.out.println(getParent().getAbsoluteX());
-		System.out.println(getParent().getAbsoluteY());
+		if(debug)System.out.println("POINTER PRESS HAS BEEN FOUND");
+		if(debug)System.out.println("Mouse coords. x: " + x + " y: " + y);
+		if(debug)System.out.println("Container coords. x: " + getX() + " y: " + getY());
+		if(debug)System.out.println(getParent().getAbsoluteX());
+		if(debug)System.out.println(getParent().getAbsoluteY());
 		x = x - getParent().getAbsoluteX();
 		y = y - getParent().getAbsoluteY();
-		System.out.println("Modified Mouse coords. x: " + x + " y: " + y);
+		if(debug)System.out.println("Modified Mouse coords. x: " + x + " y: " + y);
 		Point pPtrRelPrnt = new Point(x, y);
 		Point pCmpRelPrnt = new Point(getX(), getY());
-		System.out.println("POINTER PRESS HAS BEEN FOUND");
+		if(debug)System.out.println("POINTER PRESS HAS BEEN FOUND");
 		Iiterator iter = gcp.getIterator();
 		while (iter.hasNext()) {
 			GameObject object = (GameObject) iter.getNext();
-			System.out.println("Object you clicked : "+object);
-			if(object instanceof Astronaut){
-				System.out.println("Object is a astronaut");
+			if(debug)System.out.println("Object you clicked : " + object);
+			if (object instanceof Astronaut) {
+				if(debug)System.out.println("Object is a astronaut");
 				Astronaut a = (Astronaut) object;
-				System.out.println("Astronaut a : "+a);
+				if(debug)System.out.println("Astronaut a : " + a);
 				if ((a.contains(pPtrRelPrnt, pCmpRelPrnt))) {
-					System.err.println("Astronaut is selected");
-					a.setSelected(true);
-					healCommand.setAstronaut(a);
-					g.keyPressed('h');
-					
+					if (g.getIsPaused()) {
+						if(debug)System.err.println("Astronaut is selected");
+						a.setSelected(true);
+						healCommand.setAstronaut(a);
+						gw.healAstro(a);
+					}
+
 				} else {
-					System.err.println("Astronaut is not selected");
+					if(debug)System.err.println("Astronaut is not selected");
 					a.setSelected(false);
-				}	
-			}
-			else{
-				System.out.println("Object is not an astronaut");
+				}
+			} else {
+				if(debug)System.out.println("Object is not an astronaut");
 			}
 		}
 		repaint();
@@ -135,6 +136,6 @@ public class MapView extends Container implements Observer {
 			Label gameOver = new Label("Game Over");
 			this.add(gameOver);
 		}
-		System.out.println("BG IMAGE REDRAWN");
+		if(debug)System.out.println("BG IMAGE REDRAWN");
 	}
 }

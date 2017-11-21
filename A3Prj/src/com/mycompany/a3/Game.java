@@ -32,14 +32,14 @@ import java.lang.String;
 
 public class Game extends Form implements Runnable {
 	private Game game;
-	private GameWorld gw;
+	private GameWorld gw = new GameWorld();
 	private MapView mv;
 	private ScoreView sv;
 	private static UITimer timer;
 	private int time;
 	private boolean toggle = false;
 	private boolean isPaused = false;
-	private BottomButton newPauseCommand;
+	private PauseCommand pauseCommand = new PauseCommand("Playing", gw, this);
 	private AboutCommand aboutCommand = new AboutCommand();
 	private HelpCommand helpCommand = new HelpCommand();
 	private HealCommand healCommand = new HealCommand(gw, null);
@@ -62,18 +62,15 @@ public class Game extends Form implements Runnable {
 
 
 	public Game() {
-		gw = new GameWorld();
 		gw.init();
-		mv = new MapView(gw);
+		mv = new MapView(gw, this);
 		sv = new ScoreView(gw);
 		setTimer(new UITimer(this));
-		time = 1000;
+		time = 100;
 		getTimer().schedule(time, true, this);
 
 		gw.addObserver(mv);
 		gw.addObserver(sv);
-		String pausedMessage = gw.getIsPlaying() ? "Playing" : "Pause";
-		PauseCommand pauseCommand  = new PauseCommand(pausedMessage, gw, this);
 		/* Button Creation & Command setup */
 		Button teleToAlienButton = new CButton("TeleToAlien");
 		Button teleToAstroButton = new CButton("TeleToAstro");
@@ -92,7 +89,7 @@ public class Game extends Form implements Runnable {
 		
 
 		/* Creating the commands */
-		newPauseCommand   = new BottomButton(pausedMessage, pauseCommand);
+		BottomButton pauseButton = new BottomButton("Playing", pauseCommand);
 		/* Set the commands for the buttons */
 		teleToAlienButton.setCommand(teleToAlienCommand);
 		teleToAstroButton.setCommand(teleToAstroCommand);
@@ -183,7 +180,7 @@ public class Game extends Form implements Runnable {
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
 		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1, ColorUtil.BLUE));
 		add(BorderLayout.SOUTH, bottomContainer);
-		bottomContainer.add(newPauseCommand);
+		bottomContainer.add(pauseButton);
 		bottomContainer.add(soundCheckBox);
 		// bottomContainer.add(bredButton);
 		// bottomContainer.add(fightButton);
@@ -206,7 +203,7 @@ public class Game extends Form implements Runnable {
 			timer.cancel();
 			System.out.println("timer is canceled");
 			healCommand.setEnabled(true);
-			
+			isPaused = true;
 			teleToAlienCommand.setEnabled(false);
 			teleToAstroCommand.setEnabled(false);
 			leftCommand.setEnabled(false);
@@ -223,7 +220,7 @@ public class Game extends Form implements Runnable {
 			timer.schedule(time, true, this);
 			System.out.println("timer is resumed");
 			healCommand.setEnabled(false);
-			
+			isPaused = false;
 			teleToAlienCommand.setEnabled(true);
 			teleToAstroCommand.setEnabled(true);
 			leftCommand.setEnabled(true);
@@ -238,11 +235,6 @@ public class Game extends Form implements Runnable {
 		}
 	}
 	
-	public boolean pausedInfo(String text) {
-		gw.pauseSound();
-		newPauseCommand.setText(text);
-		return true;
-	}
 	public void gameOver(){
 		timer.cancel();
 		
@@ -275,7 +267,7 @@ public class Game extends Form implements Runnable {
 		
 	}
 
-	public boolean isPaused() {
+	public boolean getIsPaused() {
 		return isPaused;
 	}
 

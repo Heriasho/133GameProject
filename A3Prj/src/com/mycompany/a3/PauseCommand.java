@@ -10,8 +10,8 @@ import com.mycompany.a3.Game;
 import com.mycompany.a3.GameWorld;
 
 public class PauseCommand extends Command {
-    GameWorld gw;
-    Game game;
+    private GameWorld gw;
+    private Game game;
     public PauseCommand(String command, GameWorld gw, Game game) {
         super(command);
         this.gw   = gw;
@@ -22,7 +22,6 @@ public class PauseCommand extends Command {
     	gw.setIsPlaying();
         String playMessage = gw.getIsPlaying() ? "Playing" : "Paused";
         System.out.println(playMessage);
-        game.pausedInfo(playMessage);
         game.pause();
     }
 }
