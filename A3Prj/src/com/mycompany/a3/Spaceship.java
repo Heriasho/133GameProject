@@ -11,17 +11,17 @@ import com.codename1.ui.geom.Point2D;
 public class Spaceship extends Rescuers {
 
 	private static Spaceship spaceship;
-	private boolean debug = true;
+	private boolean debug = false;
 
 	private Spaceship(int color, int mapViewHeight, int mapViewWidth) {
 		Random r = new Random();
 		super.setColor(color);
 		setScreenHeight(mapViewHeight);
 		setScreenWidth(mapViewWidth);
-		setLocation(new Point2D(r.nextDouble() * getScreenWidth(), r.nextDouble()
-				* getScreenHeight()));
+		setLocation(new Point2D(r.nextDouble() * getScreenWidth(),
+				r.nextDouble() * getScreenHeight()));
 		setSize(50);
-		if(debug){
+		if (debug) {
 			System.err.println("x: " + getLocation().getX());
 			System.err.println("y: " + getLocation().getY());
 			System.err.println("Ss screenHeight: " + getScreenHeight());
@@ -29,7 +29,8 @@ public class Spaceship extends Rescuers {
 		}
 	}
 
-	public static Spaceship getSpaceship(int color, int mapViewHeight, int mapViewWidth) {
+	public static Spaceship getSpaceship(int color, int mapViewHeight,
+			int mapViewWidth) {
 		if (spaceship == null) {
 			spaceship = new Spaceship(color, mapViewHeight, mapViewWidth);
 		}

@@ -7,9 +7,10 @@ import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 import com.codename1.ui.geom.Point2D;
 
-public class Alien extends Opponents {
+public class Alien extends Opponents implements ISelectable {
 	private GameWorld gw;
 	private boolean recentSpawned = false;
+	private boolean selected;
 
 	public Alien(int color, int mapViewHeight, int mapViewWidth, int speed,
 			int speedMultiplier, GameWorld gw, boolean recentSpawned) {
@@ -58,5 +59,32 @@ public class Alien extends Opponents {
 
 	public void setRecentSpawned(boolean recentSpawned) {
 		this.recentSpawned = recentSpawned;
+	}
+
+	@Override
+	public void setSelected(boolean yesNo) {
+		this.selected = yesNo;
+	}
+
+	@Override
+	public boolean isSelected() {
+		return selected;
+	}
+
+	@Override
+	public boolean contains(Point pPtrRelPrnt, Point pCmpRelPrnt) {
+		int px = pPtrRelPrnt.getX(); // pointer location relative to
+		int py = pPtrRelPrnt.getY(); // parent’s origin
+		int xLoc = pCmpRelPrnt.getX() + (int) getLocation().getX();// shape
+																	// location
+																	// relative
+		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to
+																	// parent’s
+																	// origin
+		if ((px >= xLoc) && (px <= xLoc + getScreenWidth()) && (py >= yLoc)
+				&& (py <= yLoc + getScreenHeight()))
+			return true;
+		else
+			return false;
 	}
 }
