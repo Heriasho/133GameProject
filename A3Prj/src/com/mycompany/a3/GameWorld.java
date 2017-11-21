@@ -42,6 +42,8 @@ public class GameWorld extends Observable {
 	private Sound astronautSound = new Sound("astro.wav", this);
 	private Sound alienSound = new Sound("alien.wav", this);
 	private Sound doorSound = new Sound("door.wav", this);
+	private ArrayList<ICollider> collisionVectorObj1 = new ArrayList<ICollider>(); 
+	private ArrayList<ICollider> collisionVectorObj2 = new ArrayList<ICollider>();
 
 	public GameWorld() {
 		random = new Random();
@@ -53,7 +55,7 @@ public class GameWorld extends Observable {
 		rescuedAstronauts = 0;
 		score = 0;
 		tickTime = 1000;
-		speed = 5;
+		speed = 1;
 		speedMulti = 1;
 		screenHeight = 768;
 		screenWidth = 1024;
@@ -187,17 +189,35 @@ public class GameWorld extends Observable {
 		Iiterator collectionIterator = theGameCollection.getIterator();
 		if(debug) System.out.println("Ticker is called");
 		spawnString();
+		collisionVectorObj1 = new ArrayList<ICollider>(); //
+		collisionVectorObj2 = new ArrayList<ICollider>();
 		//gameOverCheck(g);
 		if(debug) System.out.println("iter index: " + collectionIterator.getIndex());
 		while (collectionIterator.hasNext()) {
 			GameObject object = (GameObject) collectionIterator.getNext();
+
+			System.out.println(object.toString());
 			if (object instanceof Opponents) {
-				if(debug)System.out.println("An Opponent moved");
+				if(debug){
+					System.out.println("An Opponent moved");
+				}
+				System.out.println("Again i repeat");
+				System.out.println(object.toString());
 				((Opponents) object).move(time);
-				currentObjectManager(collectionIterator);
 				updateGameWorld();
 			}
 		}
+
+		Iiterator firstIt = getGameCollection().getIterator();
+		Iiterator secondIt = getGameCollection().getIterator();
+		while(firstIt.hasNext()){
+			ICollider a = (ICollider) firstIt.getNext();
+			while(secondIt.hasNext()){
+				ICollider b = (ICollider) secondIt.getNext();
+				collisionManager(a,b);
+			}
+		}
+		
 		if(debug) System.out.println("Ticker method ends");
 		if(debug) System.out.println("Game has advanced by " + tickTime + " ms = "
 				+ tickTime / 1000 + " ticks.");
@@ -206,47 +226,45 @@ public class GameWorld extends Observable {
 	/*
 	 * A Tick helper method that manages the currentObject and it's respective
 	 * iteratior
-	 */
-	public void currentObjectManager(Iiterator collectionIterator) {
-		ICollider currentObject = (ICollider) collectionIterator.getNext();
-		Iiterator currentObjectIterator = theGameCollection.getIterator();
-		otherObjectManager(currentObjectIterator, currentObject);
-	}
-
-	public void otherObjectManager(Iiterator currentObjectIterator,
-			ICollider currentObject) {
-		while (currentObjectIterator.hasNext()) {
-			ICollider otherObject = (ICollider) currentObjectIterator.getNext();
-			collisionManager(currentObject, otherObject);
-		}
-	}
+//	 */
+//	public void currentObjectManager(Iiterator collectionIterator) {
+//		ICollider currentObject = (ICollider) collectionIterator.getNext();
+//		Iiterator currentObjectIterator = theGameCollection.getIterator();
+//		otherObjectManager(currentObjectIterator, currentObject);
+//	}
+//
+//	public void otherObjectManager(Iiterator currentObjectIterator,
+//			ICollider currentObject) {
+//		while (currentObjectIterator.hasNext()) {
+//			ICollider otherObject = (ICollider) currentObjectIterator.getNext();
+//			collisionManager(currentObject, otherObject);
+//		}
+//	}
 
 	/* A Tick helper method that handles all the collision between two objects. */
 	public void collisionManager(ICollider currentObject, ICollider otherObject) {
-		ArrayList<ICollider> collisionVectorObj1 = new ArrayList<ICollider>(); //
-		ArrayList<ICollider> collisionVectorObj2 = new ArrayList<ICollider>(); //
 		if (currentObject != otherObject) {
 			if(debug) System.out.println("CurrentObject != OtherObject");
 			if (currentObject.collidesWith(otherObject)) {
 				if (!collisionVectorObj1.contains(currentObject)
 						&& !collisionVectorObj2.contains(otherObject)) {
-					// /*
-					// * This if statement checks to see if either alien was
-					// * recently spawned & preventing collision if so. Comment
-					// * out this if/else statement to see animation
-					// */
-					// if (checkIfSpawnedAliens(collisionVectorObj1,
-					// collisionVectorObj2, currentObject, otherObject) == true)
-					// {
-					// System.out
-					// .println("Collision: Neither alien was spawned recently");
-					// collisionLogic(collisionVectorObj1,
-					// collisionVectorObj2, currentObject, otherObject);
-					// } else {
-					// System.out
-					// .println("No Collision: An alien was spawned recently");
-					// }
-					// /**/
+					 /*
+					 * This if statement checks to see if either alien was
+					 * recently spawned & preventing collision if so. Comment
+					 * out this if/else statement to see animation
+					 */
+					 if (checkIfSpawnedAliens(collisionVectorObj1,
+					 collisionVectorObj2, currentObject, otherObject) == true)
+					 {
+					 System.out
+					 .println("Collision: Neither alien was spawned recently");
+					 collisionLogic(collisionVectorObj1,
+					 collisionVectorObj2, currentObject, otherObject);
+					 } else {
+					 System.out
+					 .println("No Collision: An alien was spawned recently");
+					 }
+					 /**/
 				}
 			} else {
 				collisionVectorObj1.remove(otherObject);

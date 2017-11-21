@@ -90,19 +90,34 @@ public class MapView extends Container implements Observer {
 	@Override
 	public void pointerPressed(int x, int y) {
 		System.out.println("POINTER PRESS HAS BEEN FOUND");
+		System.out.println("Mouse coords. x: " + x + " y: " + y);
+		System.out.println("Container coords. x: " + getX() + " y: " + getY());
+		System.out.println(getParent().getAbsoluteX());
+		System.out.println(getParent().getAbsoluteY());
 		x = x - getParent().getAbsoluteX();
 		y = y - getParent().getAbsoluteY();
+		System.out.println("Modified Mouse coords. x: " + x + " y: " + y);
 		Point pPtrRelPrnt = new Point(x, y);
 		Point pCmpRelPrnt = new Point(getX(), getY());
+		System.out.println("POINTER PRESS HAS BEEN FOUND");
 		Iiterator iter = gcp.getIterator();
 		while (iter.hasNext()) {
 			GameObject object = (GameObject) iter.getNext();
+			System.out.println("Object you clicked : "+object);
 			if(object instanceof Astronaut){
-				if (((Astronaut) object).contains(pPtrRelPrnt, pCmpRelPrnt)) {
-					((Astronaut) object).setSelected(true);
+				System.out.println("Object is a astronaut");
+				Astronaut a = (Astronaut) object;
+				System.out.println("Astronaut a : "+a);
+				if ((a.contains(pPtrRelPrnt, pCmpRelPrnt))) {
+					System.err.println("Astronaut is selected");
+					a.setSelected(true);
 				} else {
-					((Astronaut) object).setSelected(false);
+					System.err.println("Astronaut is not selected");
+					a.setSelected(false);
 				}	
+			}
+			else{
+				System.out.println("Object is not an astronaut");
 			}
 		}
 		repaint();

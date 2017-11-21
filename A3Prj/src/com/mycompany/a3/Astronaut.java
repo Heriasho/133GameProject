@@ -81,13 +81,13 @@ public class Astronaut extends Opponents implements ISelectable {
 																	// origin
 
 		if (isSelected()) {
-			System.err
-					.println("I WAS BORN SHEEP STICKS, DISGUISED AS A TRIANGLE");
+//			System.err
+//					.println("I WAS BORN SHEEP STICKS, DISGUISED AS A TRIANGLE");
 			g.drawLine(xLoc - 20, yLoc - 50, xLoc + 20, yLoc - 50);
 			g.drawLine(xLoc + 20, yLoc - 50, xLoc, yLoc + 50);
 			g.drawLine(xLoc, yLoc + 50, xLoc - 20, yLoc - 50);
 		} else {
-			System.err.println("I WAS BORN A TRIANGLE");
+			//System.err.println("I WAS BORN A TRIANGLE");
 			g.fillTriangle(xLoc - 20, yLoc - 50, xLoc + 20, yLoc - 50, xLoc,
 					yLoc + 50);
 		}
@@ -117,8 +117,8 @@ public class Astronaut extends Opponents implements ISelectable {
 		int yLoc = pCmpRelPrnt.getY() + (int) getLocation().getY();// to
 																	// parent’s
 																	// origin
-		if ((px >= xLoc) && (px <= xLoc + getScreenWidth()) && (py >= yLoc)
-				&& (py <= yLoc + getScreenHeight()))
+		if ((px >= xLoc-20) && (px <= xLoc + 20) && (py >= yLoc - 20)
+				&& (py <= yLoc + 20))
 			return true;
 		else
 			return false;

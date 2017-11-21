@@ -57,7 +57,7 @@ public abstract class Opponents extends GameObject implements Imove {
 		//133 - 250 - 360 - 246 - 152
 		// System.out.println("MOVE IS CALLED");
 		// System.out.println(getLocation());
-		double time = tickTime;
+		double time = tickTime/100;
 		double distance = getSpeed() * time;
 		int direction = getDirection();
 		double radDirection = direction * (Math.PI / 180.0);
@@ -112,25 +112,15 @@ public abstract class Opponents extends GameObject implements Imove {
 	 */
 	public boolean collidesWith(ICollider obj) {
 		boolean result = false;
-		int xLoc = (int) getLocation().getX() + (getScreenHeight() / 2);
-		int yLoc = (int) getLocation().getY() + (getScreenHeight() / 2);
-		int otherLocX = (int) ((GameObject) obj).getLocation().getX()
-				+ (getScreenHeight() / 2);
-		int otherLocY = (int) ((GameObject) obj).getLocation().getY()
-				+ (getScreenHeight() / 2);
+		int xLoc = (int) getLocation().getX();
+		int yLoc = (int) getLocation().getY();
+		int otherLocX = (int) ((GameObject) obj).getLocation().getX();
+		int otherLocY = (int) ((GameObject) obj).getLocation().getY();
 
-		int dx = xLoc - otherLocX;
-		int dy = yLoc - otherLocY;
-		int distanceBetweenSquared = (dx * dx + dy * dy);
-		int thisRadius = (getScreenHeight() / 2);
-		int otherRadius = (getScreenHeight() / 2);
-		int radiusSquared = (thisRadius * thisRadius + 2 * thisRadius
-				* otherRadius + otherRadius * otherRadius);
-		if (distanceBetweenSquared <= radiusSquared) {
+		int dx = Math.abs(xLoc - otherLocX);
+		int dy = Math.abs(yLoc - otherLocY);
+		if(dx <= 20 && dy <= 20){
 			result = true;
-			if(debug) System.out.println("CollidesWith Went off");
-		} else {
-			if (debug) System.out.println("COllidesWith DID NOT go off");
 		}
 		return result;
 	}

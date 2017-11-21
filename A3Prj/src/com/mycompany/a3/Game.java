@@ -38,6 +38,7 @@ public class Game extends Form implements Runnable {
 	private static UITimer timer;
 	private int time;
 	private boolean toggle = false;
+	private boolean isPaused = false;
 	private BottomButton newPauseCommand;
 
 	public Game() {
@@ -46,7 +47,7 @@ public class Game extends Form implements Runnable {
 		mv = new MapView(gw);
 		sv = new ScoreView(gw);
 		setTimer(new UITimer(this));
-		time = 10;
+		time = 1000;
 		getTimer().schedule(time, true, this);
 
 		gw.addObserver(mv);
@@ -206,6 +207,17 @@ public class Game extends Form implements Runnable {
 			System.out.println("timer is resumed");
 		}
 	}
+	public void paused(){
+		timer.cancel();
+		/*Set Commands to be deactivated except for heal command*/
+		
+	}
+	
+	public boolean pausedInfo(String text) {
+		gw.pauseSound();
+		newPauseCommand.setText(text);
+		return true;
+	}
 	public void gameOver(){
 		timer.cancel();
 		
@@ -225,11 +237,6 @@ public class Game extends Form implements Runnable {
 		this.timer = timer;
 	}
 
-	public boolean pausedInfo(String text) {
-		gw.pauseSound();
-		newPauseCommand.setText(text);
-		return true;
-	}
 	
 	private void init() {
 		
@@ -241,6 +248,14 @@ public class Game extends Form implements Runnable {
 	
 	private void destroy() {
 		
+	}
+
+	public boolean isPaused() {
+		return isPaused;
+	}
+
+	public void setPaused(boolean isPaused) {
+		this.isPaused = isPaused;
 	}
 
 }
