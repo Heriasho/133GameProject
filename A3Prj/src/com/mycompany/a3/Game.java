@@ -88,7 +88,7 @@ public class Game extends Form implements Runnable {
 		pauseButton.getAllStyles().setBgTransparency(255);
 		pauseButton.getAllStyles().setBgColor(ColorUtil.rgb(300, 150, 150)); 
 		healButton.getAllStyles().setBgTransparency(255);
-		healButton.getAllStyles().setBgColor(ColorUtil.rgb(150, 250, 250)); 
+		healButton.getAllStyles().setBgColor(ColorUtil.rgb(50, 50, 350)); 
 		// Button fightButton = new CButton("Fight");
 		// Button tickButton = new CButton("Tick");
 	
@@ -204,7 +204,7 @@ public class Game extends Form implements Runnable {
 		toggle = !toggle;
 		if (toggle) {
 			timer.cancel();
-			System.out.println("timer is canceled");
+			System.out.println("Timer is Canceled");
 			healCommand.setEnabled(true);
 			isPaused = true;
 			teleToAlienCommand.setEnabled(false);
@@ -221,7 +221,7 @@ public class Game extends Form implements Runnable {
 			
 		} else {
 			timer.schedule(time, true, this);
-			System.out.println("timer is resumed");
+			System.out.println("Timer is Resumed");
 			healCommand.setEnabled(false);
 			isPaused = false;
 			teleToAlienCommand.setEnabled(true);

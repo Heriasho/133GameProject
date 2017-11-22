@@ -576,9 +576,11 @@ public class GameWorld extends Observable {
 			while (true) {
 				int[] alienPositions = new int[getRoamingAliens()];
 				int pos = 0;
-				System.out.println("Current Index is : " + pos);
-				System.out
-						.println("Alien Positions : " + alienPositions.length);
+				if (debug) {
+					System.out.println("Current Index is : " + pos);
+					System.out.println("Alien Positions : "
+							+ alienPositions.length);
+				}
 				while (iter.hasNext()) {
 					GameObject gObject = (GameObject) iter.getNext();
 					if (gObject instanceof Alien) {
@@ -587,7 +589,8 @@ public class GameWorld extends Observable {
 						System.out.println("Current Index is : " + pos);
 					}
 					if (pos == alienPositions.length - 1) {
-						System.out.println("BREAK OUT");
+						if (debug)
+							System.out.println("BREAK OUT");
 						break;
 					}
 				}
@@ -599,7 +602,7 @@ public class GameWorld extends Observable {
 		return null;
 	}
 
-	private Astronaut getRandomAstronaut() {
+	public Astronaut getRandomAstronaut() {
 		if (getRoamingAstronauts() > 0) {
 			while (true) {
 				int[] astronautPositions = new int[getRoamingAstronauts()];
@@ -610,6 +613,11 @@ public class GameWorld extends Observable {
 					if (gObject instanceof Astronaut) {
 						astronautPositions[pos] = iter.getIndex();
 						pos++;
+					}
+					if (pos == astronautPositions.length - 1) {
+						if (debug)
+							System.out.println("BREAK OUT");
+						break;
 					}
 				}
 				spawnString();
