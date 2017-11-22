@@ -28,7 +28,6 @@ public class GameWorld extends Observable {
 	private int mapViewWidth;
 	private int mapViewHeight;
 	private Random random;
-	private String statsString = "";
 	private boolean isPlaying = true;
 	private boolean isSoundOn = true;
 	private final boolean debug = false;
@@ -155,7 +154,7 @@ public class GameWorld extends Observable {
 	 */
 	public void gameOverCheck() {
 		if (getRoamingAstronauts() <= 0) {
-			g.gameOver();
+			g.gameOver(this);
 		}
 	}
 
@@ -233,11 +232,6 @@ public class GameWorld extends Observable {
 	}
 
 	/* A Tick helper method that handles all the collision between two objects. */
-	/*
-	 * TODO rerite This if statement checks to see if either alien was recently
-	 * spawned & preventing collision if so. Comment out this if/else statement
-	 * to see animation
-	 */
 	public void collisionManager(ICollider currentObject, ICollider otherObject) {
 		if (currentObject != otherObject) {
 			if (debug)
@@ -414,20 +408,6 @@ public class GameWorld extends Observable {
 				+ "\nNumber of Astronauts roaming: " + getRoamingAstronauts()
 				+ "\nNumber of Aliens rescued: " + getRescuedAliens()
 				+ "\nNumber of Aliens roaming: " + getRoamingAliens());
-		statsString = "The score is: " + getScore()
-				+ "\nNumber of Astronauts rescused: " + getRescuedAstronauts()
-				+ "\nNumber of Astronauts roaming: " + getRoamingAstronauts()
-				+ "\nNumber of Aliens rescued: " + getRescuedAliens()
-				+ "\nNumber of Aliens roaming: " + getRoamingAliens();
-		setStats(statsString);
-	}
-
-	public String getStats() {
-		return statsString;
-	}
-
-	public void setStats(String statsString) {
-		this.statsString = statsString;
 	}
 
 	public void map() {

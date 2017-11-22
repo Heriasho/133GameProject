@@ -59,9 +59,8 @@ public class Game extends Form implements Runnable {
 	private FightCommand myFightCommand = new FightCommand(gw);
 	private QuitCommand myQuitCommand = new QuitCommand();
 	private SoundCommand soundCheckCommand = new SoundCommand("Sound", gw, game);
+	private Label score;
 	
-
-
 	public Game() {
 		gw.init(this);
 		mv = new MapView(gw, this);
@@ -236,9 +235,11 @@ public class Game extends Form implements Runnable {
 		}
 	}
 	
-	public void gameOver(){
+	public void gameOver(GameWorld gw){
 		pause();
-		Dialog.show("Game Over",gw.getStats(), "Ok", null);
+		setTitle("Game Over");
+		score = new Label("Final Score : "+gw.getScore());
+		Dialog.show(getTitle(), score, (Command[]) null);
 	}
 
 	public void run() {
