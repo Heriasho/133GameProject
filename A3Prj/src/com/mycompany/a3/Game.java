@@ -24,7 +24,6 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.Border;
-import com.mycompany.a3.BottomButton;
 import com.codename1.ui.util.UITimer;
 
 
@@ -84,12 +83,15 @@ public class Game extends Form implements Runnable {
 		Button statsButton = new CButton("Stats");
 		Button openDoorButton = new CButton("OpenDoor");
 		Button bredButton = new CButton("Bred");
+		Button pauseButton = new CButton("Playing");
+		Button healButton = new CButton("Heal Astro");
+		pauseButton.getAllStyles().setBgTransparency(255);
+		pauseButton.getAllStyles().setBgColor(ColorUtil.rgb(300, 150, 150)); 
+		healButton.getAllStyles().setBgTransparency(255);
+		healButton.getAllStyles().setBgColor(ColorUtil.rgb(150, 250, 250)); 
 		// Button fightButton = new CButton("Fight");
 		// Button tickButton = new CButton("Tick");
-		
-
-		/* Creating the commands */
-		BottomButton pauseButton = new BottomButton("Playing", pauseCommand);
+	
 		/* Set the commands for the buttons */
 		teleToAlienButton.setCommand(teleToAlienCommand);
 		teleToAstroButton.setCommand(teleToAstroCommand);
@@ -104,8 +106,8 @@ public class Game extends Form implements Runnable {
 		// fightButton.setCommand(myFightCommand);
 		openDoorButton.setCommand(openDoorCommand);
 		statsButton.setCommand(statsCommand);
-		//pauseButton.setCommand(pauseCommand);
-		//pauseButton = new TypePauseButton (pausedMessage,pauseCommand);
+		pauseButton.setCommand(pauseCommand);
+		healButton.setCommand(healCommand);
 
 		/* Adding key listeners to call commands */
 		addKeyListener('c', compressCommand);
@@ -137,8 +139,7 @@ public class Game extends Form implements Runnable {
 		this.add(BorderLayout.NORTH, sv);
 		CheckBox soundCheckBox = new CheckBox("Sound");
 		soundCheckBox.getAllStyles().setBgTransparency(255);
-		soundCheckBox.getAllStyles().setBgColor(ColorUtil.rgb(150, 150, 150)); // Mild
-																				// Gray
+		soundCheckBox.getAllStyles().setBgColor(ColorUtil.rgb(200, 150, 200)); 
 		soundCheckBox.setText("Toggle Sound");
 		soundCheckBox.setSelected(true);
 		soundCheckBox.setCommand(soundCheckCommand);
@@ -179,9 +180,10 @@ public class Game extends Form implements Runnable {
 		Container bottomContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
 		bottomContainer.getAllStyles().setPadding(Component.TOP, 50);
 		bottomContainer.getAllStyles().setBorder(Border.createLineBorder(1, ColorUtil.BLUE));
+		bottomContainer.getAllStyles().setAlignment(CENTER);
 		add(BorderLayout.SOUTH, bottomContainer);
 		bottomContainer.add(pauseButton);
-		bottomContainer.add(soundCheckBox);
+		bottomContainer.add(healButton);
 		// bottomContainer.add(bredButton);
 		// bottomContainer.add(fightButton);
 		// bottomContainer.add(tickButton);
@@ -192,6 +194,7 @@ public class Game extends Form implements Runnable {
 		myToolbar.addCommandToSideMenu(helpCommand);
 		myToolbar.addCommandToSideMenu(statsCommand);
 		myToolbar.addCommandToSideMenu(myQuitCommand);
+		myToolbar.addCommandToSideMenu(soundCheckCommand);
 		/* Tool bar Setup */
 
 		this.show();
@@ -243,7 +246,6 @@ public class Game extends Form implements Runnable {
 	}
 
 	public void run() {
-		// TODO Auto-generated method stub
 		gw.tick(time);
 		repaint();
 	}

@@ -21,6 +21,7 @@ public class PauseCommand extends Command {
     public void actionPerformed(ActionEvent e) {
     	gw.setIsPlaying();
         String playMessage = gw.getIsPlaying() ? "Playing" : "Paused";
+        this.setCommandName(playMessage);
         game.pause();
     }
 }
