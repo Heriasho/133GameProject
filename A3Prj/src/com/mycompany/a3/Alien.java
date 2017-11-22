@@ -88,6 +88,9 @@ public class Alien extends Opponents implements ISelectable {
 		else
 			return false;
 	}
+	/*Handles the collision Aliens have with other game objects.
+	 * If it hits an alien it breds, if an astronaut it damages it, and,
+	 * if anything besides a Spaceship hits it, the Alien 'bounces' the opposite way.*/
 	public void handleCollision(ICollider otherObject) {
 		
 		if (otherObject instanceof Alien && ((Alien) otherObject).getRecentSpawned() == false) {

@@ -358,9 +358,9 @@ public class GameWorld extends Observable {
 				getMapViewHeight(), getMapViewWidth(), speed, speedMulti, this,
 				true));
 		Alien b = (Alien) theGameCollection.get(getTheGameCollectionSize() - 1);
-		System.out.println(b);
+		if(debug)System.out.println(b);
 		setRoamingAliens(getRoamingAliens() + 1);
-		System.out.println("Roaming alien total: " + getRoamingAliens());
+		if(debug)System.out.println("Roaming alien total: " + getRoamingAliens());
 		updateGameWorld();
 		return b;
 	}
@@ -392,7 +392,7 @@ public class GameWorld extends Observable {
 			System.out.println("Astronaut takes 1 point of damage.");
 		if (debug)
 			System.out.println("Astronaut health: " + a.getSpeed());
-		if ((getIsPlaying() == true) && (getIsSoundOn() == true)) {
+		if ((getIsPlaying() == true) && (getIsSoundOn() == true) && (a.getSpeed() != 0)) {
 			astronautSound.play();
 		}
 		updateGameWorld();

@@ -126,10 +126,10 @@ public class Astronaut extends Opponents implements ISelectable {
 		else
 			return false;
 	}
-//	public void handleCollision(ICollider otherObject) {
-//		if(!(otherObject instanceof Spaceship)){
-//			bounce();
-//			((Opponents) otherObject).bounce();	
-//		}
-//	}
+	public void handleCollision(ICollider otherObject) {
+		if(!(otherObject instanceof Spaceship)){
+			bounce();
+			((Opponents) otherObject).bounce();	
+		}
+	}
 }
